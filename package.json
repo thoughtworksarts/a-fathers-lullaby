@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "roundware-web-framework": "thoughtworksarts/roundware-web-framework#speak"
+  }
+}
