@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../../assets/logo-small.png';
+import menuBars from '../../assets/menu-bars.svg';
 import './Menu.css';
 
 const Menu = () => {
@@ -14,10 +15,11 @@ const Menu = () => {
 
   return (
     <nav className="Menu">
-      <a href="/"><img src={logo} alt="A Father's Lullaby" /></a>
+      <a href="/"><img className="logo" src={logo} alt="A Father's Lullaby" /></a>
       {
         isMobile ?
-          <i className="fas fa-bars"></i>
+          // <i className="fas fa-bars"></i>
+          <img className="menu-bars" src={menuBars} alt="Menu" />
         :
           <ul>
             <li><a href="/" className="selected">About</a></li>

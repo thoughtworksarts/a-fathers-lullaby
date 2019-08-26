@@ -9,9 +9,16 @@
   width: 100%;
 }
 
-.Menu img {
+.Menu .logo {
   width: 15em;
   margin-left: 30px;
+}
+
+.Menu .menu-bars {
+  color: #444;
+  height: 1.5em;
+  margin-right: 30px;
+  cursor: pointer;
 }
 
 .Menu ul {
