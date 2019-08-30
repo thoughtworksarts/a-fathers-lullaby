@@ -1,0 +1,26 @@
+.Footer {
+	color: #bd7212;
+	/* padding: 20px; */
+	position: fixed;
+	bottom: 0;
+	left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Footer a {
+	color: #bd7212;
+	border: none;
+}
+
+.Footer p {
+    margin: 0px 0px 15px 30px;
+}
+
+.Footer img {
+	width: 30px;
+    height: 30px;
+    margin: 0px 30px 15px 0px;
+}
