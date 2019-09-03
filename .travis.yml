@@ -14,3 +14,7 @@ deploy:
   local_dir: build
   on:
     branch: release
+# safelist
+branches:
+  only:
+    - release
