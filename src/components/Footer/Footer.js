@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="Footer">
             <p>all content © 2019 <a href="https://www.rashinfahandej.com/">Rashin Fahandej</a></p>
-            <a href="mailto:Rashin.Fahandej@gmail.com"><img src={mailIcon}/></a>
+            <a href="mailto:Rashin.Fahandej@gmail.com"><img src={mailIcon} alt="email icon"/></a>
         </footer>
     );
 }
