@@ -1,5 +1,7 @@
 # A Father's Lullaby
 
+[![Build Status](https://travis-ci.org/thoughtworksarts/a-fathers-lullaby.svg?branch=release)](https://travis-ci.org/thoughtworksarts/a-fathers-lullaby)
+
 ### To run locally
 
 * Clone this repo to your local device
