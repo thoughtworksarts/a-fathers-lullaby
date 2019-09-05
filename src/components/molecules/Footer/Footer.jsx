@@ -1,5 +1,5 @@
 import React from 'react';
-import mailIcon from '../../assets/mail-icon.svg';
+import mailIcon from 'assets/mail-icon.svg';
 import './Footer.css';
 
 const Footer = () => {
