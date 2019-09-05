@@ -11,7 +11,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,5 +30,20 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/"
+  "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "standard": "^14.1.0"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "public/**/*.js"
+    ],
+    "parser": "babel-eslint"
+  }
 }
