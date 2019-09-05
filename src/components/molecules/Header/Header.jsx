@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../../assets/logo-small.png';
-import menuBars from '../../assets/menu-bars.svg';
-import './Menu.css';
+import './Header.css';
+import logo from 'assets/logo-small.png';
+import menuBars from 'assets/menu-bars.svg';
 
-const Menu = () => {
+const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Menu = () => {
   }, [])
 
   return (
-    <nav className="Menu">
+    <nav className="Header">
       <a href="/"><img className="logo" src={logo} alt="A Father's Lullaby" /></a>
       {
         isMobile ?
@@ -31,4 +31,4 @@ const Menu = () => {
   );
 }
 
-export default Menu;
+export default Header;

@@ -1,12 +1,12 @@
 import React from 'react';
-import Menu from './components/Menu/Menu';
+import Header from './components/molecules/Header/Header';
 import AboutPage from './pages/About/About';
 import './App.css';
 
 function App() {
   return (
     <div className='App'>
-      <Menu />
+      <Header />
       <AboutPage />
     </div>
   );

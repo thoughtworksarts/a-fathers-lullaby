@@ -1,7 +1,7 @@
 import React from 'react';
 import './About.css';
 import { Footer } from 'molecules';
-import { Logo } from 'atoms'
+import { Logo } from 'atoms';
 
 const About = () => {
   return (
