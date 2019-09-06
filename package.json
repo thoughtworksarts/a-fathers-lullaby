@@ -5,15 +5,16 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "snazzy": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint": "standard | snazzy",
+    "lint:fix": "standard --fix | snazzy"
   },
   "eslintConfig": {
     "extends": "react-app"
