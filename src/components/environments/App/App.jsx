@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from './components/molecules/Header/Header';
-import AboutPage from './pages/About/About';
+import { Header } from 'molecules';
+import { About } from 'pages';
 import './App.css';
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      <AboutPage />
+      <About />
     </div>
   );
 }
