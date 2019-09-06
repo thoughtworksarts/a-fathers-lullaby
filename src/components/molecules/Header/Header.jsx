@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import logo from 'assets/logo-small.png';
 import menuBars from 'assets/menu-bars.svg';
+import { Logo } from 'atoms';
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <nav className="Header">
-      <a href="/"><img className="logo" src={logo} alt="A Father's Lullaby" /></a>
+      <Logo size="sm"/>
       {
         isMobile ?
           // <i className="fas fa-bars"></i>
