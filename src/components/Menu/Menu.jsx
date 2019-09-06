@@ -24,7 +24,7 @@ const Menu = () => {
             <li><a href='/' className='selected'>About</a></li>
             <li><a href='/'>Share a Lullaby</a></li>
             <li><a href='/'>Listen to Others</a></li>
-          </ul>
+            </ul>
       }
     </nav>
   )
