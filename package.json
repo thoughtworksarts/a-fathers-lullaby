@@ -18,7 +18,8 @@
     "test": "craco test",
     "eject": "craco eject",
     "lint": "standard | snazzy",
-    "lint:fix": "standard --fix | snazzy"
+    "lint:fix": "standard --fix | snazzy",
+    "cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +38,7 @@
   },
   "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/",
   "devDependencies": {
+    "cypress": "^3.4.1",
     "standard": "^14.1.0"
   },
   "babel": {
