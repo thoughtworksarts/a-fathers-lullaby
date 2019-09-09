@@ -11,7 +11,6 @@
 
 .Header .logo {
   width: 15em;
-  margin-left: 30px;
 }
 
 .Header .menu-bars {
@@ -31,12 +30,12 @@
 .Header li {
   list-style: none;
   font-family: "Serenity", sans-serif;
-  margin-left: 30px;
 }
 
 .Header a {
   text-decoration: none;
   color: #96351F;
+  margin-left: 30px;
 }
 
 .Header a.selected {
