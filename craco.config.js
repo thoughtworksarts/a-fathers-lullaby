@@ -1,10 +1,8 @@
 // const path = require('path')
-const alias = require('./config/aliases')
 const jestConfig = require('./config/jestConfig')
+const webpackConfig = require('./config/webpackConfig')
 
 module.exports = {
-  webpack: {
-    alias
-  },
+  webpack: webpackConfig,
   jest: jestConfig
 }

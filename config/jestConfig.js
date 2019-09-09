@@ -2,7 +2,7 @@ const path = require('path')
 const aliases = require('./aliases')
 const basePath = path.join(__dirname, '..', 'src')
 
-const mapAliasNames = (aliases) => {
+const mapAliasNamesJest = (aliases) => {
   const nameMap = {}
 
   Object.keys(aliases).forEach(alias => {
@@ -18,6 +18,6 @@ const mapAliasNames = (aliases) => {
 
 module.exports = {
   configure: {
-    moduleNameMapper: mapAliasNames(aliases)
+    moduleNameMapper: mapAliasNamesJest(aliases)
   }
 }
