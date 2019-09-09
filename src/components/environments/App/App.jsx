@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { Header } from 'molecules'
+import { Header } from 'organisms'
 import { About, Share, Listen } from 'pages'
 import './App.css'
 
