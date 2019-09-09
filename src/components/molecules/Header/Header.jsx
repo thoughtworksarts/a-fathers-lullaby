@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './Header.css'
 import menuBars from 'assets/menu-bars.svg'
 import { Logo } from 'atoms'
@@ -23,15 +23,15 @@ const Header = () => {
           ? <img className='menu-bars' src={menuBars} alt='Menu' />
           : (
             <ul>
-              <Link to='/' className='selected'>
+              <NavLink to='/' exact activeClassName='selected'>
                 <li>About</li>
-              </Link>
-              <Link to='/share'>
+              </NavLink>
+              <NavLink to='/share' activeClassName='selected'>
                 <li>Share a Lullaby</li>
-              </Link>
-              <Link to='/listen'>
+              </NavLink>
+              <NavLink to='/listen' activeClassName='selected'>
                 <li>Listen to Others</li>
-              </Link>
+              </NavLink>
             </ul>
           )
       }
