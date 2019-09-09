@@ -6,13 +6,16 @@
     "@craco/craco": "^5.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "snazzy": "^8.0.0"
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "lint": "standard | snazzy",
+    "lint:fix": "standard --fix | snazzy"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +32,20 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/"
+  "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "standard": "^14.1.0"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "public/**/*.js"
+    ],
+    "parser": "babel-eslint"
+  }
 }
