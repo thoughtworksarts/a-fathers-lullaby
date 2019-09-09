@@ -6,11 +6,11 @@ const Logo = ({ size = 'lg' }) => {
   const logos = {
     sm: smallLogo,
     lg: largeLogo
-  }
+  };
 
   return (
     <img src={logos[size]} alt="A Father's Lullaby" className='logo' />
-  )
+  );
 }
 
 export default Logo
