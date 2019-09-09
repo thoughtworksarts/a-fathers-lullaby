@@ -1,8 +1,16 @@
 import React from 'react'
-import logo from 'assets/logo-large.png';
+import smallLogo from 'assets/logo-small.png';
+import largeLogo from 'assets/logo-large.png';
 
-const Logo = () => (
-  <img src={logo} alt="A Father's Lullaby" />
-)
+const Logo = ({ size = "lg" }) => {
+  const logos = {
+    "sm": smallLogo,
+    "lg": largeLogo
+  }
+
+  return (
+      <img src={logos[size]} alt="A Father's Lullaby" className="logo" />
+  )
+}
 
 export default Logo
