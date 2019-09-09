@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^5.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "snazzy": "^8.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
     "lint": "standard | snazzy",
     "lint:fix": "standard --fix | snazzy"
   },
@@ -33,7 +35,6 @@
   },
   "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/",
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
     "standard": "^14.1.0"
   },
   "babel": {

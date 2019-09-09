@@ -1,4 +1,4 @@
-.Menu {
+.Header {
   background-color: #2F2F2F;
   opacity: 0.95;
   display: flex;
@@ -9,43 +9,43 @@
   width: 100%;
 }
 
-.Menu .logo {
+.Header .logo {
   width: 15em;
   margin-left: 30px;
 }
 
-.Menu .menu-bars {
+.Header .menu-bars {
   color: #444;
   height: 1.5em;
   margin-right: 30px;
   cursor: pointer;
 }
 
-.Menu ul {
+.Header ul {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 30px;
 }
 
-.Menu li {
+.Header li {
   list-style: none;
   font-family: "Serenity", sans-serif;
   margin-left: 30px;
 }
 
-.Menu a {
+.Header a {
   text-decoration: none;
   color: #96351F;
 }
 
-.Menu a.selected {
+.Header a.selected {
   color: #BD7212;
   border-bottom: 3px solid #BD7212;
   padding-bottom: 5px;
 }
 
-.Menu i {
+.Header i {
   color: #444;
   margin-right: 30px;
   cursor: pointer;
