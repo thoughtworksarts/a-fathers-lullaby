@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import './Header.css'
-import menuBars from 'assets/menu-bars.svg'
-import { Logo } from 'atoms'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
+import menuBars from 'assets/menu-bars.svg';
+import { Logo } from 'atoms';
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
@@ -14,19 +15,24 @@ const Header = () => {
   }, [])
 
   return (
-    <nav className='Header'>
-      <Logo size='sm' />
+    <nav className="Header">
+      <Link to="/"><Logo size="sm"/></Link>
       {
         isMobile
           // <i className="fas fa-bars"></i>
-          ? <img className='menu-bars' src={menuBars} alt='Menu' />
-          : (
-            <ul>
-              <li><a href='/' className='selected'>About</a></li>
-              <li><a href='/'>Share a Lullaby</a></li>
-              <li><a href='/'>Listen to Others</a></li>
-            </ul>
-          )
+          <img className="menu-bars" src={menuBars} alt="Menu" />
+        :
+          <ul>
+            <Link to="/" className="selected">
+              <li>About</li>
+            </Link>
+            <Link to="/share">
+              <li>Share a Lullaby</li>
+            </Link>
+            <Link to="/listen">
+              <li>Listen to Others</li>
+            </Link>
+          </ul>
       }
     </nav>
   )
