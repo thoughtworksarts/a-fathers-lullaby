@@ -1,3 +1,5 @@
+/* eslint react/jsx-indent-props: 0, react/jsx-closing-bracket-location: 0 */
+
 import React, { useState, useEffect } from 'react'
 import logo from '../../assets/logo-small.png'
 import menuBars from '../../assets/menu-bars.svg'
@@ -20,11 +22,13 @@ const Menu = () => {
         // <i className="fas fa-bars"></i>
         isMobile
           ? <img className='menu-bars' src={menuBars} alt='Menu' />
-          : <ul>
-            <li><a href='/' className='selected'>About</a></li>
-            <li><a href='/'>Share a Lullaby</a></li>
-            <li><a href='/'>Listen to Others</a></li>
+          : (
+            <ul>
+              <li><a href='/' className='selected'>About</a></li>
+              <li><a href='/'>Share a Lullaby</a></li>
+              <li><a href='/'>Listen to Others</a></li>
             </ul>
+          )
       }
     </nav>
   )
