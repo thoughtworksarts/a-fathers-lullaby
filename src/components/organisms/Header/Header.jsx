@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Header.css'
 import menuBars from 'assets/menu-bars.svg'
-import { Logo } from 'atoms'
+import { Logo, NavItem } from 'atoms'
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
@@ -19,19 +19,12 @@ const Header = () => {
       <Link to='/'><Logo size='sm' /></Link>
       {
         isMobile
-          // <i className="fas fa-bars"></i>
           ? <img className='menu-bars' src={menuBars} alt='Menu' />
           : (
             <ul>
-              <NavLink to='/' exact activeClassName='selected'>
-                <li>About</li>
-              </NavLink>
-              <NavLink to='/share' activeClassName='selected'>
-                <li>Share a Lullaby</li>
-              </NavLink>
-              <NavLink to='/listen' activeClassName='selected'>
-                <li>Listen to Others</li>
-              </NavLink>
+              <NavItem title='About' link='/' />
+              <NavItem title='Share a Lullaby' link='/share' />
+              <NavItem title='Listen to Others' link='/listen' />
             </ul>
           )
       }
