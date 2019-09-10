@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Header.css'
 import menuBars from 'assets/menu-bars.svg'
-import { Logo } from 'atoms'
+import { Logo, Link } from 'atoms'
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
