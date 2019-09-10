@@ -14,7 +14,7 @@ export default compose(
 
       const {
         action = 'Button Click',
-        category = location['pathname'],
+        category = location.pathname,
         label = btnName
       } = gaParams
 
@@ -22,21 +22,21 @@ export default compose(
       //   'event_category': category,
       //   'event_label': label
       // })
-      
-      console.log("BUTTON WITH TRACKING", { action, category, label })
+
+      console.log('BUTTON WITH TRACKING', { action, category, label })
       onClick && onClick(e)
     },
     onClickExtLinkWithTracking: ({ onClick, href, children, label, location, match, gaParams = {} }) => (e) => {
       const {
         action = 'Ext Link Click',
-        category = location['pathname'],
+        category = location.pathname,
         label = href
       } = gaParams
 
       window.gtag('event', action, {
-        'event_category': category,
-        'event_label': label,
-        'transport_type': 'beacon'
+        event_category: category,
+        event_label: label,
+        transport_type: 'beacon'
       })
 
       onClick && onClick(e)
@@ -44,14 +44,14 @@ export default compose(
     onPageViewTracking: ({ location }) => (gaParams = {}) => {
       const {
         action = 'Impression',
-        category = location['pathname'],
+        category = location.pathname,
         label = 'Directory View'
       } = gaParams
 
       window.gtag('event', action, {
-        'event_category': category,
-        'event_label': label,
-        'transport_type': 'beacon'
+        event_category: category,
+        event_label: label,
+        transport_type: 'beacon'
       })
     }
   })
