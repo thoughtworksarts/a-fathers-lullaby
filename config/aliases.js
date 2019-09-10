@@ -6,5 +6,6 @@ module.exports = {
   environments: path.resolve(__dirname, '../src/components/environments'),
   organisms: path.resolve(__dirname, '../src/components/organisms'),
   assets: path.resolve(__dirname, '../src/assets'),
+  helpers: path.resolve(__dirname, '../src/helpers'),
   pages: path.resolve(__dirname, '../src/components/pages')
 }
