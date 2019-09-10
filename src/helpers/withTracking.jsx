@@ -23,36 +23,23 @@ export default compose(
       //   'event_label': label
       // })
 
-      console.log('BUTTON WITH TRACKING', { action, category, label })
+      console.log('[GA] Button clicked: ', { action, category, label })
       onClick && onClick(e)
     },
-    onClickExtLinkWithTracking: ({ onClick, href, children, label, location, match, gaParams = {} }) => (e) => {
-      const {
-        action = 'Ext Link Click',
-        category = location.pathname,
-        label = href
-      } = gaParams
-
-      window.gtag('event', action, {
-        event_category: category,
-        event_label: label,
-        transport_type: 'beacon'
-      })
-
-      onClick && onClick(e)
-    },
-    onPageViewTracking: ({ location }) => (gaParams = {}) => {
+    onPageViewTracking: (props) => (gaParams = {}) => {
       const {
         action = 'Impression',
-        category = location.pathname,
+        category = window.location.pathname,
         label = 'Directory View'
       } = gaParams
 
-      window.gtag('event', action, {
-        event_category: category,
-        event_label: label,
-        transport_type: 'beacon'
-      })
+      console.log('[GA] Page changed: ', { action, category, label })
+
+      // window.gtag('event', action, {
+      //   event_category: category,
+      //   event_label: label,
+      //   transport_type: 'beacon'
+      // })
     }
   })
 )
