@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^5.4.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
@@ -17,7 +19,10 @@
     "test": "craco test",
     "eject": "craco eject",
     "lint": "standard | snazzy",
-    "lint:fix": "standard --fix | snazzy"
+    "lint:fix": "standard --fix | snazzy",
+    "ci": "npm run lint && npm test",
+    "cypress": "cypress open",
+    "cypress:headless": "./test.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +41,7 @@
   },
   "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/",
   "devDependencies": {
+    "cypress": "^3.4.1",
     "standard": "^14.1.0"
   },
   "babel": {
@@ -46,6 +52,16 @@
   "standard": {
     "ignore": [
       "public/**/*.js"
+    ],
+    "env": [
+      "browser",
+      "mocha"
+    ],
+    "globals": [
+      "cy",
+      "Cypress",
+      "expect",
+      "assert"
     ],
     "parser": "babel-eslint"
   }
