@@ -19,6 +19,7 @@
     "eject": "craco eject",
     "lint": "standard | snazzy",
     "lint:fix": "standard --fix | snazzy",
+    "ci": "npm run lint && npm test",
     "cypress": "cypress open",
     "cypress:headless": "./test.sh"
   },
