@@ -52,6 +52,16 @@
     "ignore": [
       "public/**/*.js"
     ],
+    "env": [
+      "browser",
+      "mocha"
+    ],
+    "globals": [
+      "cy",
+      "Cypress",
+      "expect",
+      "assert"
+    ],
     "parser": "babel-eslint"
   }
 }
