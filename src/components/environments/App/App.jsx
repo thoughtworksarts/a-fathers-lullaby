@@ -5,11 +5,11 @@ import { Header } from 'organisms'
 import { About, Share, Listen } from 'pages'
 import './App.css'
 
-const App = ({ onPageViewTracking }) => {
+const App = ({ onPageViewTracking, location }) => {
   // used to track page views and send to google analytics
   useEffect(() => {
     onPageViewTracking()
-  }, [window.location.pathname])
+  }, [location, onPageViewTracking])
 
   return (
     <div className='App'>
