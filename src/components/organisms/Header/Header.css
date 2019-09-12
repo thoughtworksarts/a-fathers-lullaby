@@ -20,14 +20,14 @@
   cursor: pointer;
 }
 
-.Header ul {
+.Header .NavLinks {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 30px;
 }
 
-.Header li {
+.Header .Link {
   list-style: none;
   font-family: "Serenity", sans-serif;
 }
