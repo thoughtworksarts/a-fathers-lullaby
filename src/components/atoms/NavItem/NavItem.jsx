@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom'
 
 const NavItem = ({ title, link }) => {
   return (
-    <NavLink to={link} exact activeClassName='selected'>
-      <li>{title}</li>
+    <NavLink to={link} exact activeClassName='selected' className='Link'>
+      {title}
     </NavLink>
   )
 }

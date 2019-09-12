@@ -21,11 +21,11 @@ const Header = () => {
         isMobile
           ? <img className='menu-bars' src={menuBars} alt='Menu' />
           : (
-            <ul>
+            <div className='NavLinks'>
               <NavItem title='About' link='/' />
               <NavItem title='Share a Lullaby' link='/share' />
               <NavItem title='Listen to Others' link='/listen' />
-            </ul>
+            </div>
           )
       }
     </nav>
