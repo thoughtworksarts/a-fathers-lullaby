@@ -1,7 +1,11 @@
+import NavLink from './NavLink'
 import Logo from './Logo'
-import NavItem from './NavItem'
+import Button from './Button'
+import Link from './Link'
 
 export {
   Logo,
-  NavItem
+  Link,
+  NavLink,
+  Button
 }
