@@ -16,7 +16,8 @@
   2. `git add [your changed files]`
   3. `git commit -m [your commit message]`
   4. Run all tests (`npm test a`) and check that they pass
-  5. `git push`
+  5. Lint the code by running `npm run lint:fix`
+  6. `git push`
 * Second, push to the `release` branch (this branch is the one that's connected to our CI pipeline):
   1. `git checkout release`
   2. `git merge master`
@@ -33,6 +34,7 @@
   2. Type `a` to run all tests
   3. The one-liner for the two commands above is `npm test a`
 * Cypress, ie. end-to-end tests
-  1. Run `yarn install` (only for the first time you run the E2E tests)
-  2. Run `npm start` or `yarn start` to run the app so that Cypress can access it at localhost:3000
-  3. In a different terminal tab/window, run `yarn cypress` to launch the Cypress app and click the `▶️ Run all specs` button
+  1. Run `npm install` (only for the first time you run the E2E tests)
+  2. Run `npm start` or `npm start` to run the app so that Cypress can access it at localhost:3000
+  3. In a different terminal tab/window, run `npm run cypress` to launch the Cypress app and click the `▶️ Run all specs` button
+  4. To run the end to end testing in the terminal, you may also run `npm run cypress:headless`
