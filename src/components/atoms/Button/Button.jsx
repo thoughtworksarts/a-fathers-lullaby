@@ -1,9 +1,9 @@
 import React from 'react'
 import { withTracking } from 'helpers'
 
-const Button = ({ children, onClickButtonWithTracking, onClick, gaTrack = true, ...rest }) => {
+const Button = ({ children, onClickWithTracking, onClick, gaTrack = true, ...rest }) => {
   return (
-    <button onClick={gaTrack ? onClickButtonWithTracking : onClick} {...rest}>
+    <button onClick={gaTrack ? onClickWithTracking('Button') : onClick} {...rest}>
       {children}
     </button>
   )
