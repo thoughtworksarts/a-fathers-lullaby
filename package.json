@@ -62,7 +62,8 @@
       "cy",
       "Cypress",
       "expect",
-      "assert"
+      "assert",
+      "jest"
     ],
     "parser": "babel-eslint"
   },

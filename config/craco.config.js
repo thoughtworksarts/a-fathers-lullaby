@@ -1,5 +1,3 @@
-const path = require('path')
-
 const fs = require('fs')
 const dotenv = require('dotenv')
 
@@ -21,7 +19,6 @@ envFiles.forEach(file => {
     })
   }
 })
-
 
 const jestConfig = require('./jestConfig')
 const webpackConfig = require('./webpackConfig')
