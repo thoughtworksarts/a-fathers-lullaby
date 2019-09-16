@@ -22,13 +22,21 @@ script:
   - npm test a
   - npm run build
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token
-  local_dir: build
-  on:
-    branch: release
+  - provider: pages
+    skip_cleanup: true
+    github_token: $github_token
+    local_dir: build
+    on:
+      branch: release
+  - provider: surge
+    skip_cleanup: true
+    project: ./build/
+    domain: a-fathers-lullaby.surge.sh
+    on:
+      branch: master
+
 # safelist
 branches:
   only:
+    - master
     - release
