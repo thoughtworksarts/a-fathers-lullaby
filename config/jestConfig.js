@@ -18,6 +18,9 @@ const mapAliasNamesJest = (aliases) => {
 
 module.exports = {
   configure: {
-    moduleNameMapper: mapAliasNamesJest(aliases)
+    moduleNameMapper: mapAliasNamesJest(aliases),
+    setupFiles: [
+      path.join(__dirname, '..', 'config/setupTests.js')
+    ]
   }
 }

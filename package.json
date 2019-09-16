@@ -42,6 +42,7 @@
   "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/",
   "devDependencies": {
     "cypress": "^3.4.1",
+    "enzyme-shallow-until": "^1.0.1",
     "standard": "^14.1.0"
   },
   "babel": {
@@ -64,5 +65,6 @@
       "assert"
     ],
     "parser": "babel-eslint"
-  }
+  },
+  "cracoConfig": "config/craco.config.js"
 }
