@@ -22,7 +22,7 @@ script:
   - npm run cypress:headless
   - npm test a
   - npm run build
-after_script: "./surge-rename-index.sh"
+before_deploy: "./surge-rename-index.sh"
 deploy:
   - provider: pages
     skip_cleanup: true
