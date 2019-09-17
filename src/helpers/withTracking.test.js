@@ -5,7 +5,7 @@ import { withTracking } from 'helpers'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 describe('withTracking', () => {
-  const shallowWithProps = (Component, props = {}) => {    
+  const shallowWithProps = (Component, props = {}) => {
     const Base = () => <Component {...props} />
     const CompWithTracking = withTracking(Base)
 
@@ -39,10 +39,9 @@ describe('withTracking', () => {
     expect(withTrackingMockFunc.mock.calls).toHaveLength(1)
     expect(onClickMockFunc.mock.calls).toHaveLength(1)
   })
-  
+
   it('onClickWithTracking should return an argument.', () => {
     const withTrackingMockFunc = jest.fn(arg => console.log(arg))
-    
 
     const props = {
       onClickWithTracking: withTrackingMockFunc,
@@ -72,7 +71,7 @@ describe('withTracking', () => {
     wrapper.html()
 
     wrapper.simulate('click')
-    
+
     expect(withTrackingMockFunc.mock.calls).toHaveLength(0)
     expect(onClickMockFunc.mock.calls).toHaveLength(1)
   })
@@ -89,7 +88,7 @@ describe('withTracking', () => {
       }
 
       const result = {
-        label: 'label', 
+        label: 'label',
         action: 'action',
         category: 'category'
       }
@@ -97,8 +96,7 @@ describe('withTracking', () => {
       const wrapper = shallowWithProps(Button, props)
       wrapper.html()
 
-      console.log('wrapper', wrapper.props());
-      
+      console.log('wrapper', wrapper.props())
 
       wrapper.simulate('click')
 
