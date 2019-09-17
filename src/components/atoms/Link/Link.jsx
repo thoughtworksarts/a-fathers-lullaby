@@ -2,9 +2,9 @@ import React from 'react'
 import { Link as LinkRouter } from 'react-router-dom'
 import { withTracking } from 'helpers'
 
-const Link = ({ children, onClickWithTracking, onClick, gaTrack = true, ...rest }) => {
+export const Link = ({ to, children, onClickWithTracking, onClick, gaTrack = true }) => {
   return (
-    <LinkRouter onClick={gaTrack ? onClickWithTracking('Link') : onClick} {...rest}>
+    <LinkRouter to={to} onClick={gaTrack ? onClickWithTracking('Link') : onClick}>
       {children}
     </LinkRouter>
   )

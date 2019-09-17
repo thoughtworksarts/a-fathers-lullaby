@@ -2,7 +2,7 @@ import React from 'react'
 import { withTracking } from 'helpers'
 import { NavLink as NavLinkRR } from 'react-router-dom'
 
-const NavLink = ({ children, link, onClick, onClickWithTracking, gaTrack = true }) => {
+export const NavLink = ({ children, link, onClick, onClickWithTracking, gaTrack = true }) => {
   return (
     <NavLinkRR
       exact
