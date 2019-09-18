@@ -40,7 +40,7 @@ export default compose(
   withHandlers({
     onClickWithTracking: ({ onClickWithTracking, gaSend, onClick, children, location, gaParams = {} }) => (componentName = 'Event') => (e) => {
       onClickWithTracking && onClickWithTracking._isMockFunction && onClickWithTracking(componentName)
-      
+
       let name
 
       if (children) {

@@ -6,16 +6,6 @@ import { withTracking } from 'helpers'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 describe('withTracking', () => {
-  const mountWithProps = (Component, props = {}) => {
-    const CompWithTracking = withTracking(Component)
-
-    return mount(
-      <Router>
-        <CompWithTracking {...props} />
-      </Router>
-    )
-  }
-
   const mountAndClick = (Component, props) => {
     const CompWithTracking = withTracking(Component)
 
@@ -75,7 +65,7 @@ describe('withTracking', () => {
       gaParams: {
         label: 'label',
         action: 'action',
-        category: 'category' 
+        category: 'category'
       }
     }
 
