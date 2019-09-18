@@ -1,114 +1,110 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { Button } from 'atoms/Button/Button'
+import { Link } from 'atoms/Link/Link'
 import { withTracking } from 'helpers'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 describe('withTracking', () => {
-  const shallowWithProps = (Component, props = {}) => {
-    const Base = () => <Component {...props} />
-    const CompWithTracking = withTracking(Base)
+  const mountWithProps = (Component, props = {}) => {
+    const CompWithTracking = withTracking(Component)
 
-    return shallow(
+    return mount(
       <Router>
-        <CompWithTracking />
+        <CompWithTracking {...props} />
       </Router>
-    ).until(Component)
+    )
   }
 
-  it('Button with withTracking wrapper exists', () => {
-    const wrapper = shallowWithProps(Button)
-    expect(wrapper.exists()).toBe(true)
-  })
+  const mountAndClick = (Component, props) => {
+    const CompWithTracking = withTracking(Component)
 
-  it('should use the onClickWithTracking AND onClick if gaTracking prop is true.', () => {
-    const withTrackingMockFunc = jest.fn(arg => console.log(arg))
-    const onClickMockFunc = jest.fn()
+    const wrapper = mount(
+      <Router>
+        <CompWithTracking {...props} />
+      </Router>
+    )
 
-    const props = {
-      onClickWithTracking: withTrackingMockFunc,
-      onClick: onClickMockFunc,
-      gaTrack: true
-    }
+    const clickable = wrapper.find(Component)
+    clickable.simulate('click')
 
-    const wrapper = shallowWithProps(Button, props)
-    wrapper.html()
-
-    wrapper.simulate('click')
-
-    expect(withTrackingMockFunc.mock.calls).toHaveLength(1)
-    expect(onClickMockFunc.mock.calls).toHaveLength(1)
-  })
-
-  it('onClickWithTracking should return an argument.', () => {
-    const withTrackingMockFunc = jest.fn(arg => console.log(arg))
-
-    const props = {
-      onClickWithTracking: withTrackingMockFunc,
-      gaTrack: true
-    }
-
-    const wrapper = shallowWithProps(Button, props)
-    wrapper.html()
-
-    wrapper.simulate('click')
-
-    expect(withTrackingMockFunc.mock.calls).toHaveLength(1)
-    expect(withTrackingMockFunc).toBeCalledWith('Button')
-  })
+    return wrapper
+  }
 
   it('should use the onClick instead of onClickWithTracking if gaTracking prop is false', () => {
-    const withTrackingMockFunc = jest.fn()
-    const onClickMockFunc = jest.fn()
-
     const props = {
-      onClickWithTracking: withTrackingMockFunc,
-      onClick: onClickMockFunc,
+      onClick: jest.fn(),
+      onClickWithTracking: jest.fn(),
       gaTrack: false
     }
 
-    const wrapper = shallowWithProps(Button, props)
-    wrapper.html()
+    mountAndClick(Button, props)
 
-    wrapper.simulate('click')
-
-    expect(withTrackingMockFunc.mock.calls).toHaveLength(0)
-    expect(onClickMockFunc.mock.calls).toHaveLength(1)
+    expect(props.onClickWithTracking.mock.calls).toHaveLength(0)
+    expect(props.onClick.mock.calls).toHaveLength(1)
   })
 
-  describe('default params', () => {
-    it.only('Override default params if custom params are added to component', () => {
-      const mockFn = jest.fn(arg => console.log('gaSend', arg))
-      // const mockFn2 = jest.fn(arg => console.log('with tracking', arg))
+  it('should use the onClickWithTracking AND onClick if gaTracking prop is true.', () => {
+    const props = {
+      onClickWithTracking: jest.fn(arg => arg),
+      onClick: jest.fn(),
+      gaTrack: true
+    }
 
-      const props = {
-        // onClickWithTracking: mockFn2,
-        gaSend: mockFn,
-        gaTrack: true
-      }
+    mountAndClick(Button, props)
 
-      const result = {
+    expect(props.onClickWithTracking.mock.calls).toHaveLength(1)
+    expect(props.onClick.mock.calls).toHaveLength(1)
+  })
+
+  it('onClickWithTracking should return an argument.', () => {
+    const props = {
+      onClickWithTracking: jest.fn(arg => arg),
+      gaTrack: true
+    }
+
+    mountAndClick(Button, props)
+
+    expect(props.onClickWithTracking.mock.calls).toHaveLength(1)
+    expect(props.onClickWithTracking).toBeCalledWith('Button')
+  })
+
+  it('Override default params if custom params are added to component', () => {
+    const props = {
+      gaSend: jest.fn(arg => console.log(arg)),
+      gaParams: {
         label: 'label',
         action: 'action',
-        category: 'category'
+        category: 'category' 
       }
+    }
 
-      const wrapper = shallowWithProps(Button, props)
-      wrapper.html()
+    mountAndClick(Button, props)
 
-      console.log('wrapper', wrapper.props())
+    expect(props.gaSend.mock.calls).toHaveLength(1)
+    expect(props.gaSend).toBeCalledWith(props.gaParams)
+  })
 
-      wrapper.simulate('click')
+  it('if a Button is clicked, the default params.action should return Button Clicked', () => {
+    const props = {
+      gaSend: jest.fn(params => params)
+    }
 
-      expect(mockFn).toBeCalledWith(result)
-    })
+    mountAndClick(Button, props)
 
-    it.skip('use name of nested component as label if the children do not render a string to the DOM', () => {
+    expect(props.gaSend.mock.calls).toHaveLength(1)
+    expect(props.gaSend.mock.results[0].value.action).toEqual('Button Click')
+  })
 
-    })
+  it('if a Link is clicked, the default params.action should return Link Clicked', () => {
+    const props = {
+      gaSend: jest.fn(params => params),
+      to: '/'
+    }
 
-    it.skip('', () => {
+    mountAndClick(Link, props)
 
-    })
+    expect(props.gaSend.mock.calls).toHaveLength(1)
+    expect(props.gaSend.mock.results[0].value.action).toEqual('Link Click')
   })
 })

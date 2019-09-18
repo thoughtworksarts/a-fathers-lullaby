@@ -2,10 +2,30 @@
 import { withRouter } from 'react-router'
 import { compose, withHandlers } from 'recompose'
 
+export const findName = (child) => {
+  const recursiveSearch = (child) => {
+    const { props } = child
+
+    if (!props.children && child.type.name) {
+      // if the nested component is not rendering a string on the DOM (i.e. an image or logo)
+      // then return the name of the child component
+      return child.type.name
+    } else if (typeof props.children === 'string') {
+      // if the nested component is rendering a string on the DOM, return the string
+      return props.children
+    } else {
+      // if the nested component is wrapping another component,
+      // recursively drill down through the nested elements.
+      return recursiveSearch(props.children)
+    }
+  }
+  return child.props && recursiveSearch(child)
+}
+
 export default compose(
-  withRouter,
   withHandlers({
-    gaSend: () => (params) => {
+    gaSend: ({ gaSend }) => (params) => {
+      gaSend && gaSend._isMockFunction && gaSend(params)
       // const { action, category, label } = params
       console.log(`[GA] ${params.action}: `, params)
       // TODO: Once there is a GA key in index.html, uncomment the code below:
@@ -14,30 +34,13 @@ export default compose(
       //   event_category: category,
       //   event_label: label,
       // })
-    },
-    findName: () => (child) => {
-      const recursiveSearch = (child) => {
-        console.log('child', child)
-        const { props } = child
-
-        if (!props.children && child.type.name) {
-          // if the nested component is not rendering a string on the DOM (i.e. an image or logo)
-          // then return the name of the child component
-          return child.type.name
-        } else if (typeof props.children === 'string') {
-          // if the nested component is rendering a string on the DOM, return the string
-          return props.children
-        } else {
-          // if the nested component is wrapping another component,
-          // recursively drill down through the nested elements.
-          return recursiveSearch(props.children)
-        }
-      }
-      return child.props && recursiveSearch(child)
     }
   }),
+  withRouter,
   withHandlers({
-    onClickWithTracking: ({ gaSend, findName, onClick, children, location, gaParams = {} }) => (componentName = 'Event') => (e) => {
+    onClickWithTracking: ({ onClickWithTracking, gaSend, onClick, children, location, gaParams = {} }) => (componentName = 'Event') => (e) => {
+      onClickWithTracking && onClickWithTracking._isMockFunction && onClickWithTracking(componentName)
+      
       let name
 
       if (children) {
