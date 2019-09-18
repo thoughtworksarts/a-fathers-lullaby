@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { withTracking } from 'helpers'
+import { usePageTracking } from 'helpers'
 import { Header } from 'organisms'
 import { About, Share, Listen } from 'pages'
 import './App.css'
 
-export const App = ({ onPageViewTracking, location }) => {
+export const App = (props) => {
   // used to track page views and send to google analytics
-  useEffect(() => {
-    onPageViewTracking()
-  }, [location, onPageViewTracking])
+  usePageTracking()
 
   return (
     <div className='App'>
@@ -23,4 +21,4 @@ export const App = ({ onPageViewTracking, location }) => {
   )
 }
 
-export default withTracking(App)
+export default App

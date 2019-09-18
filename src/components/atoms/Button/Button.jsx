@@ -1,12 +1,14 @@
 import React from 'react'
-import { withTracking } from 'helpers'
+import { useOnClickWithTracking } from 'helpers'
 
-export const Button = ({ children, onClickWithTracking, onClick, gaTrack = true }) => {
+export const Button = (props) => {
+  const { onClick } = useOnClickWithTracking(props, 'Button')
+
   return (
-    <button onClick={gaTrack ? onClickWithTracking('Button') : onClick}>
-      {children}
+    <button onClick={onClick}>
+      {props.children}
     </button>
   )
 }
 
-export default withTracking(Button)
+export default Button

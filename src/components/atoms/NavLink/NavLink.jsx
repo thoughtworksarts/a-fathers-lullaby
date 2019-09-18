@@ -1,19 +1,21 @@
 import React from 'react'
-import { withTracking } from 'helpers'
+import { useOnClickWithTracking } from 'helpers'
 import { NavLink as NavLinkRR } from 'react-router-dom'
 
-export const NavLink = ({ children, link, onClick, onClickWithTracking, gaTrack = true }) => {
+export const NavLink = (props) => {
+  const { onClick } = useOnClickWithTracking(props, 'NavLink')
+
   return (
     <NavLinkRR
       exact
-      to={link}
+      to={props.link}
       activeClassName='selected'
       className='Link'
-      onClick={gaTrack ? onClickWithTracking('NavLink') : onClick}
+      onClick={onClick}
     >
-      {children}
+      {props.children}
     </NavLinkRR>
   )
 }
 
-export default withTracking(NavLink)
+export default NavLink
