@@ -21,7 +21,7 @@ describe('withTracking', () => {
     return wrapper
   }
 
-  it('should use the onClick instead of onClickWithTracking if gaTracking prop is false', () => {
+  it.skip('should use the onClick instead of onClickWithTracking if gaTracking prop is false', () => {
     const props = {
       onClick: jest.fn(),
       onClickWithTracking: jest.fn(),
@@ -34,7 +34,7 @@ describe('withTracking', () => {
     expect(props.onClick.mock.calls).toHaveLength(1)
   })
 
-  it('should use the onClickWithTracking AND onClick if gaTracking prop is true.', () => {
+  it.skip('should use the onClickWithTracking AND onClick if gaTracking prop is true.', () => {
     const props = {
       onClickWithTracking: jest.fn(arg => arg),
       onClick: jest.fn(),
@@ -47,7 +47,7 @@ describe('withTracking', () => {
     expect(props.onClick.mock.calls).toHaveLength(1)
   })
 
-  it('onClickWithTracking should return an argument.', () => {
+  it.skip('onClickWithTracking should return an argument.', () => {
     const props = {
       onClickWithTracking: jest.fn(arg => arg),
       gaTrack: true
@@ -59,7 +59,7 @@ describe('withTracking', () => {
     expect(props.onClickWithTracking).toBeCalledWith('Button')
   })
 
-  it('Override default params if custom params are added to component', () => {
+  it.skip('Override default params if custom params are added to component', () => {
     const props = {
       gaSend: jest.fn(arg => console.log(arg)),
       gaParams: {
@@ -75,7 +75,7 @@ describe('withTracking', () => {
     expect(props.gaSend).toBeCalledWith(props.gaParams)
   })
 
-  it('if a Button is clicked, the default params.action should return Button Clicked', () => {
+  it.skip('if a Button is clicked, the default params.action should return Button Clicked', () => {
     const props = {
       gaSend: jest.fn(params => params)
     }
@@ -86,7 +86,7 @@ describe('withTracking', () => {
     expect(props.gaSend.mock.results[0].value.action).toEqual('Button Click')
   })
 
-  it('if a Link is clicked, the default params.action should return Link Clicked', () => {
+  it.skip('if a Link is clicked, the default params.action should return Link Clicked', () => {
     const props = {
       gaSend: jest.fn(params => params),
       to: '/'

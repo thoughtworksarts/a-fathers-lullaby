@@ -19,7 +19,7 @@ describe('App', () => {
   })
 
   it('runs an Enzyme test without crashing', () => {
-    const appComponent = shallow(<App />)
+    const appComponent = shallow(<Router><App /></Router>)
     expect(appComponent).toMatchSnapshot()
   })
 })
