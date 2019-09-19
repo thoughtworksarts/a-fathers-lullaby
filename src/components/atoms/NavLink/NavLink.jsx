@@ -3,7 +3,7 @@ import { useOnClickWithTracking } from 'helpers'
 import { NavLink as NavLinkRR } from 'react-router-dom'
 
 export const NavLink = (props) => {
-  const { onClick } = useOnClickWithTracking(props, 'NavLink')
+  const onClick = useOnClickWithTracking(props, 'NavLink')
 
   return (
     <NavLinkRR

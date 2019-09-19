@@ -59,9 +59,7 @@ export const useOnClickWithTracking = ({ children, gaTrack = true, gaParams = {}
     onClick && onClick(e)
   }
 
-  return {
-    onClick: gaTrack ? handleClickWithTracking : onClick
-  }
+  return gaTrack ? handleClickWithTracking : onClick
 }
 
 export const usePageTracking = (gaParams = {}) => {
