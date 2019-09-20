@@ -13,7 +13,7 @@ export const App = (props) => {
     <div className='App'>
       <Header />
       <Switch>
-        <Route exact path='/' component={About} />
+        <Route exact path={['/', '/about']} component={About} />
         <Route path='/share' component={Share} />
         <Route path='/listen' component={Listen} />
       </Switch>
