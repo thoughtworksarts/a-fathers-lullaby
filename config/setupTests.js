@@ -5,3 +5,5 @@ import ShallowWrapper from 'enzyme/ShallowWrapper'
 
 Enzyme.configure({ adapter: new Adapter() })
 ShallowWrapper.prototype.until = until
+
+global.gtag = jest.fn()

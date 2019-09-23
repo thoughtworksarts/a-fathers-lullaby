@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby/",
+  "homepage": "https://thoughtworksarts.github.io/a-fathers-lullaby",
   "devDependencies": {
     "cypress": "^3.4.1",
     "enzyme-shallow-until": "^1.0.1",

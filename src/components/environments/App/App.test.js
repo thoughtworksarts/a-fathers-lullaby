@@ -15,6 +15,7 @@ describe('App', () => {
       </Router>,
       div
     )
+
     ReactDOM.unmountComponentAtNode(div)
   })
 
