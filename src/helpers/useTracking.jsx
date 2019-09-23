@@ -28,7 +28,7 @@ const gaSend = (params) => {
 
   window.gtag('event', action, {
     event_category: category,
-    event_label: label,
+    event_label: label
   })
 }
 
