@@ -23,15 +23,13 @@ const findName = (child) => {
 }
 
 const gaSend = (params) => {
-  // gaSend && gaSend._isMockFunction && gaSend(params)
-  // const { action, category, label } = params
-  console.log(`[GA] ${params.action}: `, params)
-  // TODO: Once there is a GA key in index.html, uncomment the code below:
+  const { action, category, label } = params
+  // console.log(`[GA] ${params.action}: `, params)
 
-  // window.gtag('event', action, {
-  //   event_category: category,
-  //   event_label: label,
-  // })
+  window.gtag('event', action, {
+    event_category: category,
+    event_label: label,
+  })
 }
 
 export const useOnClickWithTracking = ({ children, gaTrack = true, gaParams = {}, onClick }, componentName = 'Event') => {
@@ -67,7 +65,7 @@ export const usePageTracking = (gaParams = {}) => {
 
   useEffect(() => {
     const params = Object.assign({
-      action: 'Impression',
+      action: 'Page View',
       category: routerContext.location.pathname,
       label: ''
     }, gaParams)
