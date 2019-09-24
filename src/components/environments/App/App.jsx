@@ -8,7 +8,6 @@ import './App.css'
 export const App = (props) => {
   // used to track page views and send to google analytics
   usePageTracking()
-  console.log('process env', process.env)
 
   return (
     <div className='App'>
