@@ -11,18 +11,19 @@
 
 ### To commit and push
 
-* First, push to the `master` branch:
+* First, push to the `master` branch (this branch is the one that's connected to our staging environment):
   1. Make your changes on the `master` branch
-  2. Lint the code by running `npm run lint:fix`
-  3. Run all tests (`npm test a`) and check that they pass
-  4. `git add [your changed files]`
-  5. `git commit -m [your commit message]`
-  6. `git push`
-* Second, push to the `release` branch (this branch is the one that's connected to our CI pipeline):
+  2. Lint your code by running `npm run lint:fix` and continue only if they pass
+  3. `git add [your changed files]`
+  4. `git commit -m [your commit message]`
+  5. `git pull --rebase`
+  6. [Run all tests](https://github.com/thoughtworksarts/a-fathers-lullaby#to-run-tests) and continue only if they pass
+  7. `git push`
+* Second, push to the `release` branch (this branch is the one that's connected to our production environment):
   1. `git checkout release`
   2. `git merge master`
   3. `git push`
-* Checkout to the `master` branch again (`git checkout master`) and [check the CI builds](https://travis-ci.org/thoughtworksarts/a-fathers-lullaby/builds)
+* Checkout to the `master` branch again (`git checkout master`) and check the [CI pipeline builds](https://travis-ci.org/thoughtworksarts/a-fathers-lullaby/builds)
 * If the build <span style="color:green">passes</span>, you're done!
 * If the build <span style="color:red">fails</span>, click the link highlighted below to read the errors, fix the issue, and commit/push the fix by following the instructions above
 ![screenshot for readme](src/assets/screenshot-for-readme.png)
@@ -32,9 +33,20 @@
 * Jest and Enzyme, ie. unit/component tests
   1. Run `npm test` to launch the tests in watch mode
   2. Type `a` to run all tests
-  3. The one-liner for the two commands above is `npm test a`
-* Cypress, ie. end-to-end tests
+* Cypress, ie. end-to-end (E2E) tests
   1. Run `npm install` (only for the first time you run the E2E tests)
-  2. Run `npm start` or `npm start` to run the app so that Cypress can access it at localhost:3000
+  2. Run `npm start` to run the app so that Cypress can access it at localhost:3000
   3. In a different terminal tab/window, run `npm run cypress` to launch the Cypress app and click the `▶️ Run all specs` button
-  4. To run the end to end testing in the terminal, you may also run `npm run cypress:headless`
+  4. To run the E2E tests in the terminal without running the Cypress app, skip steps #2 and #3, and run `npm run cypress:headless`
+
+### Our CI pipeline and environments
+
+When code is pushed to the `master` branch, you can view that code at our staging environment, hosted via Surge.
+
+🔖_Bookmark me —_ The URL is in our team tech docs
+
+When code is pushed to the `release` branch, you can view that code at our production environment, hosted via GitHub Pages.
+
+🔖_Bookmark me —_ https://thoughtworksarts.io/a-fathers-lullaby
+
+Both environments run through our CI pipeline via TravisCI, so for both environments, you can view pushed code __only__ if all of the tests pass in the pipeline. You can view our pipeline here: https://travis-ci.org/thoughtworksarts/a-fathers-lullaby/builds
