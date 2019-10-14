@@ -1,21 +1,29 @@
 .SharePage {
-    background-color: #444;
-    background-image: linear-gradient(rgba(47, 45, 45, 0.4), rgba(91, 27, 32, 0.4));
-    color: #96351F;
-    font-family: "Serenity", sans-serif;
-    font-size: 11pt;
-    text-align: justify;
-    line-height: 1.5em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-  }
-  
-  .SharePage h1 {
-    border-bottom: 1px solid #96351F;
-    font-size: 1.2em;
-    padding: 0 20px 5px 20px;
-  }
+  background-color: #444;
+  background-image: linear-gradient(rgba(47, 45, 45, 0.4), rgba(91, 27, 32, 0.4));
+  color: #F9DBBD;
+  font-family: "Serenity", sans-serif;
+  font-size: 11pt;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  height: 100vh;
+  width: 100%;
+  padding-top: 6em;
+  padding-left: 2em;
+}
+
+.highlight {
+  color: #E88B3A;
+}
+
+.recordingTitle {
+  font-size: 2.5em;
+  line-height: 1em;
+}
+
+.recordingInstruction {
+  font-size: 1.5em;
+  margin-top: 0.5em;
+}
