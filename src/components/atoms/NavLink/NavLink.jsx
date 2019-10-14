@@ -10,7 +10,7 @@ export const NavLink = (props) => {
       exact
       to={props.link}
       activeClassName='selected'
-      className='Link'
+      className='NavLink'
       onClick={onClick}
     >
       {props.children}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Header.css'
 import menuBars from 'assets/menu-bars.svg'
-import { Logo, Link, NavLink } from 'atoms'
+import { Logo, Link, NavLink, Subtitle } from 'atoms'
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
@@ -15,7 +15,10 @@ const Header = () => {
 
   return (
     <nav className='Header'>
-      <Link to='/'><Logo size='sm' /></Link>
+      <div className='logoText'>
+        <Link to='/'><Logo size='sm' /></Link>
+        <Subtitle />
+      </div>
       {
         isMobile
           ? <img className='menu-bars' src={menuBars} alt='Menu' />

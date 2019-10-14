@@ -9,6 +9,14 @@
   width: 100%;
 }
 
+.Header .logoText {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px 0px 20px;
+  font-family: "Serenity", sans-serif;
+  font-size: 20px;
+}
+
 .Header .logo {
   width: 15em;
 }
@@ -27,18 +35,15 @@
   margin-right: 30px;
 }
 
-.Header .Link {
+.Header .NavLink {
   list-style: none;
   font-family: "Serenity", sans-serif;
-}
-
-.Header a {
   text-decoration: none;
   color: #96351F;
   margin-left: 30px;
 }
 
-.Header a.selected {
+.Header .NavLink.selected {
   color: #BD7212;
   border-bottom: 3px solid #BD7212;
   padding-bottom: 5px;
