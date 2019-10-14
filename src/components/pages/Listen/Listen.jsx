@@ -1,10 +1,14 @@
 import React from 'react'
 import './Listen.css'
+import { Footer } from 'molecules'
 
 const Listen = () => {
   return (
-    <div className='ListenPage'>
-      <h1>Listen</h1>
+    <div>
+      <div className='ListenPage'>
+        <h1>Listen</h1>
+      </div>
+    <Footer />
     </div>
   )
 }
