@@ -1,13 +1,14 @@
 import React from 'react'
-import { useOnClickWithTracking } from 'helpers'
+import { Link } from 'atoms'
+import './Button.css'
 
 export const Button = (props) => {
-  const onClick = useOnClickWithTracking(props, 'Button')
-
   return (
-    <button onClick={onClick}>
-      {props.children}
-    </button>
+    <Link to={props.to}>
+      <button className='Button'>
+        {props.children}
+      </button>
+    </Link>
   )
 }
 

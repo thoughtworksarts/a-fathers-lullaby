@@ -8,7 +8,7 @@ const Listen = () => {
       <div className='ListenPage'>
         <h1>Listen</h1>
       </div>
-    <Footer />
+      <Footer />
     </div>
   )
 }

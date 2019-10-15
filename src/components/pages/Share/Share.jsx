@@ -14,7 +14,7 @@ const Share = () => {
           Please <span className='highlight'>answer the following questions</span> to help listeners discover your contribution.
         </div>
       </div>
-    <Footer />
+      <Footer />
     </div>
   )
 }
