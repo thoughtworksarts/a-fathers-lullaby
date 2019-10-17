@@ -1,7 +1,7 @@
 .AboutPage {
   background-color: #444;
   background-image: linear-gradient(rgba(47, 45, 45, 0.4), rgba(91, 27, 32, 0.4));
-  color: #F9DBBD;
+  color: #ffffff;
   font-family: "Serenity", sans-serif;
   font-size: 11pt;
   text-align: justify;
@@ -15,8 +15,22 @@
 }
 
 .AboutPage h1 {
-  font-size: 1.2em;
+  font-size: 3.5em;
   padding: 0 20px 5px 20px;
+  width: 60%;
+  font-weight: normal;
+  line-height: 1em;
+}
+
+.AboutPage h2 {
+  font-size: 2em;
+  padding: 0 20px 5px 20px;
+  width: 60%;
+  line-height: 1em;
+}
+
+.AboutPage .highlight {
+  color: #96351F;
 }
 
 .AboutPage img {
