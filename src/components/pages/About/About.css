@@ -8,15 +8,26 @@
   line-height: 1.5em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100%;
 }
 
+.AboutPage .intro {
+  background-image: url("../../../assets/about-page-background.jpg");
+  background-repeat: no-repeat;
+  background-color: rgba(238, 238, 238, 0.50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-size: 100% 100%;
+  background-blend-mode: lighten;
+}
+
 .AboutPage h1 {
   font-size: 3.5em;
-  padding: 0 20px 5px 20px;
+  padding: 50px 20px 5px 20px;
   width: 60%;
   font-weight: normal;
   line-height: 1em;
@@ -31,11 +42,6 @@
 
 .AboutPage .highlight {
   color: #96351F;
-}
-
-.AboutPage img {
-  width: 40vw;
-  margin: 20px 0 30px 0;
 }
 
 .AboutPage p {
