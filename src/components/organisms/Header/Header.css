@@ -38,13 +38,14 @@
   list-style: none;
   font-family: "Serenity", sans-serif;
   text-decoration: none;
-  color: #96351F;
+  color: #ffffff;
   margin-left: 30px;
+  font-size: 1.5em;
 }
 
 .Header .NavLink.selected {
-  color: #BD7212;
-  border-bottom: 3px solid #BD7212;
+  color: #96351F;
+  border-bottom: 3px solid #96351F;
   padding-bottom: 5px;
 }
 
