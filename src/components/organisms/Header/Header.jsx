@@ -26,7 +26,7 @@ const Header = () => {
 
           ? (
             <div>
-              <img className='menu-bars' src={menuBars} alt='Menu' />
+              <img className='menu-bars' src={menuBars} alt='Menu' onClick = {() => setIsOpen(false)}/>
               <Sidepanel show={isOpen} />
             </div>
 
