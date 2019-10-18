@@ -27,7 +27,7 @@ const Header = () => {
 
           ? (
             <div>
-          <img className='menu-bars' src={menuBars} alt='Menu'></img> 
+              <img className='menu-bars' src={menuBars} alt='Menu'></img> 
               <Sidepanel show = {isOpen}/>
             </div>
            
