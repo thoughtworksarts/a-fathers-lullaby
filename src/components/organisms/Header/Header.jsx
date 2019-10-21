@@ -6,7 +6,7 @@ import { Sidepanel } from 'organisms'
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen] = useState(false)
 
   const backdrop = <Backdrop alt='Backdrop' show={isOpen} />
 

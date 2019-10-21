@@ -1,5 +1,7 @@
 import React from 'react'
+// import { useState, useEffect } from 'react'
 import { NavLink } from 'atoms'
+// import menuBars from 'assets/menu-bars.svg'
 import './Sidepanel.css'
 
 const Sidepanel = (props) => {

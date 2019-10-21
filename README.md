@@ -14,11 +14,12 @@
 * First, push to the `master` branch (this branch is the one that's connected to our staging environment):
   1. Make your changes on the `master` branch
   2. Lint your code by running `npm run lint:fix` and continue only if they pass
-  3. `git add [your changed files]`
-  4. `git commit -m [your commit message]`
-  5. `git pull --rebase`
-  6. [Run all tests](https://github.com/thoughtworksarts/a-fathers-lullaby#to-run-tests) and continue only if they pass
-  7. `git push`
+  3. [Run all tests](https://github.com/thoughtworksarts/a-fathers-lullaby#to-run-tests) and continue only if they pass
+  4. `git add [your changed files]`
+  5. `git commit -m [your commit message]`
+  6. `git pull --rebase`
+  7. [Run all tests](https://github.com/thoughtworksarts/a-fathers-lullaby#to-run-tests) and continue only if they pass
+  8. `git push`
 * Second, push to the `release` branch (this branch is the one that's connected to our production environment):
   1. `git checkout release`
   2. `git merge master`
