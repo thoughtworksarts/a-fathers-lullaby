@@ -10,6 +10,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-scroll-parallax": "^2.2.0",
     "recompose": "^0.30.0",
     "snazzy": "^8.0.0"
   },

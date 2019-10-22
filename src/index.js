@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import './index.css'
-import { App } from 'environments'
+import { App } from './components/environments'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(<Router basename={process.env.PUBLIC_URL}><App /></Router>, document.getElementById('root'))

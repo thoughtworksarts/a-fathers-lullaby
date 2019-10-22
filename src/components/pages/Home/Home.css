@@ -1,0 +1,70 @@
+.HomePage {
+  background-color: #ffffff;
+  /*background-image: linear-gradient(rgba(47, 45, 45, 0.4), rgba(91, 27, 32, 0.4));*/
+  color: #96351F;
+  font-family: "Serenity", sans-serif;
+  /*font-size: 11pt;*/
+  /*text-align: justify;*/
+  /*line-height: 1.5em;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*height: 100vh;*/
+  /*width: 100%;*/
+  min-height: 10000px;
+}
+
+/*.HomePage h1 {*/
+/*  border-bottom: 1px solid #96351F;*/
+/*  font-size: 1.2em;*/
+/*  padding: 0 20px 5px 20px;*/
+/*}*/
+
+/*.HomePage img {*/
+/*  width: 40vw;*/
+/*  margin: 20px 0 30px 0;*/
+/*}*/
+
+/*.HomePage p {*/
+/*  font-size: 1.3em;*/
+/*  line-height: 1.5em;*/
+/*  width: 30vw;*/
+/*  margin: 0;*/
+/*}*/
+
+/*@media screen and (max-width: 1280px) {*/
+/*  .HomePage img {*/
+/*    width: 50vw;*/
+/*  }*/
+
+/*  .HomePage p {*/
+/*    width: 40vw;*/
+/*  }*/
+/*}*/
+
+/*@media screen and (max-width: 980px) {*/
+/*  .HomePage p {*/
+/*    width: 47vw;*/
+/*  }*/
+/*}*/
+
+/*@media screen and (max-width: 736px) {*/
+/*  .HomePage img {*/
+/*    width: 75vw;*/
+/*  }*/
+
+/*  .HomePage p {*/
+/*    width: 60vw;*/
+/*  }*/
+/*}*/
+
+/*@media screen and (max-width: 480px) {*/
+/*  .HomePage img {*/
+/*    width: 80vw;*/
+/*  }*/
+
+/*  .HomePage p {*/
+/*    width: 80vw;*/
+/*  }*/
+/*}*/
