@@ -1,14 +1,23 @@
 import React from 'react'
 import './TimelineEntry.css'
-
-import * as myConstClass from '../../atoms/TimelineDescriptions/TimelineDescriptions.jsx'
 import { TimelinePicture, TimelineText } from 'molecules'
 
-const TimelineEntry = () => {
+const TimelineEntry = ({ year, description, pictureFirst }) => {
+  let left = null
+  let right = null
+
+  if (pictureFirst === 'true') {
+    left = <TimelinePicture />
+    right = <TimelineText year={year} description={description} />
+  } else {
+    left = <TimelineText year={year} description={description} />
+    right = <TimelinePicture />
+  }
+
   return (
     <div className='TimelineEntry'>
-      <TimelinePicture />
-      <TimelineText year='2017' text={myConstClass.par2017} />
+      {left}
+      {right}
     </div>
   )
 }
