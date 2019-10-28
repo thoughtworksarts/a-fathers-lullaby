@@ -16,4 +16,23 @@
 
 .side-panel.open {
     transform: translateX(0);
+    padding: 10em 2em;
 }
+
+.side-panel.open .NavLink {
+    color: #444;
+    border-bottom: none;
+    padding: 0.75em 0;
+    border-top: solid 1px #e6e6e6;
+}
+
+.side-panel.open .NavLink.selected.firstLink,
+.side-panel.open .NavLink.firstLink {
+    border-top: none;
+}
+
+
+ .side-panel.open .NavLink.selected {
+    color: #96351F;
+    border-bottom: none;
+  }

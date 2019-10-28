@@ -27,6 +27,12 @@
   cursor: pointer;
 }
 
+.Header i {
+  color: #444;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
 .Header .NavLinks {
   display: flex;
   justify-content: center;
@@ -43,14 +49,8 @@
   font-size: 1.5em;
 }
 
-.Header .NavLink.selected {
+.Header .NavBar .NavLink.selected {
   color: #96351F;
   border-bottom: 3px solid #96351F;
   padding-bottom: 5px;
-}
-
-.Header i {
-  color: #444;
-  margin-right: 30px;
-  cursor: pointer;
-}
+} 
