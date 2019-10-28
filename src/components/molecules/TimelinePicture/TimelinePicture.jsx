@@ -1,11 +1,10 @@
 import React from 'react'
 import './TimelinePicture.css'
-import picOne from 'assets/timelinepic_one.png'
 
-const TimelinePicture = () => {
+const TimelinePicture = ({ altText, picture }) => {
   return (
     <div className='TimelinePicture'>
-      <img alt='Woman singing lullaby' src={picOne} />
+      <img alt={altText} src={picture} />
     </div>
   )
 }

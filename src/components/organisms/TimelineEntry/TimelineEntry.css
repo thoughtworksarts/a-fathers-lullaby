@@ -3,5 +3,6 @@
     justify-content: space-around;
     width: 80%;
     flex-direction: row;
+    align-self: center;
     
 }
