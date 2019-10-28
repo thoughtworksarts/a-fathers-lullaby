@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Header.css'
 import menuBars from 'assets/menu-bars.svg'
-import { Logo, Link, Subtitle, NavLink ,Backdrop } from 'atoms'
+import { Logo, Link, Subtitle, NavLink, Backdrop } from 'atoms'
 
 import { Sidepanel } from 'organisms'
 
@@ -45,15 +45,15 @@ const Header = () => {
           )
           : (
             <div className='NavBar NavLinks'>
-              <NavLink className="headerLinks" link='/'>About</NavLink>
+              <NavLink className='headerLinks' link='/'>About</NavLink>
               <NavLink link='/share'>Share</NavLink>
               <NavLink link='/listen'>Listen</NavLink>
             </div>
-            
+
           )
       }
     </nav>
   )
 }
-  
+
 export default Header
