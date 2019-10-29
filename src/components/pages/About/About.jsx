@@ -1,6 +1,6 @@
 import React from 'react'
 import './About.css'
-import { Footer } from 'molecules'
+
 import { Button } from 'atoms'
 
 const About = () => {
@@ -11,7 +11,6 @@ const About = () => {
         <Button to='/share'>Participate</Button>
         <h2>Personal stories have transformative power and create profound encounters. A Father's Lullaby invites you to become part of a growing movement.</h2>
       </div>
-      <Footer />
     </div>
   )
 }

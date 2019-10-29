@@ -1,6 +1,5 @@
 import React from 'react'
 import './Share.css'
-import { Footer } from 'molecules'
 
 const Share = () => {
   return (
@@ -14,7 +13,6 @@ const Share = () => {
           Please <span className='highlight'>answer the following questions</span> to help listeners discover your contribution.
         </div>
       </div>
-      <Footer />
     </div>
   )
 }
