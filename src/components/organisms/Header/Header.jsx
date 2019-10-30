@@ -9,8 +9,6 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
   const [isOpen, setIsOpen] = useState(false)
 
-  const backdrop = <Backdrop alt='Backdrop' show={isOpen} />
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 980)
@@ -21,9 +19,10 @@ const Header = () => {
 
   useEffect(() => {
     const backdropClickHandler = () => {
-        setIsOpen(!isOpen)
+      setIsOpen(!isOpen)
     }
-    document.getElementsByClassName('backdrop')[0].addEventListener('click', backdropClickHandler)
+    const backdrop = document.getElementsByClassName('backdrop')[0]
+    if (backdrop) { backdrop.addEventListener('click', backdropClickHandler) }
   })
 
   return (
@@ -39,7 +38,7 @@ const Header = () => {
             <div>
               <img className='menu-bars' src={menuBars} alt='Menu' onClick={() => setIsOpen(true)} />
               <Sidepanel show={isOpen} />
-              {backdrop}
+              <Backdrop alt='Backdrop' show={isOpen} />
             </div>
 
           )
