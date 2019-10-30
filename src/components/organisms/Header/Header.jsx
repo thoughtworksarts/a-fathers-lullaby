@@ -21,9 +21,9 @@ const Header = () => {
 
   useEffect(() => {
     const backdropClickHandler = () => {
-      setIsOpen(!isOpen)
+        setIsOpen(!isOpen)
     }
-    window.addEventListener('click', backdropClickHandler)
+    document.getElementsByClassName('backdrop')[0].addEventListener('click', backdropClickHandler)
   })
 
   return (
