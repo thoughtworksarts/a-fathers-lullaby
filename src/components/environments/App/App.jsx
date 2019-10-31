@@ -6,6 +6,7 @@ import { Footer } from 'molecules'
 import { About, Share, Listen, Home } from 'pages'
 import './App.css'
 import { ParallaxProvider } from 'react-scroll-parallax'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export const App = (props) => {
   // used to track page views and send to google analytics
