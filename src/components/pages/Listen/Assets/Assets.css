@@ -1,6 +1,6 @@
 .Assets{
   width: 90%;
-  margin: 0 auto 118px auto;
+  margin: 0 auto 130px auto;
   padding-top: calc(4.5em + 10px);
 }
 
@@ -17,7 +17,7 @@
   border: 3px solid #929292;
   width: 90%;
   position: fixed;
-  bottom: 64px;
+  bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
