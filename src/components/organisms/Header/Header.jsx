@@ -35,7 +35,7 @@ const Header = () => {
         isMobile
 
           ? (
-            <div className="sideMenu">
+            <div className='sideMenu'>
               <img className='menu-bars' src={menuBars} alt='Menu' onClick={() => setIsOpen(true)} />
               <Sidepanel show={isOpen} />
               <Backdrop alt='Backdrop' show={isOpen} />

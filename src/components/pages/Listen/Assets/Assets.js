@@ -6,7 +6,6 @@ import ReactAudioPlayer from 'react-audio-player'
 import numberIcon from './hashtag-solid.svg'
 import clockIcon from './clock-regular.svg'
 
-
 const Assets = () => {
   const [assets, setAssets] = useState([])
   const [currentTitle, setCurrentTitle] = useState('')
@@ -15,7 +14,7 @@ const Assets = () => {
   useEffect(() => {
     fetch(`${process.env.REACT_APP_ASSETS_URL}`, {
       headers: {
-        'authorization': `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`
+        authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`
       }
     })
       .then(res => res.json())
@@ -32,38 +31,38 @@ const Assets = () => {
   let listNumber = 0
 
   return (
-    <div className="Assets">
+    <div className='Assets'>
       {
         assets.length > 0
-          ? <React.Fragment>
-              <div className="audio-player">
-                <p className="current-title">{currentTitle}</p>
-                <ReactAudioPlayer
-                  src={process.env.REACT_APP_ROUNDWARE_PROD + currentFilename}
-                  controls
-                  autoPlay
-                />
-              </div>
-              <Table hover>
-                <thead>
-                  <tr>
-                    <th><img src={numberIcon} className="number-icon" alt="number icon" /></th>
-                    <th>Title</th>
-                    <th>Location</th>
-                    <th><img src={clockIcon} className="clock-icon" alt="clock icon" /></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    assets.map(asset => {
-                      listNumber += 1
-                      return <Asset key={asset.id} asset={asset} listNumber={listNumber} clickHandler={clickHandler} />
-                    })
-                  }
-                </tbody>
-              </Table>
-            </React.Fragment>
-          : <h1 className="loading">Loading...</h1>
+          ? <>
+            <div className='audio-player'>
+              <p className='current-title'>{currentTitle}</p>
+              <ReactAudioPlayer
+                src={process.env.REACT_APP_ROUNDWARE_PROD + currentFilename}
+                controls
+                autoPlay
+              />
+            </div>
+            <Table hover>
+              <thead>
+                <tr>
+                  <th><img src={numberIcon} className='number-icon' alt='number icon' /></th>
+                  <th>Title</th>
+                  <th>Location</th>
+                  <th><img src={clockIcon} className='clock-icon' alt='clock icon' /></th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  assets.map(asset => {
+                    listNumber += 1
+                    return <Asset key={asset.id} asset={asset} listNumber={listNumber} clickHandler={clickHandler} />
+                  })
+                }
+              </tbody>
+            </Table>
+          </>
+          : <h1 className='loading'>Loading...</h1>
       }
     </div>
   )
