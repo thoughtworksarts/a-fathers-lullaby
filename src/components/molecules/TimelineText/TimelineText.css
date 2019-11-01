@@ -14,3 +14,11 @@
     color: #ffffff;
     margin: 5px;
 }
+
+.TimelineText.left {
+    text-align: left;
+}
+
+.TimelineText.right {
+    text-align: right;
+}
