@@ -21,8 +21,8 @@ const Header = () => {
     const backdropClickHandler = () => {
       setIsOpen(!isOpen)
     }
-    const backdrop = document.getElementsByClassName('backdrop')[0]
-    if (backdrop) { backdrop.addEventListener('click', backdropClickHandler) }
+    const menu = document.getElementsByClassName('sideMenu')[0]
+    if (menu) { menu.addEventListener('click', backdropClickHandler) }
   })
 
   return (
@@ -35,7 +35,7 @@ const Header = () => {
         isMobile
 
           ? (
-            <div>
+            <div className="sideMenu">
               <img className='menu-bars' src={menuBars} alt='Menu' onClick={() => setIsOpen(true)} />
               <Sidepanel show={isOpen} />
               <Backdrop alt='Backdrop' show={isOpen} />
