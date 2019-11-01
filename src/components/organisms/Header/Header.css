@@ -6,6 +6,7 @@
   position: fixed;
   height: 4.5em;
   width: 100%;
+  z-index: 300;
 }
 
 .Header .logoText {
