@@ -3,11 +3,12 @@ import './TimelineText.css'
 import { Parallax } from 'react-scroll-parallax'
 import { Container } from 'molecules'
 const TimelineText = ({ year, description, alignLeft }) => {
-  let descAlign = null
+
+  let descAlign = 'TimelineText '
   if (alignLeft === 'true') {
-    descAlign = 'TimelineText left'
+    descAlign += 'left'
   } else {
-    descAlign = 'TimelineText right'
+    descAlign += 'right'
   }
   return (
     <Container scrollAxis='vertical'>
