@@ -13,7 +13,7 @@ const Assets = () => {
   const [currentFilename, setCurrentFilename] = useState('')
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
+    fetch(`${process.env.REACT_APP_ASSETS_URL}`, {
       headers: {
         'authorization': `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`
       }
