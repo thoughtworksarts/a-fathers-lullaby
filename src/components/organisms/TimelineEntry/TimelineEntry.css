@@ -4,5 +4,6 @@
     width: 80%;
     flex-direction: row;
     align-self: center;
-    
+    margin-bottom: 7vh;
+    align-items: center;
 }

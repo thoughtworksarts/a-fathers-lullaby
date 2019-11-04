@@ -8,7 +8,7 @@ const Asset = props => {
   const filename = props.asset.filename
 
   return (
-    <tr className="Asset" onClick={() => props.clickHandler(index, title, filename)}>
+    <tr className='Asset' onClick={() => props.clickHandler(index, title, filename)}>
       <td width='10%'>{props.listNumber}</td>
       <td width='10%'>Story {props.asset.id}</td>
       {/* TODO: Change location to reflect asset latitude and longitude with a geocoding API */}
