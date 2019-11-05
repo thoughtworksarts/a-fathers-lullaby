@@ -44,39 +44,43 @@ const Assets = () => {
     }
   }
 
+  const assetsTable = (
+    <div>
+      <div className='audio-player'>
+        <p className='current-title'>{currentTitle}</p>
+        <ReactAudioPlayer
+          src={process.env.REACT_APP_ROUNDWARE_PROD + currentFilename}
+          controls
+          autoPlay
+          onEnded={endHandler}
+        />
+      </div>
+      <Table hover>
+        <thead>
+          <tr>
+            <th><img src={numberIcon} className='number-icon' alt='number icon' /></th>
+            <th>Title</th>
+            <th>Location</th>
+            <th><img src={clockIcon} className='clock-icon' alt='clock icon' /></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            assets.map(asset => {
+              listNumber += 1
+              return <Asset key={asset.id} asset={asset} listNumber={listNumber} clickHandler={clickHandler} />
+            })
+          }
+        </tbody>
+      </Table>
+    </div>
+  )
+
   return (
     <div className='Assets'>
       {
         assets.length > 0
-          ? <>
-            <div className='audio-player'>
-              <p className='current-title'>{currentTitle}</p>
-              <ReactAudioPlayer
-                src={process.env.REACT_APP_ROUNDWARE_PROD + currentFilename}
-                controls
-                autoPlay
-                onEnded={endHandler}
-              />
-            </div>
-            <Table hover>
-              <thead>
-                <tr>
-                  <th><img src={numberIcon} className='number-icon' alt='number icon' /></th>
-                  <th>Title</th>
-                  <th>Location</th>
-                  <th><img src={clockIcon} className='clock-icon' alt='clock icon' /></th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  assets.map(asset => {
-                    listNumber += 1
-                    return <Asset key={asset.id} asset={asset} listNumber={listNumber} clickHandler={clickHandler} />
-                  })
-                }
-              </tbody>
-            </Table>
-          </>
+          ? assetsTable
           : <h1 className='loading'>Loading...</h1>
       }
     </div>
