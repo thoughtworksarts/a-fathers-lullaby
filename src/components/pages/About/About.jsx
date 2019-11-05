@@ -2,6 +2,7 @@ import React from 'react'
 import './About.css'
 
 import { Button } from 'atoms'
+import { Timeline } from 'organisms'
 
 const About = () => {
   return (
@@ -11,6 +12,7 @@ const About = () => {
         <Button to='/share'>Participate</Button>
         <h2>Personal stories have transformative power and create profound encounters. A Father's Lullaby invites you to become part of a growing movement.</h2>
       </div>
+      <Timeline />
     </div>
   )
 }

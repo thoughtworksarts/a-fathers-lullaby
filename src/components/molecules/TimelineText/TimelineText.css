@@ -1,6 +1,5 @@
 .TimelineText {
-    width: 400px;
-    
+    width: 50%;
 }
 
 .TimelineText .year {
@@ -11,8 +10,10 @@
 
 .TimelineText .description {
     font-size: 22px;
-    color: #ffffff;
+    color: black;
     margin: 5px;
+    max-width: 40vw;
+    width: 100%;
 }
 
 .TimelineText.left {

@@ -19,7 +19,7 @@ install:
   - npm install
   - npm ci
 script:
-  - npm run cypress:headless
+  - npm run cypress:headless 
   - npm test a
   - npm run build
 deploy:

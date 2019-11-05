@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  height: 4.5em;
+  height: auto;
   width: 100%;
   z-index: 300;
 }

@@ -1,7 +1,7 @@
 .TimelineEntry {
     display: flex;
     justify-content: space-around;
-    width: 80%;
+    width: 100%;
     flex-direction: row;
     align-self: center;
     margin-bottom: 7vh;

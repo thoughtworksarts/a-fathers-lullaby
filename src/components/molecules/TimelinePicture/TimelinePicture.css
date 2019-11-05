@@ -1,4 +1,11 @@
+.TimelinePicture {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
 .TimelinePicture img {
     width: 300px; 
+    max-width: 30vw;
+    max-height: auto;
     height: 200px;
 }
