@@ -49,6 +49,8 @@
   "devDependencies": {
     "cypress": "^3.4.1",
     "enzyme-shallow-until": "^1.0.1",
+    "enzyme-to-json": "^3.4.3",
+    "react-test-renderer": "^16.11.0",
     "standard": "^14.1.0"
   },
   "babel": {
@@ -73,5 +75,10 @@
     ],
     "parser": "babel-eslint"
   },
-  "cracoConfig": "config/craco.config.js"
+  "cracoConfig": "config/craco.config.js",
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
 }
