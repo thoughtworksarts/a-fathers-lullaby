@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Asset from './Asset/Asset'
 import Table from 'react-bootstrap/Table'
 import ReactAudioPlayer from 'react-audio-player'
@@ -12,6 +13,7 @@ const Assets = () => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [currentTitle, setCurrentTitle] = useState('')
   const [currentFilename, setCurrentFilename] = useState('')
+  const { id } = useParams()
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
@@ -20,7 +22,27 @@ const Assets = () => {
       }
     })
       .then(res => res.json())
-      .then(assets => setAssets(assets.sort((a, b) => (a.created < b.created) ? 1 : -1)))
+      .then(assets => {
+        setAssets(assets.sort((a, b) => (a.created < b.created) ? 1 : -1))
+
+        if (id) {
+          const index = assets.findIndex(asset => { return asset.id == id })
+
+          setCurrentStoryIndex(index)
+          setCurrentTitle('Story ' + assets[index].id)
+          setCurrentFilename(assets[index].filename)
+
+          const assetArray = removePlayingClassFromAssets()
+
+          addPlayingClassToAsset(assetArray, index)
+
+          document.querySelector('.playing').scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+            inline: 'center'
+          })
+        }
+      })
       .catch(err => console.log(err))
   }, [])
 

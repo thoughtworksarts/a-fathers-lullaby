@@ -17,6 +17,7 @@ export const App = (props) => {
       <Switch>
         <Route exact path={['/', '/about']} component={About} />
         <Route path='/share' component={Share} />
+        <Route path='/listen/:id' component={Listen} />
         <Route path='/listen' component={Listen} />
       </Switch>
       <Footer />
