@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Asset from './Asset/Asset'
 import Table from 'react-bootstrap/Table'
-import './Assets.css'
 import ReactAudioPlayer from 'react-audio-player'
 import numberIcon from './hashtag-solid.svg'
 import clockIcon from './clock-regular.svg'
+import './Assets.css'
+import './Asset/Asset.css'
 
 const Assets = () => {
   const [assets, setAssets] = useState([])
@@ -23,10 +24,27 @@ const Assets = () => {
       .catch(err => console.log(err))
   }, [])
 
+  function removePlayingClassFromAssets () {
+    const assetArray = document.getElementsByClassName('Asset')
+    for (let i = 0; i < assetArray.length; i++) {
+      assetArray[i].classList.remove('playing')
+    }
+    return assetArray
+  }
+
+  function addPlayingClassToAsset (assetArray, index) {
+    const curAsset = assetArray[index]
+    curAsset.classList.add('playing')
+  }
+
   const clickHandler = (index, title, filename) => {
+    const assetArray = removePlayingClassFromAssets()
+
     setCurrentStoryIndex(index)
     setCurrentTitle(title)
     setCurrentFilename(filename)
+
+    addPlayingClassToAsset(assetArray, index)
   }
 
   // TODO: Change to asset id if it's possible to update the current ids to start at 1
@@ -41,6 +59,10 @@ const Assets = () => {
       setCurrentStoryIndex(nextStoryIndex)
       setCurrentTitle('Story ' + assets[nextStoryIndex].id)
       setCurrentFilename(assets[nextStoryIndex].filename)
+
+      const assetArray = removePlayingClassFromAssets()
+
+      addPlayingClassToAsset(assetArray, nextStoryIndex)
     }
   }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import './Asset.css'
 
 const Asset = props => {
   const minutes = Math.floor(props.asset.audio_length_in_seconds / 60)
