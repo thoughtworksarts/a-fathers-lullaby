@@ -1,9 +1,9 @@
 import About from './About'
 import Share from './Share'
-import Listen from './Listen'
+import Library from './Library'
 
 export {
   About,
   Share,
-  Listen
+  Library
 }

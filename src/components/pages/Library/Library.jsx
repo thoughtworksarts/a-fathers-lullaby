@@ -1,9 +1,9 @@
 import React from 'react'
 import Assets from './Assets/Assets'
-import './Listen.css'
+import './Library.css'
 
-const Listen = () => {
+const Library = () => {
   return <Assets />
 }
 
-export default Listen
+export default Library
