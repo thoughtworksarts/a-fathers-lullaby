@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import { usePageTracking } from 'helpers'
 import { Header } from 'organisms'
 import { Footer } from 'molecules'
-import { About, Share, Library, Explore} from 'pages'
+import { About, Share, Library, Explore } from 'pages'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
