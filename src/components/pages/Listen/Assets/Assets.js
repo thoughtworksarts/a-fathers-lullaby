@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Asset from './Asset/Asset'
+import Alert from 'react-bootstrap/Alert'
 import Table from 'react-bootstrap/Table'
 import ReactAudioPlayer from 'react-audio-player'
 import numberIcon from './hashtag-solid.svg'
@@ -13,6 +14,7 @@ const Assets = () => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [currentTitle, setCurrentTitle] = useState('')
   const [currentFilename, setCurrentFilename] = useState('')
+  const [assetNotFound, setAssetNotFound] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -26,7 +28,16 @@ const Assets = () => {
         setAssets(assets.sort((a, b) => (a.created < b.created) ? 1 : -1))
 
         if (id) {
-          const index = assets.findIndex(asset => { return asset.id == id })
+          for (let i = 0; i < assets.length; i++) {
+            if (assets[i].id === Number(id)) {
+              setAssetNotFound(false)
+              break
+            } else {
+              setAssetNotFound(true)
+            }
+          }
+
+          const index = assets.findIndex(asset => { return asset.id === Number(id) })
 
           setCurrentStoryIndex(index)
           setCurrentTitle('Story ' + assets[index].id)
@@ -44,7 +55,7 @@ const Assets = () => {
         }
       })
       .catch(err => console.log(err))
-  }, [])
+  }, [id])
 
   function removePlayingClassFromAssets () {
     const assetArray = document.getElementsByClassName('Asset')
@@ -90,6 +101,7 @@ const Assets = () => {
 
   const assetsTable = (
     <div>
+      {assetNotFound ? <Alert variant='danger'>Not found</Alert> : null}
       <div className='audio-player'>
         <p className='current-title'>{currentTitle}</p>
         <ReactAudioPlayer
