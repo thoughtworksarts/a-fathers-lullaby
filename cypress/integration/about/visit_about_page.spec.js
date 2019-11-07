@@ -17,7 +17,7 @@ context('Visit about page', () => {
     cy.get('.Timeline').should('contain', 'At 2018 HUBweek, We The Future conference, we prototyped an immersive participatory installation inside a shipping container; a self-contained model of a complex interactive media installation that could be accessible at any public site as a low budget traveling exhibit, alternative to a gallery or museum space. Collaborators: Hisham Bedri (pressure sensor panels with audio playback and light activation), Christian Gentry (live sound composition), Halsey Burgen (geolocated participatory website), Farid Manshadi & Jason Bashaw & Omid Fallahazad & Nedallah Fahandej & Kevin Long (installation), Afshin Fahandezh & Lizandro Segura (documentation)')
   })
   it('should route user to share page when button is clicked', () => {
-    cy.get('.Button').click()
+    cy.get('.Button').click({ force: true })
     cy.url().should('eq', 'http://localhost:3000/share')
   })
 })
