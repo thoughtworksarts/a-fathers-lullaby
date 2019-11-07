@@ -46,6 +46,7 @@ const Header = () => {
             <div className='NavBar NavLinks'>
               <NavLink className='headerLinks' link='/'>About</NavLink>
               <NavLink link='/share'>Share</NavLink>
+              <NavLink link='/explore'>Explore</NavLink>
               <NavLink link='/library'>Library</NavLink>
             </div>
 

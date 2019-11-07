@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import { usePageTracking } from 'helpers'
 import { Header } from 'organisms'
 import { Footer } from 'molecules'
-import { About, Share, Library } from 'pages'
+import { About, Share, Library, Explore} from 'pages'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -17,6 +17,7 @@ export const App = (props) => {
       <Switch>
         <Route exact path={['/', '/about']} component={About} />
         <Route path='/share' component={Share} />
+        <Route path='/explore' component={Explore} />
         <Route path='/library/:id' component={Library} />
         <Route path='/library' component={Library} />
       </Switch>
