@@ -1,5 +1,5 @@
 import React from 'react'
-import Assets from './Assets/Assets'
+import { Assets } from 'organisms'
 import './Library.css'
 
 const Library = () => {

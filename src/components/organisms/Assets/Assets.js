@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Asset from './Asset/Asset'
+import { Asset } from 'molecules'
 import Alert from 'react-bootstrap/Alert'
 import Table from 'react-bootstrap/Table'
 import ReactAudioPlayer from 'react-audio-player'
-import numberIcon from './hashtag-solid.svg'
-import clockIcon from './clock-regular.svg'
+import numberIcon from 'assets/hashtag-solid.svg'
+import clockIcon from 'assets/clock-regular.svg'
 import './Assets.css'
-import './Asset/Asset.css'
 
 const Assets = () => {
   const [assets, setAssets] = useState([])
