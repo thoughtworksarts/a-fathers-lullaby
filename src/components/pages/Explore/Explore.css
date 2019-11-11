@@ -1,6 +1,6 @@
 .ExplorePage {
     background-color: white;
-    font-family: "Serenity", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11pt;
     text-align: justify;
     line-height: 1.5em;
@@ -8,8 +8,6 @@
     flex-direction: column;
     align-items: center;
     width: 1vh;
-    
-
   }
 
   .ExplorePage .MapView {

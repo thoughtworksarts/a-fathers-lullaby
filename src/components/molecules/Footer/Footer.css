@@ -1,6 +1,5 @@
 .Footer {
 	color: #bd7212;
-	/* padding: 20px; */
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -9,6 +8,7 @@
     justify-content: space-between;
 	align-items: center;
 	z-index: 3;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .Footer a {

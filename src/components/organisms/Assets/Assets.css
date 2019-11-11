@@ -48,6 +48,7 @@
 
 .Assets .loading {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
   color: #595959;
   position: fixed;
   top: 50%;
