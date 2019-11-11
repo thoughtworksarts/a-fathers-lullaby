@@ -4,7 +4,7 @@ import './Explore.css'
 
 const Explore = () => {
   return (
-    <div className='ExplorePage'>
+    <div className='ExplorePage' size={{ height: '40px', width: '40px' }}>
       <div className='MapView'>
         <MapContainer />
       </div>
