@@ -1,5 +1,6 @@
 import React from 'react'
-import { MapContainer } from '../../organisms'
+import { MapContainer } from 'organisms'
+
 import './Explore.css'
 
 const Explore = () => {

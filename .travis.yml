@@ -1,43 +1,37 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 addons:
   apt:
     packages:
-      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
-      - libgconf-2-4
+    - libgconf-2-4
 cache:
-  # Caches $HOME/.npm when npm ci is default script command
-  # Caches node_modules in all other cases
   npm: true
   directories:
-    # we also need to cache folder with Cypress binary
-    - ~/.cache
-    - node_modules
+  - "~/.cache"
+  - node_modules
 before_install: "./build-env.sh"
 install:
-  - npm install
-  - npm ci
+- npm install
+- npm ci
 script:
-  - npm run cypress:headless 
-  - npm test a
-  - npm run build
+- npm run cypress:headless
+- npm test a
+- npm run build
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $github_token
-    local_dir: build
-    on:
-      branch: release
-  - provider: surge
-    skip_cleanup: true
-    project: ./build/
-    domain: a-fathers-lullaby.surge.sh
-    on:
-      branch: master
-
-# safelist
+- provider: pages
+  skip_cleanup: true
+  github_token: "$github_token"
+  local_dir: build
+  on:
+    branch: release
+- provider: surge
+  skip_cleanup: true
+  project: "./build/"
+  domain: a-fathers-lullaby.surge.sh
+  on:
+    branch: master
 branches:
   only:
-    - master
-    - release
+  - master
+  - release

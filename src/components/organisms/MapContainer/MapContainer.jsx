@@ -4,7 +4,8 @@ import './MapContainer.css'
 
 class MapExample extends Component {
   render () {
-    console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY)
+    require('env2')('.env.local')
+    console.log(process.env.GOOGLE_MAPS_API_KEY)
     return (
       <Map
         google={this.props.google}
