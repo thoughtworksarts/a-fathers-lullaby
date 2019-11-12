@@ -1,13 +1,13 @@
 import Footer from './Footer'
 import TimelineText from './TimelineText'
 import TimelinePicture from './TimelinePicture'
-import Asset from './Asset'
+import Story from './Story'
 import StoryView from './StoryView'
 
 export {
   Footer,
   TimelineText,
   TimelinePicture,
-  Asset,
+  Story,
   StoryView
 }

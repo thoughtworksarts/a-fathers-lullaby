@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Assets matches snapshot 1`] = `
+exports[`StoryPlaylist matches snapshot 1`] = `
 <Router
   history={
     Object {
@@ -23,6 +23,6 @@ exports[`Assets matches snapshot 1`] = `
     }
   }
 >
-  <Assets />
+  <StoryPlaylist />
 </Router>
 `;

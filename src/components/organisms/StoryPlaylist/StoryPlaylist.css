@@ -1,18 +1,18 @@
-.Assets{
+.StoryPlaylist{
   width: 90%;
   margin: 0 auto 130px auto;
   padding-top: calc(4.5em + 10px);
 }
 
-.Assets .number-icon {
+.StoryPlaylist .number-icon {
   width: 15px;
 }
 
-.Assets .clock-icon {
+.StoryPlaylist .clock-icon {
   width: 20px;
 }
 
-.Assets .audio-player {
+.StoryPlaylist .audio-player {
   background-color: #f2f3f5;
   border: 3px solid #929292;
   width: 90%;
@@ -26,27 +26,27 @@
   padding: 0 10px;
 }
 
-.Assets .current-title {
+.StoryPlaylist .current-title {
   color: #595959;
   margin: 0;
   white-space: nowrap;
 }
 
-.Assets .react-audio-player {
+.StoryPlaylist .react-audio-player {
   width: 90%;
 }
 
-.Assets thead {
+.StoryPlaylist thead {
   background-color: #929292;
   color: #ffffff;
 }
 
-.Assets tbody {
+.StoryPlaylist tbody {
   background-color: #f2f3f5;
   color: #595959;
 }
 
-.Assets .loading {
+.StoryPlaylist .loading {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: #595959;

@@ -1,9 +1,9 @@
 import React from 'react'
-import { Assets } from 'organisms'
+import { StoryPlaylist } from 'organisms'
 import './Library.css'
 
 const Library = () => {
-  return <Assets />
+  return <StoryPlaylist />
 }
 
 export default Library

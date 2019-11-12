@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Asset } from 'molecules'
+import { Story } from 'molecules'
 import Alert from 'react-bootstrap/Alert'
 import Table from 'react-bootstrap/Table'
 import ReactAudioPlayer from 'react-audio-player'
 import numberIcon from 'assets/hashtag-solid.svg'
 import clockIcon from 'assets/clock-regular.svg'
-import './Assets.css'
+import './StoryPlaylist.css'
 
-const Assets = () => {
-  const [assets, setAssets] = useState([])
+const StoryPlaylist = () => {
+  const [stories, setStories] = useState([])
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [currentTitle, setCurrentTitle] = useState('')
   const [currentFilename, setCurrentFilename] = useState('')
-  const [assetNotFound, setAssetNotFound] = useState(false)
+  const [storyNotFound, setStoryNotFound] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -23,28 +23,28 @@ const Assets = () => {
       }
     })
       .then(res => res.json())
-      .then(assets => {
-        setAssets(assets.sort((a, b) => (a.created < b.created) ? 1 : -1))
+      .then(stories => {
+        setStories(stories.sort((a, b) => (a.created < b.created) ? 1 : -1))
 
         if (id) {
-          for (let i = 0; i < assets.length; i++) {
-            if (assets[i].id === Number(id)) {
-              setAssetNotFound(false)
+          for (let i = 0; i < stories.length; i++) {
+            if (stories[i].id === Number(id)) {
+              setStoryNotFound(false)
               break
             } else {
-              setAssetNotFound(true)
+              setStoryNotFound(true)
             }
           }
 
-          const index = assets.findIndex(asset => { return asset.id === Number(id) })
+          const index = stories.findIndex(story => { return story.id === Number(id) })
 
           setCurrentStoryIndex(index)
-          setCurrentTitle('Story ' + assets[index].id)
-          setCurrentFilename(assets[index].filename)
+          setCurrentTitle('Story ' + stories[index].id)
+          setCurrentFilename(stories[index].filename)
 
-          const assetArray = removePlayingClassFromAssets()
+          const storyArray = removePlayingClassFromStories()
 
-          addPlayingClassToAsset(assetArray, index)
+          addPlayingClassToStory(storyArray, index)
 
           document.querySelector('.playing').scrollIntoView({
             behavior: 'auto',
@@ -56,51 +56,51 @@ const Assets = () => {
       .catch(err => console.log(err))
   }, [id])
 
-  function removePlayingClassFromAssets () {
-    const assetArray = document.getElementsByClassName('Asset')
-    for (let i = 0; i < assetArray.length; i++) {
-      assetArray[i].classList.remove('playing')
+  function removePlayingClassFromStories () {
+    const storyArray = document.getElementsByClassName('Story')
+    for (let i = 0; i < storyArray.length; i++) {
+      storyArray[i].classList.remove('playing')
     }
-    return assetArray
+    return storyArray
   }
 
-  function addPlayingClassToAsset (assetArray, index) {
-    const curAsset = assetArray[index]
-    curAsset.classList.add('playing')
+  function addPlayingClassToStory (storyArray, index) {
+    const curStory = storyArray[index]
+    curStory.classList.add('playing')
   }
 
   const clickHandler = (index, title, filename) => {
-    const assetArray = removePlayingClassFromAssets()
+    const storyArray = removePlayingClassFromStories()
 
     setCurrentStoryIndex(index)
     setCurrentTitle(title)
     setCurrentFilename(filename)
 
-    addPlayingClassToAsset(assetArray, index)
+    addPlayingClassToStory(storyArray, index)
   }
 
-  // TODO: Change to asset id if it's possible to update the current ids to start at 1
+  // TODO: Change to story id if it's possible to update the current ids to start at 1
   let listNumber = 0
 
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
 
-    if (nextStoryIndex === assets.length) {
+    if (nextStoryIndex === stories.length) {
       return null
     } else {
       setCurrentStoryIndex(nextStoryIndex)
-      setCurrentTitle('Story ' + assets[nextStoryIndex].id)
-      setCurrentFilename(assets[nextStoryIndex].filename)
+      setCurrentTitle('Story ' + stories[nextStoryIndex].id)
+      setCurrentFilename(stories[nextStoryIndex].filename)
 
-      const assetArray = removePlayingClassFromAssets()
+      const storyArray = removePlayingClassFromStories()
 
-      addPlayingClassToAsset(assetArray, nextStoryIndex)
+      addPlayingClassToStory(storyArray, nextStoryIndex)
     }
   }
 
-  const assetsTable = (
+  const storiesTable = (
     <div>
-      {assetNotFound ? <Alert variant='danger'>Not found</Alert> : null}
+      {storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
       <div className='audio-player'>
         <p className='current-title'>{currentTitle}</p>
         <ReactAudioPlayer
@@ -121,9 +121,9 @@ const Assets = () => {
         </thead>
         <tbody>
           {
-            assets.map(asset => {
+            stories.map(story => {
               listNumber += 1
-              return <Asset key={asset.id} asset={asset} listNumber={listNumber} clickHandler={clickHandler} />
+              return <Story key={story.id} story={story} listNumber={listNumber} clickHandler={clickHandler} />
             })
           }
         </tbody>
@@ -132,14 +132,14 @@ const Assets = () => {
   )
 
   return (
-    <div className='Assets'>
+    <div className='StoryPlaylist'>
       {
-        assets.length > 0
-          ? assetsTable
+        stories.length > 0
+          ? storiesTable
           : <h1 className='loading'>Loading...</h1>
       }
     </div>
   )
 }
 
-export default Assets
+export default StoryPlaylist

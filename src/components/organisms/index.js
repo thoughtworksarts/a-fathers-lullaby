@@ -3,14 +3,15 @@ import Timeline from './Timeline'
 import TimelineEntry from './TimelineEntry'
 import Sidepanel from './Sidepanel'
 import MapContainer from './MapContainer'
-import Assets from './Assets'
 import Recorder from './Recorder'
+import StoryPlaylist from './StoryPlaylist'
+
 export {
   Header,
   Timeline,
   TimelineEntry,
   Sidepanel,
   MapContainer,
-  Assets,
-  Recorder
+  Recorder,
+  StoryPlaylist
 }
