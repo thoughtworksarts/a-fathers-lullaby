@@ -12,8 +12,9 @@ const Sidepanel = (props) => {
   return (
     <div className={panelClasses.join(' ')}>
       <NavLink className='firstLink' link='/'>About</NavLink>
-      <NavLink link='/share'>Share a Lullaby</NavLink>
-      <NavLink link='/library'>Library to Others</NavLink>
+      <NavLink link='/share'>Share</NavLink>
+      <NavLink link='/explore'>Explore</NavLink>
+      <NavLink link='/library'>Library</NavLink>
     </div>
   )
 }
