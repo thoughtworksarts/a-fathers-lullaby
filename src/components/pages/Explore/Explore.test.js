@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 
 describe('Explore Page', () => {
   it('matches snapshot', () => {
-    const assetsComponent = shallow(<Router><Explore /></Router>)
-    expect(assetsComponent).toMatchSnapshot()
+    const exploreComponent = shallow(<Router><Explore /></Router>)
+    expect(exploreComponent).toMatchSnapshot()
   })
 })
