@@ -16,7 +16,7 @@ const Share = () => {
 
         <Recorder />
       </div>
-      
+
     </div>
   )
 }
