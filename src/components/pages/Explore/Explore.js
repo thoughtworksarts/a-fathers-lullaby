@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MapContainer } from 'organisms'
-
+import { MapContainer, StoryPlaylist } from 'organisms'
 import './Explore.css'
 
 const Explore = () => {
@@ -21,7 +20,12 @@ const Explore = () => {
 
   return (
     <div className='ExplorePage'>
-      <MapContainer stories={stories} />
+      <div>
+        <MapContainer stories={stories} />
+      </div>
+      <div className='ExplorePlaylistContainer'>
+        <StoryPlaylist className='ExplorePlaylist' />
+      </div>
     </div>
   )
 }

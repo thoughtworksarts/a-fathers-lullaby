@@ -7,10 +7,6 @@ const StoryView = props => {
     const month = created.substring(5, 7)
     const day = created.substring(8, 10)
     const year = created.substring(0, 4)
-    console.log('string', created)
-    console.log(month)
-    console.log(day)
-    console.log(year)
     return (
       <div>
         <p>{month} {day} {year}</p>

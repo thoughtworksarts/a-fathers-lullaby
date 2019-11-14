@@ -1,24 +1,24 @@
 .MapContainer {
-    top: 70px;
-    max-width: 50vw;
-    max-height: 50vh;
-    display: flex;
-    flex-direction: row;
-  }
+    margin: auto;
+    width: 90%;
+}
 
 .MapContainer .Map {
-  position: relative;
-  justify-self: center;
+  position: absolute;
+  justify-self: left;
+  max-width: 50%;
+  max-height: 50%;
+  top: 5em;
+}
+
+.MapContainer .StoryView {
+  justify-self: right;
+  align-self:right;
   max-width: 50vw;
   max-height: 50vh;
-  left: 50px;
-  top: 70px;
+  right: 7em;
+  top: 5em;
+  position: absolute;
 }
 
 
-
-
-/* .MapContainer div:first-child {
-  position: relative !important;
-  height: 500px !important;
-} */
