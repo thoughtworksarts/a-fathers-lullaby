@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactAudioPlayer from 'react-audio-player'
 import './StoryView.css'
 
 const StoryView = props => {
@@ -16,29 +15,23 @@ const StoryView = props => {
 
   const audioPlayerSelected = () => {
     return (
-      <div className='audio-player'>
-        <h3>Story # {props.story.id}</h3>
-        <h3>Date: {parseDate(props.story.created)}</h3>
-
-        <ReactAudioPlayer
-          src={process.env.REACT_APP_ROUNDWARE_PROD + props.story.filename}
-          controls
-          autoPlay
-        />
+      <div>
+        <div className='story-meta-data'>
+          <h3>Story # {props.story.id}</h3>
+          <h3>Date: {parseDate(props.story.created)}</h3>
+        </div>
       </div>
     )
   }
 
   const audioPlayerUnselected = () => {
     return (
-      <div className='audio-player'>
-        <h3 className='click-story-msg'>
-      Click a story to listen
-        </h3>
-        <ReactAudioPlayer
-          controls
-          autoPlay
-        />
+      <div>
+        <div className='click-story-msg'>
+          <h3>
+          Click a story to listen
+          </h3>
+        </div>
       </div>
     )
   }
