@@ -12,7 +12,6 @@ const Recorder = () => {
   const [isBlocked, setIsBlocked] = useState(false)
   const [buttonImg, setButtonImg] = useState(recImg)
 
-
   useEffect(() => {
     /* This might need to get wrapped in an if statment depending on behavior */
     navigator.mediaDevices.getUserMedia({ audio: true, video: false })
@@ -29,9 +28,11 @@ const Recorder = () => {
         setIsBlocked(true)
       })
 
-      if(blobURL !== '') display();
+    if (blobURL !== '' && !isRecording) {
+      display()
+    }
 
-      changeImgFunc()
+    changeImgFunc()
   })
 
   const changeImgFunc = () => {
@@ -64,20 +65,23 @@ const Recorder = () => {
       .then(([buffer, blob]) => {
         const blobURL = URL.createObjectURL(blob)
         setBlobURL(blobURL)
-      }).catch((e) => console.log(e));
+      }).catch((e) => console.log(e))
   }
 
-  const display= () => {
-    const wavesurfer = Wavesurfer.create({
-      container: '#waveform',
-      waveColor: 'red',
-      progressColor: 'purple',
-      barWidth: 2,
-    });
-    wavesurfer.load(blobURL);
-    wavesurfer.on('ready', function () {
-      console.log("wavesurfer ready to display waveform");
-    });
+  const display = () => {
+    const waveElement = document.getElementsByTagName('wave')
+    if (!waveElement.length) {
+      const wavesurfer = Wavesurfer.create({
+        container: '#waveform',
+        waveColor: 'red',
+        progressColor: 'purple',
+        barWidth: 2
+      })
+      wavesurfer.load(blobURL)
+      wavesurfer.on('ready', function () {
+        console.log('wavesurfer ready to display waveform')
+      })
+    }
   }
 
   return (
