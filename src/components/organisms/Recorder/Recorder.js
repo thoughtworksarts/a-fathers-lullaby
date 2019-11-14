@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import MicRecorder from 'mic-recorder-to-mp3'
+import Wavesurfer from 'wavesurfer.js'
 import recImg from '../../../assets/record.png'
 import stopImg from '../../../assets/stop.png'
 import playImg from '../../../assets/play.png'
@@ -10,6 +11,7 @@ const Recorder = () => {
   const [blobURL, setBlobURL] = useState('')
   const [isBlocked, setIsBlocked] = useState(false)
   const [buttonImg, setButtonImg] = useState(recImg)
+
 
   useEffect(() => {
     /* This might need to get wrapped in an if statment depending on behavior */
@@ -27,7 +29,9 @@ const Recorder = () => {
         setIsBlocked(true)
       })
 
-    changeImgFunc()
+      if(blobURL !== '') display();
+
+      changeImgFunc()
   })
 
   const changeImgFunc = () => {
@@ -60,7 +64,20 @@ const Recorder = () => {
       .then(([buffer, blob]) => {
         const blobURL = URL.createObjectURL(blob)
         setBlobURL(blobURL)
-      }).catch((e) => console.log(e))
+      }).catch((e) => console.log(e));
+  }
+
+  const display= () => {
+    const wavesurfer = Wavesurfer.create({
+      container: '#waveform',
+      waveColor: 'red',
+      progressColor: 'purple',
+      barWidth: 2,
+    });
+    wavesurfer.load(blobURL);
+    wavesurfer.on('ready', function () {
+      console.log("wavesurfer ready to display waveform");
+    });
   }
 
   return (
@@ -73,6 +90,7 @@ const Recorder = () => {
           setIsRecording(!isRecording)
         }}
       />
+      <div id='waveform'> </div>
     </div>
 
   )
