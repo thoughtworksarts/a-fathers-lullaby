@@ -2,4 +2,31 @@
     z-index: 100;
     align-self: right;
     background-color: white;
+    border: solid black 2px;  
+}
+
+.StoryView p {
+    font-size: 1em;
+    width: 40%;
+}
+
+.StoryView h3 {
+    font-size: 1em;
+    width: 40%;
+}
+
+.StoryView .click-story-msg {
+    font-size: 1em;
+    z-index: 5;
+  }
+
+.StoryView .audio-player {
+background-color: #f2f3f5;
+border: 3px solid #929292;
+width: 70%;
+left: 50%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 10px;
 }

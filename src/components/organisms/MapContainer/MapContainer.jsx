@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import './MapContainer.css'
+import { StoryView } from 'molecules'
 
 const MapContainer = (props) => {
-  const [currentStory, setCurrentStory] = useState([])
+  const [currentStory, setCurrentStory] = useState(null)
 
   const markerClickHandler = (story) => {
     setCurrentStory(story)
@@ -36,9 +37,10 @@ const MapContainer = (props) => {
         google={props.google}
         zoom={11.5}
         className='Map'
-        initialCenter={{ lat: 42.3601, lng: -70.85 }}
+        initialCenter={{ lat: 42.3601, lng: -71.05 }}
       >{displayMarkers()}
       </Map>
+      <StoryView story={currentStory} />
     </div>
   )
 }
