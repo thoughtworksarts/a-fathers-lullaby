@@ -1,6 +1,5 @@
 .StoryView{
-    display:flex;
     z-index: 100;
-    align-self: center;
+    align-self: right;
     background-color: white;
 }

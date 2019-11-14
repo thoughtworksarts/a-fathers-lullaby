@@ -4,7 +4,7 @@ import { MapContainer } from 'organisms'
 import './Explore.css'
 
 const Explore = () => {
-  const [assets, setAssets] = useState([])
+  const [stories, setStories] = useState([])
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
@@ -13,15 +13,15 @@ const Explore = () => {
       }
     })
       .then(res => res.json())
-      .then(assets => {
-        setAssets(assets)
+      .then(stories => {
+        setStories(stories)
       })
       .catch(err => console.log(err))
   }, [])
 
   return (
-    <div className='MapView'>
-      <MapContainer assets={assets} />
+    <div className='ExplorePage'>
+      <MapContainer stories={stories} />
     </div>
   )
 }

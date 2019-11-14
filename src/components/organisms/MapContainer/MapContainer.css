@@ -2,14 +2,22 @@
     top: 70px;
     max-width: 50vw;
     max-height: 50vh;
+    display: flex;
+    flex-direction: row;
   }
 
-  .MapContainer .Map {
-    position: relative;
-    align-self: center;
-    justify-self: center;
-    max-width: 50vw;
-    max-height: 50vh;
-    left: 50px;
-    top: 70px;
-  }
+.MapContainer .Map {
+  position: relative;
+  justify-self: center;
+  max-width: 50vw;
+  max-height: 50vh;
+  left: 50px;
+  top: 70px;
+}
+
+
+
+/* .MapContainer div:first-child {
+  position: relative !important;
+  height: 500px !important;
+} */

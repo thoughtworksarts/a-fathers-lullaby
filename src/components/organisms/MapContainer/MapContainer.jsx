@@ -1,33 +1,37 @@
 import React, { useState } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
-import { StoryView } from 'molecules'
 import './MapContainer.css'
 
 const MapContainer = (props) => {
   const [currentStory, setCurrentStory] = useState([])
 
-  const markerClickHandler = (asset) => {
-    setCurrentStory(asset)
+  const markerClickHandler = (story) => {
+    setCurrentStory(story)
+    console.log(currentStory)
   }
 
   const displayMarkers = () => {
-    return props.assets.map((asset) => {
+    const markerIcon = {
+      url: 'http://maps.google.com/mapfiles/kml/paddle/wht-circle.png',
+      scaledSize: new props.google.maps.Size(25, 25)
+    }
+
+    return props.stories.map(story => {
       return (
         <Marker
-          key={asset.id}
+          key={story.id}
           position={{
-            lat: asset.latitude,
-            lng: asset.longitude
+            lat: story.latitude,
+            lng: story.longitude
           }}
-          onClick={() => markerClickHandler(asset)}
+          icon={markerIcon}
+          onClick={() => markerClickHandler(story)}
         />)
     })
   }
 
   return (
-
     <div className='MapContainer'>
-      <StoryView asset={currentStory} />
       <Map
         google={props.google}
         zoom={11.5}
