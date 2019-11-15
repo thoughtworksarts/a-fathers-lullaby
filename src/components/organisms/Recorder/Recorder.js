@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import MicRecorder from 'mic-recorder-to-mp3'
 import Wavesurfer from 'wavesurfer.js'
+import MicrophonePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.microphone.js'
 import recImg from '../../../assets/record.png'
 import stopImg from '../../../assets/stop.png'
 import playImg from '../../../assets/play.png'
@@ -11,6 +12,7 @@ const Recorder = () => {
   const [blobURL, setBlobURL] = useState('')
   const [isBlocked, setIsBlocked] = useState(false)
   const [buttonImg, setButtonImg] = useState(recImg)
+  const [wavesurferInput, setWavesurferInput] = useState()
 
   useEffect(() => {
     /* This might need to get wrapped in an if statment depending on behavior */
@@ -29,7 +31,7 @@ const Recorder = () => {
       })
 
     if (blobURL !== '' && !isRecording) {
-      display()
+      displayRecording()
     }
 
     changeImgFunc()
@@ -54,6 +56,16 @@ const Recorder = () => {
     } else {
       Mp3Recorder
         .start()
+        .then(() => displayLiveAudio())
+        .then(() => {
+          wavesurferInput.microphone.on('deviceReady', function (stream) {
+            console.log('Device ready!', stream)
+          })
+          wavesurferInput.microphone.on('deviceError', function (code) {
+            console.warn('Device error: ' + code)
+          })
+          wavesurferInput.microphone.start()
+        })
         .catch((e) => console.error(e))
     }
   }
@@ -65,17 +77,40 @@ const Recorder = () => {
       .then(([buffer, blob]) => {
         const blobURL = URL.createObjectURL(blob)
         setBlobURL(blobURL)
-      }).catch((e) => console.log(e))
+      })
+      .then(() => { wavesurferInput.microphone.stopDevice() })
+      .catch((e) => console.log(e))
   }
 
-  const display = () => {
-    const waveElement = document.getElementsByTagName('wave')
+  const displayLiveAudio = () => {
+    const container = document.getElementById('inputmeter')
+    const inputMeterElement = container.querySelectorAll('wave')
+    if (!inputMeterElement.length) {
+      setWavesurferInput(Wavesurfer.create({
+        container: '#inputmeter',
+        waveColor: 'red',
+        height: 128,
+        barWidth: 2,
+        barHeight: 1.2,
+        cursorWidth: 0,
+        plugins: [
+          MicrophonePlugin.create()
+        ]
+      }))
+    }
+  }
+
+  const displayRecording = () => {
+    const container = document.getElementById('waveform')
+    const waveElement = container.querySelectorAll('wave')
     if (!waveElement.length) {
       const wavesurfer = Wavesurfer.create({
         container: '#waveform',
         waveColor: 'red',
         progressColor: 'purple',
-        barWidth: 2
+        height: 128,
+        barWidth: 2,
+        barHeight: 1.2
       })
       wavesurfer.load(blobURL)
       wavesurfer.on('ready', function () {
@@ -95,6 +130,7 @@ const Recorder = () => {
         }}
       />
       <div id='waveform'> </div>
+      <div id='inputmeter' />
     </div>
 
   )
