@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { Story } from 'molecules'
 import Alert from 'react-bootstrap/Alert'
 import Table from 'react-bootstrap/Table'
@@ -8,53 +7,48 @@ import numberIcon from 'assets/hashtag-solid.svg'
 import clockIcon from 'assets/clock-regular.svg'
 import './StoryPlaylist.css'
 
-const StoryPlaylist = () => {
-  const [stories, setStories] = useState([])
+const StoryPlaylist = (props) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [currentTitle, setCurrentTitle] = useState('')
   const [currentFilename, setCurrentFilename] = useState('')
-  const [storyNotFound, setStoryNotFound] = useState(false)
-  const { id } = useParams()
+  const [storyNotFound, setStoryNotFound] = useState(true)
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
-      headers: {
-        authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`
-      }
-    })
-      .then(res => res.json())
-      .then(stories => {
-        setStories(stories.sort((a, b) => (a.created < b.created) ? 1 : -1))
-
-        if (id) {
-          for (let i = 0; i < stories.length; i++) {
-            if (stories[i].id === Number(id)) {
-              setStoryNotFound(false)
-              break
-            } else {
-              setStoryNotFound(true)
-            }
-          }
-
-          const index = stories.findIndex(story => { return story.id === Number(id) })
-
-          setCurrentStoryIndex(index)
-          setCurrentTitle('Story ' + stories[index].id)
-          setCurrentFilename(stories[index].filename)
-
-          const storyArray = removePlayingClassFromStories()
-
-          addPlayingClassToStory(storyArray, index)
-
-          document.querySelector('.playing').scrollIntoView({
-            behavior: 'auto',
-            block: 'center',
-            inline: 'center'
-          })
+    if (props.id) {
+      for (let i = 0; i < props.stories.length; i++) {
+        console.log(props.id)
+        if (props.stories[i].id === Number(props.id)) {
+          setStoryNotFound(false)
+          playStoryByID()
+          break
+        } else {
+          setStoryNotFound(true)
         }
+      }
+    }
+  }, [props.stories])
+
+  function playStoryByID () {
+    let index = null
+
+    if (props.stories && props.stories.length) {
+      index = props.stories.findIndex(story => { return story.id === Number(props.id) })
+
+      setCurrentStoryIndex(index)
+      setCurrentTitle('Story ' + props.id)
+      setCurrentFilename(props.stories[index].filename)
+
+      const storyArray = removePlayingClassFromStories()
+
+      addPlayingClassToStory(storyArray, index)
+
+      document.querySelector('.playing').scrollIntoView({
+        behavior: 'auto',
+        block: 'center',
+        inline: 'center'
       })
-      .catch(err => console.log(err))
-  }, [id])
+    }
+  }
 
   function removePlayingClassFromStories () {
     const storyArray = document.getElementsByClassName('Story')
@@ -85,12 +79,12 @@ const StoryPlaylist = () => {
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
 
-    if (nextStoryIndex === stories.length) {
+    if (nextStoryIndex === props.stories.length) {
       return null
     } else {
       setCurrentStoryIndex(nextStoryIndex)
-      setCurrentTitle('Story ' + stories[nextStoryIndex].id)
-      setCurrentFilename(stories[nextStoryIndex].filename)
+      setCurrentTitle('Story ' + props.stories[nextStoryIndex].id)
+      setCurrentFilename(props.stories[nextStoryIndex].filename)
 
       const storyArray = removePlayingClassFromStories()
 
@@ -100,7 +94,7 @@ const StoryPlaylist = () => {
 
   const storiesTable = (
     <div>
-      {storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
+      {props.id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
       <div className='audio-player'>
         <p className='current-title'>{currentTitle}</p>
         <ReactAudioPlayer
@@ -120,12 +114,11 @@ const StoryPlaylist = () => {
           </tr>
         </thead>
         <tbody>
-          {
-            stories.map(story => {
-              listNumber += 1
-              return <Story key={story.id} story={story} listNumber={listNumber} clickHandler={clickHandler} />
-            })
-          }
+          {props.stories.map(story => {
+            listNumber += 1
+            return <Story key={story.id} story={story} listNumber={listNumber} clickHandler={clickHandler} />
+          })}
+
         </tbody>
       </Table>
     </div>
@@ -134,7 +127,7 @@ const StoryPlaylist = () => {
   return (
     <div className='StoryPlaylist'>
       {
-        stories.length > 0
+        props.stories && props.stories.length > 0
           ? storiesTable
           : <h1 className='loading'>Loading...</h1>
       }

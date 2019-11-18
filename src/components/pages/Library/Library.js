@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { MapContainer, StoryPlaylist } from 'organisms'
-import './Explore.css'
+import { useParams } from 'react-router-dom'
+import { StoryPlaylist } from 'organisms'
+import './Library.css'
 
-const Explore = () => {
+const Library = () => {
   const [stories, setStories] = useState([])
+  const { id } = useParams()
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
@@ -16,18 +18,10 @@ const Explore = () => {
         setStories(stories)
       })
       .catch(err => console.log(err))
+    console.log('id', id)
   }, [])
 
-  return (
-    <div className='ExplorePage'>
-      <div>
-        <MapContainer stories={stories} />
-      </div>
-      <div className='ExplorePlaylistContainer'>
-        <StoryPlaylist className='ExplorePlaylist' stories={stories} />
-      </div>
-    </div>
-  )
+  return <StoryPlaylist stories={stories} id={id} />
 }
 
-export default Explore
+export default Library
