@@ -4,7 +4,7 @@ import './Story.css'
 const Story = props => {
   const minutes = Math.floor(props.story.audio_length_in_seconds / 60)
   const seconds = Math.trunc(props.story.audio_length_in_seconds - (minutes * 60))
-  const index = props.listNumber - 1
+  const index = props.arrayIndex - 1
   const title = 'Story ' + props.story.id
   const filename = props.story.filename
 

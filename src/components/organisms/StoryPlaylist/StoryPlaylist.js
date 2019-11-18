@@ -11,22 +11,7 @@ const StoryPlaylist = (props) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [currentTitle, setCurrentTitle] = useState('')
   const [currentFilename, setCurrentFilename] = useState('')
-  const [storyNotFound, setStoryNotFound] = useState(true)
-
-  useEffect(() => {
-    if (props.id) {
-      for (let i = 0; i < props.stories.length; i++) {
-        console.log(props.id)
-        if (props.stories[i].id === Number(props.id)) {
-          setStoryNotFound(false)
-          playStoryByID()
-          break
-        } else {
-          setStoryNotFound(true)
-        }
-      }
-    }
-  }, [props.stories])
+  const [storyNotFound, setStoryNotFound] = useState(false)
 
   function playStoryByID () {
     let index = null
@@ -74,7 +59,7 @@ const StoryPlaylist = (props) => {
   }
 
   // TODO: Change to story id if it's possible to update the current ids to start at 1
-  let listNumber = 0
+  let arrayIndex = 0
 
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
@@ -91,6 +76,20 @@ const StoryPlaylist = (props) => {
       addPlayingClassToStory(storyArray, nextStoryIndex)
     }
   }
+
+  useEffect(() => {
+    if (props.id) {
+      for (let i = 0; i < props.stories.length; i++) {
+        if (props.stories[i].id === Number(props.id)) {
+          setStoryNotFound(false)
+          playStoryByID()
+          break
+        } else {
+          setStoryNotFound(true)
+        }
+      }
+    }
+  }, [props.stories])
 
   const storiesTable = (
     <div>
@@ -115,8 +114,8 @@ const StoryPlaylist = (props) => {
         </thead>
         <tbody>
           {props.stories.map(story => {
-            listNumber += 1
-            return <Story key={story.id} story={story} listNumber={listNumber} clickHandler={clickHandler} />
+            arrayIndex += 1
+            return <Story key={story.id} story={story} arrayIndex={arrayIndex} clickHandler={clickHandler} />
           })}
 
         </tbody>

@@ -18,7 +18,6 @@ const Library = () => {
         setStories(stories)
       })
       .catch(err => console.log(err))
-    console.log('id', id)
   }, [])
 
   return <StoryPlaylist stories={stories} id={id} />
