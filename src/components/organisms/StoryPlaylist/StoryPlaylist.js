@@ -11,6 +11,7 @@ const StoryPlaylist = (props) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [currentTitle, setCurrentTitle] = useState('')
   const [currentFilename, setCurrentFilename] = useState('')
+
   const [storyNotFound, setStoryNotFound] = useState(false)
 
   function playStoryByID () {
@@ -89,7 +90,7 @@ const StoryPlaylist = (props) => {
         }
       }
     }
-  }, [props.stories])
+  }, [props.stories, props.id]) // eslint-disable-next-line
 
   const storiesTable = (
     <div>
