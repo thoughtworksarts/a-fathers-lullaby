@@ -14,9 +14,9 @@ const StoryPlaylist = (props) => {
 
   const clickHandler = (index, story) => {
     setCurrentStory(story)
+    setCurrentStoryIndex(index)
   }
 
-  // TODO: Change to story id if it's possible to update the current ids to start at 1
   let arrayIndex = 0
 
   const endHandler = () => {
@@ -25,6 +25,7 @@ const StoryPlaylist = (props) => {
     if (nextStoryIndex === props.stories.length) {
       return null
     } else {
+      setCurrentStory(props.stories[nextStoryIndex])
       setCurrentStoryIndex(nextStoryIndex)
     }
   }
@@ -83,14 +84,13 @@ const StoryPlaylist = (props) => {
           />
         </div>
     }
-    return (currentStoryPlayer)
+    return currentStoryPlayer
   }
 
   const storiesTable = (
     <div>
       {props.id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
-
-      {setCurrentStoryPlayer()} 
+      {setCurrentStoryPlayer()}
       <Table hover>
         <thead>
           <tr>
@@ -105,7 +105,6 @@ const StoryPlaylist = (props) => {
             arrayIndex += 1
             return <Story key={story.id} story={story} arrayIndex={arrayIndex} clickHandler={clickHandler} />
           })}
-
         </tbody>
       </Table>
     </div>
