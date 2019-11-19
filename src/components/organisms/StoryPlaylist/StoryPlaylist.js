@@ -14,28 +14,6 @@ const StoryPlaylist = (props) => {
 
   const [storyNotFound, setStoryNotFound] = useState(false)
 
-  function playStoryByID () {
-    let index = null
-
-    if (props.stories && props.stories.length) {
-      index = props.stories.findIndex(story => { return story.id === Number(props.id) })
-
-      setCurrentStoryIndex(index)
-      setCurrentTitle('Story ' + props.id)
-      setCurrentFilename(props.stories[index].filename)
-
-      const storyArray = removePlayingClassFromStories()
-
-      addPlayingClassToStory(storyArray, index)
-
-      document.querySelector('.playing').scrollIntoView({
-        behavior: 'auto',
-        block: 'center',
-        inline: 'center'
-      })
-    }
-  }
-
   function removePlayingClassFromStories () {
     const storyArray = document.getElementsByClassName('Story')
     for (let i = 0; i < storyArray.length; i++) {
@@ -83,7 +61,25 @@ const StoryPlaylist = (props) => {
       for (let i = 0; i < props.stories.length; i++) {
         if (props.stories[i].id === Number(props.id)) {
           setStoryNotFound(false)
-          playStoryByID()
+          let index = null
+
+          if (props.stories && props.stories.length) {
+            index = props.stories.findIndex(story => { return story.id === Number(props.id) })
+
+            setCurrentStoryIndex(index)
+            setCurrentTitle('Story ' + props.id)
+            setCurrentFilename(props.stories[index].filename)
+
+            const storyArray = removePlayingClassFromStories()
+
+            addPlayingClassToStory(storyArray, index)
+
+            document.querySelector('.playing').scrollIntoView({
+              behavior: 'auto',
+              block: 'center',
+              inline: 'center'
+            })
+          }
           break
         } else {
           setStoryNotFound(true)
