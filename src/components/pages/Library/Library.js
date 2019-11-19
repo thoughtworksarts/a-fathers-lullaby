@@ -5,6 +5,8 @@ import './Library.css'
 
 const Library = () => {
   const [stories, setStories] = useState([])
+  const [currentStory] = useState('')
+
   const { id } = useParams()
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const Library = () => {
       .catch(err => console.log(err))
   }, [])
 
-  return <StoryPlaylist stories={stories} id={id} />
+  return <StoryPlaylist stories={stories} id={id} currentStory={currentStory} />
 }
 
 export default Library

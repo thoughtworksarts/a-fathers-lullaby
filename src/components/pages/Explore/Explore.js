@@ -4,7 +4,7 @@ import './Explore.css'
 
 const Explore = () => {
   const [stories, setStories] = useState([])
-  const [currentStory, setCurrentStory] = useState([])
+  const [currentStory, setCurrentStory] = useState('')
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
@@ -19,15 +19,14 @@ const Explore = () => {
       .catch(err => console.log(err))
   }, [])
 
-  const callbackFunction = (newCurrentStory) => {
+  const updateCurrentStory = (newCurrentStory) => {
     setCurrentStory(newCurrentStory)
-    console.log(newCurrentStory)
   }
 
   return (
     <div className='ExplorePage'>
       <div>
-        <MapContainer stories={stories} parentCallback={callbackFunction} />
+        <MapContainer stories={stories} parentCallback={updateCurrentStory} />
       </div>
       <div className='ExplorePlaylistContainer'>
         <StoryPlaylist className='ExplorePlaylist' stories={stories} currentStory={currentStory} />

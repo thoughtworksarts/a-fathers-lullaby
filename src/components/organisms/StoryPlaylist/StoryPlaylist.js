@@ -9,32 +9,11 @@ import './StoryPlaylist.css'
 
 const StoryPlaylist = (props) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
-  const [currentTitle, setCurrentTitle] = useState('')
-  const [currentFilename, setCurrentFilename] = useState('')
-
+  const [currentStory, setCurrentStory] = useState(props.currentStory)
   const [storyNotFound, setStoryNotFound] = useState(false)
 
-  function removePlayingClassFromStories () {
-    const storyArray = document.getElementsByClassName('Story')
-    for (let i = 0; i < storyArray.length; i++) {
-      storyArray[i].classList.remove('playing')
-    }
-    return storyArray
-  }
-
-  function addPlayingClassToStory (storyArray, index) {
-    const curStory = storyArray[index]
-    curStory.classList.add('playing')
-  }
-
-  const clickHandler = (index, title, filename) => {
-    const storyArray = removePlayingClassFromStories()
-
-    setCurrentStoryIndex(index)
-    setCurrentTitle(title)
-    setCurrentFilename(filename)
-
-    addPlayingClassToStory(storyArray, index)
+  const clickHandler = (index, story) => {
+    setCurrentStory(story)
   }
 
   // TODO: Change to story id if it's possible to update the current ids to start at 1
@@ -47,14 +26,12 @@ const StoryPlaylist = (props) => {
       return null
     } else {
       setCurrentStoryIndex(nextStoryIndex)
-      setCurrentTitle('Story ' + props.stories[nextStoryIndex].id)
-      setCurrentFilename(props.stories[nextStoryIndex].filename)
-
-      const storyArray = removePlayingClassFromStories()
-
-      addPlayingClassToStory(storyArray, nextStoryIndex)
     }
   }
+
+  useEffect(() => {
+    setCurrentStory(props.currentStory)
+  }, [props.currentStory])
 
   useEffect(() => {
     if (props.id) {
@@ -67,12 +44,7 @@ const StoryPlaylist = (props) => {
             index = props.stories.findIndex(story => { return story.id === Number(props.id) })
 
             setCurrentStoryIndex(index)
-            setCurrentTitle('Story ' + props.id)
-            setCurrentFilename(props.stories[index].filename)
-
-            const storyArray = removePlayingClassFromStories()
-
-            addPlayingClassToStory(storyArray, index)
+            setCurrentStory(props.stories[index])
 
             document.querySelector('.playing').scrollIntoView({
               behavior: 'auto',
@@ -86,20 +58,39 @@ const StoryPlaylist = (props) => {
         }
       }
     }
-  }, [props.stories, props.id]) // eslint-disable-next-line
+  }, [props.stories, props.id])
+
+  const setCurrentStoryPlayer = () => {
+    let currentStoryPlayer
+    if (currentStory !== '') {
+      currentStoryPlayer =
+        <div className='audio-player'>
+          <p className='current-title'>{'Story ' + currentStory.id}</p>
+          <ReactAudioPlayer
+            src={process.env.REACT_APP_ROUNDWARE_PROD + currentStory.filename}
+            controls
+            autoPlay
+            onEnded={endHandler}
+          />
+        </div>
+    } else {
+      currentStoryPlayer =
+        <div className='audio-player'>
+          <ReactAudioPlayer
+            controls
+            autoPlay
+            onEnded={endHandler}
+          />
+        </div>
+    }
+    return (currentStoryPlayer)
+  }
 
   const storiesTable = (
     <div>
       {props.id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
-      <div className='audio-player'>
-        <p className='current-title'>{currentTitle}</p>
-        <ReactAudioPlayer
-          src={process.env.REACT_APP_ROUNDWARE_PROD + currentFilename}
-          controls
-          autoPlay
-          onEnded={endHandler}
-        />
-      </div>
+
+      {setCurrentStoryPlayer()} 
       <Table hover>
         <thead>
           <tr>
