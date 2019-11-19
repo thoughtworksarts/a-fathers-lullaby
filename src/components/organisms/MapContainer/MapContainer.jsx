@@ -4,7 +4,7 @@ import { StoryView } from 'molecules'
 import './MapContainer.css'
 
 const MapContainer = (props) => {
-  const [currentStory, setCurrentStory] = useState(props.curStory)
+  const [currentStory, setCurrentStory] = useState(props.currentStory)
 
   const markerClickHandler = (story) => {
     setCurrentStory(story)
