@@ -4,6 +4,7 @@ import './Explore.css'
 
 const Explore = () => {
   const [stories, setStories] = useState([])
+  const [curStory, setCurStory] = useState([])
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
@@ -18,13 +19,18 @@ const Explore = () => {
       .catch(err => console.log(err))
   }, [])
 
+  const callbackFunction = (newCurStory) => {
+    setCurStory(newCurStory)
+    console.log(newCurStory)
+  }
+
   return (
     <div className='ExplorePage'>
       <div>
-        <MapContainer stories={stories} />
+        <MapContainer stories={stories} parentCallback={callbackFunction} />
       </div>
       <div className='ExplorePlaylistContainer'>
-        <StoryPlaylist className='ExplorePlaylist' stories={stories} />
+        <StoryPlaylist className='ExplorePlaylist' stories={stories} curStory={curStory} />
       </div>
     </div>
   )

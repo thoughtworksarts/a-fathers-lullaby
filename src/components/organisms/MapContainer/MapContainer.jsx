@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
-import './MapContainer.css'
 import { StoryView } from 'molecules'
+import './MapContainer.css'
 
 const MapContainer = (props) => {
-  const [currentStory, setCurrentStory] = useState(null)
+  const [currentStory, setCurrentStory] = useState(props.curStory)
 
   const markerClickHandler = (story) => {
     setCurrentStory(story)
-    console.log(currentStory)
+    props.parentCallback(story)
   }
 
   const displayMarkers = () => {
@@ -27,6 +27,7 @@ const MapContainer = (props) => {
           }}
           icon={markerIcon}
           onClick={() => markerClickHandler(story)}
+          parentCallback={() => markerClickHandler(story)}
         />)
     })
   }
