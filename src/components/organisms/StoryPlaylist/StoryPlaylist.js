@@ -14,10 +14,22 @@ const StoryPlaylist = (props) => {
 
   const clickHandler = (index, story) => {
     setCurrentStory(story)
+    removePlayingClassToStory(currentStoryIndex)
     setCurrentStoryIndex(index)
+    addPlayingClassToStory(index)
   }
 
-  let arrayIndex = 0
+  const addPlayingClassToStory = (index) => {
+    const storyArray = document.getElementsByClassName('Story')
+    storyArray[index].classList.add('playing')
+  }
+
+  const removePlayingClassToStory = (index) => {
+    if (currentStoryIndex && currentStoryIndex >= 0) {
+      const storyArray = document.getElementsByClassName('Story')
+      storyArray[index].classList.remove('playing')
+    }
+  }
 
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
@@ -26,26 +38,30 @@ const StoryPlaylist = (props) => {
       return null
     } else {
       setCurrentStory(props.stories[nextStoryIndex])
+      removePlayingClassToStory(currentStoryIndex)
       setCurrentStoryIndex(nextStoryIndex)
+      addPlayingClassToStory(nextStoryIndex)
     }
   }
 
   useEffect(() => {
     setCurrentStory(props.currentStory)
-  }, [props.currentStory])
+    const arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
+    setCurrentStoryIndex(arrayIndex)
+  }, [props.currentStory, props.stories, props.id])
 
   useEffect(() => {
     if (props.id) {
       for (let i = 0; i < props.stories.length; i++) {
         if (props.stories[i].id === Number(props.id)) {
           setStoryNotFound(false)
-          let index = null
+          let arrayIndex = null
 
           if (props.stories && props.stories.length) {
-            index = props.stories.findIndex(story => { return story.id === Number(props.id) })
+            arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
 
-            setCurrentStoryIndex(index)
-            setCurrentStory(props.stories[index])
+            setCurrentStoryIndex(arrayIndex)
+            setCurrentStory(props.stories[arrayIndex])
 
             document.querySelector('.playing').scrollIntoView({
               behavior: 'auto',
@@ -86,6 +102,8 @@ const StoryPlaylist = (props) => {
     }
     return currentStoryPlayer
   }
+
+  let arrayIndex = 0
 
   const storiesTable = (
     <div>
