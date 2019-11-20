@@ -20,8 +20,10 @@ const StoryPlaylist = (props) => {
   }
 
   const addPlayingClassToStory = (index) => {
-    const storyArray = document.getElementsByClassName('Story')
-    storyArray[index].classList.add('playing')
+    if (currentStoryIndex && currentStoryIndex >= 0) {
+      const storyArray = document.getElementsByClassName('Story')
+      storyArray[index].classList.add('playing')
+    }
   }
 
   const removePlayingClassToStory = (index) => {
@@ -46,8 +48,10 @@ const StoryPlaylist = (props) => {
 
   useEffect(() => {
     setCurrentStory(props.currentStory)
-    const arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
+    removePlayingClassToStory(currentStoryIndex)
+    const arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.currentStory.id) })
     setCurrentStoryIndex(arrayIndex)
+    addPlayingClassToStory(arrayIndex)
   }, [props.currentStory, props.stories, props.id])
 
   useEffect(() => {
