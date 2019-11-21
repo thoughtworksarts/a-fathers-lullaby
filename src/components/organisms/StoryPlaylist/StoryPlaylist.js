@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Story } from 'molecules'
 import Alert from 'react-bootstrap/Alert'
 import Table from 'react-bootstrap/Table'
@@ -11,48 +11,55 @@ const StoryPlaylist = (props) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [currentStory, setCurrentStory] = useState(props.currentStory)
   const [storyNotFound, setStoryNotFound] = useState(false)
+  const [prevStoryIndex, setPrevStoryIndex] = useState(null)
 
   const clickHandler = (index, story) => {
     setCurrentStory(story)
-    removePlayingClassToStory(currentStoryIndex)
-    setCurrentStoryIndex(index)
-    addPlayingClassToStory(index)
   }
 
-  const addPlayingClassToStory = (index) => {
-    if (currentStoryIndex && currentStoryIndex >= 0) {
+  const addPlayingClassToStory = useCallback(() => {
+    if ((currentStoryIndex && currentStoryIndex >= 0) || (currentStoryIndex === 0)) {
       const storyArray = document.getElementsByClassName('Story')
-      storyArray[index].classList.add('playing')
+      storyArray[currentStoryIndex].classList.add('playing')
     }
-  }
+  }, [currentStoryIndex])
 
-  const removePlayingClassToStory = (index) => {
-    if (currentStoryIndex && currentStoryIndex >= 0) {
+  const removePlayingClassFromStory = useCallback(() => {
+    if (prevStoryIndex && prevStoryIndex >= 0) {
       const storyArray = document.getElementsByClassName('Story')
-      storyArray[index].classList.remove('playing')
+      storyArray[prevStoryIndex].classList.remove('playing')
     }
-  }
+  }, [prevStoryIndex])
 
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
-
     if (nextStoryIndex === props.stories.length) {
       return null
     } else {
       setCurrentStory(props.stories[nextStoryIndex])
-      removePlayingClassToStory(currentStoryIndex)
-      setCurrentStoryIndex(nextStoryIndex)
-      addPlayingClassToStory(nextStoryIndex)
     }
   }
 
   useEffect(() => {
     setCurrentStory(props.currentStory)
-    removePlayingClassToStory(currentStoryIndex)
-    const arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.currentStory.id) })
-    setCurrentStoryIndex(arrayIndex)
-    addPlayingClassToStory(arrayIndex)
-  }, [props.currentStory, props.stories, props.id])
+  }, [props.currentStory])
+
+  useEffect(() => {
+    setPrevStoryIndex(currentStoryIndex) // eslint-disable-next-line
+  }, [currentStory])
+
+  useEffect(() => {
+    const index = props.stories.findIndex(story => { return story.id === Number(currentStory.id) })
+    setCurrentStoryIndex(index)
+  }, [props.stories, prevStoryIndex, currentStory.id])
+
+  useEffect(() => {
+    removePlayingClassFromStory()
+  }, [prevStoryIndex, removePlayingClassFromStory])
+
+  useEffect(() => {
+    addPlayingClassToStory()
+  }, [currentStoryIndex, addPlayingClassToStory])
 
   useEffect(() => {
     if (props.id) {
@@ -64,14 +71,7 @@ const StoryPlaylist = (props) => {
           if (props.stories && props.stories.length) {
             arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
 
-            setCurrentStoryIndex(arrayIndex)
             setCurrentStory(props.stories[arrayIndex])
-
-            document.querySelector('.playing').scrollIntoView({
-              behavior: 'auto',
-              block: 'center',
-              inline: 'center'
-            })
           }
           break
         } else {
@@ -79,6 +79,13 @@ const StoryPlaylist = (props) => {
         }
       }
     }
+    // if(document.querySelector('.playing')){
+    //   document.querySelector('.playing').scrollIntoView({
+    //     behavior: 'auto',
+    //     block: 'center',
+    //     inline: 'center'
+    //   })
+    // }
   }, [props.stories, props.id])
 
   const setCurrentStoryPlayer = () => {
