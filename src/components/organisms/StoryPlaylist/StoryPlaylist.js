@@ -13,7 +13,7 @@ const StoryPlaylist = (props) => {
   const [storyNotFound, setStoryNotFound] = useState(false)
   const [prevStoryIndex, setPrevStoryIndex] = useState(null)
 
-  const clickHandler = (index, story) => {
+  const clickHandler = (story) => {
     setCurrentStory(story)
   }
 
@@ -114,7 +114,6 @@ const StoryPlaylist = (props) => {
   }
 
   let arrayIndex = 0
-
   const storiesTable = (
     <div>
       {props.id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
