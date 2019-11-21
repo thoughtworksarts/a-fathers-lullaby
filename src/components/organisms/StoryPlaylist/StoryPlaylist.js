@@ -70,22 +70,21 @@ const StoryPlaylist = (props) => {
 
           if (props.stories && props.stories.length) {
             arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
-
             setCurrentStory(props.stories[arrayIndex])
           }
+
+          document.getElementsByClassName('Story')[arrayIndex].scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+            inline: 'center'
+          })
+
           break
         } else {
           setStoryNotFound(true)
         }
       }
     }
-    // if(document.querySelector('.playing')){
-    //   document.querySelector('.playing').scrollIntoView({
-    //     behavior: 'auto',
-    //     block: 'center',
-    //     inline: 'center'
-    //   })
-    // }
   }, [props.stories, props.id])
 
   const setCurrentStoryPlayer = () => {
