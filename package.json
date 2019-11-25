@@ -7,6 +7,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@craco/craco": "^5.4.0",
     "bootstrap": "^4.3.1",
+    "craco": "^0.0.3",
     "dotenv": "^8.2.0",
     "env2": "^2.2.2",
     "enzyme": "^3.10.0",
