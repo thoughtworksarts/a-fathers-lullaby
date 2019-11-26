@@ -11,7 +11,7 @@ const StoryView = props => {
     const day = created.substring(8, 10)
     const year = created.substring(0, 4)
     return (
-      <h3>Date: {month} {day} {year}</h3>
+      <p>Date: {month} {day} {year}</p>
     )
   }
 
@@ -45,12 +45,12 @@ const StoryView = props => {
     return (
       <div>
         <div className='story-meta-data'>
-          <h3>Story #{props.story.id}</h3>
+          <p>Story #{props.story.id}</p>
           {parseDate(props.story.created)}
-          <h3>Speaking from the point of view of a {pointOfView}</h3>
-          <h3>I {knowSomeoneIncarcerated} know someone who is incarcerated</h3>
-          <h3>Responding to the following prompt:</h3>
-          <h3>{speakingAbout}</h3>
+          <p>Speaking from the point of view of a {pointOfView}</p>
+          <p>I {knowSomeoneIncarcerated} know someone who is incarcerated</p>
+          <p>Responding to the following prompt:</p>
+          <p>{speakingAbout}</p>
 
         </div>
       </div>
@@ -61,9 +61,7 @@ const StoryView = props => {
     return (
       <div>
         <div className='click-story-msg'>
-          <h3>
-          Click a story to listen
-          </h3>
+          <p>Click a story to listen</p>
         </div>
       </div>
     )
