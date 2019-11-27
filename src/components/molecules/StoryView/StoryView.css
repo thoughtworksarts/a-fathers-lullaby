@@ -7,6 +7,14 @@
     width: 35%;
 }
 
+.story-meta-data {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+    min-width: 1100px;
+}
+
 .StoryView p {
     font-size: 1em;
 }
@@ -23,3 +31,7 @@
     z-index: 5;
     width: 40em;
   }
+
+.StoryView .current-story-title {
+      font-weight: bold;
+}

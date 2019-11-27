@@ -1,34 +1,26 @@
 import React from 'react'
 import './StoryView.css'
 
+let month; 
+let day;
+let year;
+
+
 const StoryView = props => {
-  let pointOfView
-  let knowSomeoneIncarcerated
   let speakingAbout
 
   const parseDate = (created) => {
-    const month = created.substring(5, 7)
-    const day = created.substring(8, 10)
-    const year = created.substring(0, 4)
-    return (
-      <p>Date: {month} {day} {year}</p>
-    )
+    month = created.substring(5, 7)
+    day = created.substring(8, 10)
+    year = created.substring(0, 4)
   }
 
   const audioPlayerSelected = () => {
+    let minutes = Math.floor(props.story.audio_length_in_seconds / 60)
+    let seconds = Math.trunc(props.story.audio_length_in_seconds - (minutes * 60))
+    parseDate(props.story.created);
+    console.log(props.story)
     props.story.tag_ids.forEach((currentStoryTag) => {
-      if (currentStoryTag === 275) {
-        pointOfView = 'child'
-      } else if (currentStoryTag === 274) {
-        pointOfView = 'parent'
-      }
-
-      if (currentStoryTag === 278) {
-        knowSomeoneIncarcerated = 'do'
-      } else if (currentStoryTag === 279) {
-        knowSomeoneIncarcerated = 'do not'
-      }
-
       if (currentStoryTag === 273) {
         speakingAbout = 'Sing a lullaby or song that reminds you of childhood.'
       } else if (currentStoryTag === 277) {
@@ -42,18 +34,25 @@ const StoryView = props => {
       }
     })
 
-    return (
-      <div>
-        <div className='story-meta-data'>
-          <p>Story #{props.story.id}</p>
-          {parseDate(props.story.created)}
-          <p>Speaking from the point of view of a {pointOfView}</p>
-          <p>I {knowSomeoneIncarcerated} know someone who is incarcerated</p>
-          <p>Responding to the following prompt:</p>
-          <p>{speakingAbout}</p>
+    
 
+    return (
+        <div className='story-meta-data'>
+          <div className='current-story-title'>
+            Current Story Details
+          </div>
+          <div> 
+          Story #{props.story.id}
+          <br />
+          Duration: {minutes}:{seconds < 10 ? '0' + seconds : seconds}
+          <br />
+          Recorded on {month}/{day}/{year}
+          </div>
+          <div> 
+          Responding to the following prompt: 
+          {speakingAbout}
+          </div>
         </div>
-      </div>
     )
   }
 
