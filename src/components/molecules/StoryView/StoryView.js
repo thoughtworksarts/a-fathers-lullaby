@@ -1,10 +1,9 @@
 import React from 'react'
 import './StoryView.css'
 
-let month; 
-let day;
-let year;
-
+let month
+let day
+let year
 
 const StoryView = props => {
   let speakingAbout
@@ -16,9 +15,9 @@ const StoryView = props => {
   }
 
   const audioPlayerSelected = () => {
-    let minutes = Math.floor(props.story.audio_length_in_seconds / 60)
-    let seconds = Math.trunc(props.story.audio_length_in_seconds - (minutes * 60))
-    parseDate(props.story.created);
+    const minutes = Math.floor(props.story.audio_length_in_seconds / 60)
+    const seconds = Math.trunc(props.story.audio_length_in_seconds - (minutes * 60))
+    parseDate(props.story.created)
     console.log(props.story)
     props.story.tag_ids.forEach((currentStoryTag) => {
       if (currentStoryTag === 273) {
@@ -34,25 +33,23 @@ const StoryView = props => {
       }
     })
 
-    
-
     return (
-        <div className='story-meta-data'>
-          <div className='current-story-title'>
+      <div className='story-meta-data'>
+        <div className='current-story-title'>
             Current Story Details
-          </div>
-          <div> 
+        </div>
+        <div>
           Story #{props.story.id}
           <br />
           Duration: {minutes}:{seconds < 10 ? '0' + seconds : seconds}
           <br />
           Recorded on {month}/{day}/{year}
-          </div>
-          <div> 
-          Responding to the following prompt: 
-          {speakingAbout}
-          </div>
         </div>
+        <div>
+          Responding to the following prompt:
+          {speakingAbout}
+        </div>
+      </div>
     )
   }
 
