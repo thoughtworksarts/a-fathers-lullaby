@@ -1,10 +1,19 @@
 .StoryView{
-    z-index: 100;
+    z-index: 0;
     align-self: right;
-    background-color: white;
+    background-color: #f2f3f5;
     display: flex;
     flex: 1;
     width: 35%;
+    min-width: 500px;
+    max-width: 700px;
+
+    max-height: 500px;
+    min-height: 500px;
+    justify-self: right;
+    right: 7em;
+    top: 5em;
+    position: absolute;
 }
 
 .story-meta-data {
@@ -12,7 +21,9 @@
     justify-content: space-around;
     flex-direction: column;
     width: 100%;
-    min-width: 1100px;
+    /* background-color: #f2f3f5; */
+    padding-left: 15px;
+    padding-top: 15px;
 }
 
 .StoryView p {
@@ -26,12 +37,23 @@
 }
 
 .StoryView .click-story-msg {
-    border: solid #929292 3px; 
-    font-size: 1em;
-    z-index: 5;
+    font-size: 1.5em;
+    font-weight: bold;
     width: 40em;
+    /* background-color: #f2f3f5; */
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+
   }
 
 .StoryView .current-story-title {
       font-weight: bold;
+      font-size: 1.5em;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+}
+
+.StoryView .story-info {
+    margin-bottom: 20px;
 }

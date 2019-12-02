@@ -38,15 +38,18 @@ const StoryView = props => {
         <div className='current-story-title'>
             Current Story Details
         </div>
-        <div>
+        <div className='story-info'>
           Story #{props.story.id}
-          <br />
+        </div>
+        <div className='story-info'>
           Duration: {minutes}:{seconds < 10 ? '0' + seconds : seconds}
-          <br />
+        </div>
+        <div className='story-info'>
           Recorded on {month}/{day}/{year}
         </div>
-        <div>
+        <div className='story-info'>
           Responding to the following prompt:
+          <br />
           {speakingAbout}
         </div>
       </div>
@@ -55,10 +58,8 @@ const StoryView = props => {
 
   const audioPlayerUnselected = () => {
     return (
-      <div>
-        <div className='click-story-msg'>
-          <p>Click a story to listen</p>
-        </div>
+      <div className='click-story-msg'>
+        Click a story to listen
       </div>
     )
   }

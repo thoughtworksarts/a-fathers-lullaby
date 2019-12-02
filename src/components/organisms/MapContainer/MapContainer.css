@@ -1,22 +1,13 @@
 .MapContainer {
     margin: auto;
-    width: 90%;
+    width: 90vw;
 }
 
 .MapContainer .Map {
   position: absolute; 
   justify-self: left;
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 900px;
+  max-height: 500px;
+  min-height: 500px;
   top: 5em;
-}
-
-.MapContainer .StoryView {
-  justify-self: right;
-  align-self:right;
-  max-width: 50vw;
-  max-height: 50vh;
-  right: 7em;
-  top: 5em;
-  position: absolute;
 }
