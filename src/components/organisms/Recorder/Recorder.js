@@ -10,53 +10,39 @@ import './Recorder.css'
 const Recorder = () => {
   const [isRecording, setIsRecording] = useState(false)
   const [blobURL, setBlobURL] = useState('')
-  const [isBlocked, setIsBlocked] = useState(false)
   const [buttonImg, setButtonImg] = useState(recImg)
   const [wavesurferInput, setWavesurferInput] = useState()
+  const [Mp3Recorder] = useState(new MicRecorder({ bitRate: 128 }))
 
   useEffect(() => {
-    /* This might need to get wrapped in an if statment depending on behavior */
-    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-      .then(function (stream) {
-        /* use the stream */
-        console.log('Permission Granted')
-        // Set state to is blocked to
-      })
-      .catch(function (err) {
-        /* handle the error */
-        if (err) console.log(err.stack)
-        console.log('Permission Denied')
-        // Set state to is blocked to true
-        setIsBlocked(true)
-      })
-
-    if (blobURL !== '' && !isRecording) {
-      displayRecording()
-    }
-
-    changeImgFunc()
-  })
-
-  const changeImgFunc = () => {
     if (!isRecording && blobURL === '') {
       setButtonImg(recImg)
-    } else if (isRecording) {
+    } 
+    else if (isRecording) {
       setButtonImg(stopImg)
-      start()
-    } else {
+      
+    } 
+    else {
       setButtonImg(playImg)
     }
-  }
+  
+  }, [isRecording, blobURL])
 
-  const Mp3Recorder = new MicRecorder({ bitRate: 128 })
+  useEffect(() => {
+    if(!Mp3Recorder.activeStream)
+       displayLiveAudio() 
+  
+  }, [Mp3Recorder])
 
+
+  /* MP3 Recodring Functionality */
+
+  /**
+   * 
+   */
   const start = () => {
-    if (isBlocked) {
-      console.log('Permission Denied')
-    } else {
       Mp3Recorder
         .start()
-        .then(() => displayLiveAudio())
         .then(() => {
           wavesurferInput.microphone.on('deviceReady', function (stream) {
             console.log('Device ready!', stream)
@@ -67,9 +53,11 @@ const Recorder = () => {
           wavesurferInput.microphone.start()
         })
         .catch((e) => console.error(e))
-    }
   }
 
+  /**
+   * 
+   */
   const stop = () => {
     Mp3Recorder
       .stop()
@@ -77,11 +65,17 @@ const Recorder = () => {
       .then(([buffer, blob]) => {
         const blobURL = URL.createObjectURL(blob)
         setBlobURL(blobURL)
+        displayRecordedAudio(blobURL)
       })
-      .then(() => { wavesurferInput.microphone.stopDevice() })
+      .then(() => wavesurferInput.microphone.stopDevice() )
       .catch((e) => console.log(e))
   }
 
+  /* Wavesurfer audio display functionality */
+
+  /**
+   * This function displays audio
+   */
   const displayLiveAudio = () => {
     const container = document.getElementById('inputmeter')
     const inputMeterElement = container.querySelectorAll('wave')
@@ -100,7 +94,11 @@ const Recorder = () => {
     }
   }
 
-  const displayRecording = () => {
+  /**
+   * 
+   * @param {*} blob 
+   */
+  const displayRecordedAudio = (blob) => {
     const container = document.getElementById('waveform')
     const waveElement = container.querySelectorAll('wave')
     if (!waveElement.length) {
@@ -112,7 +110,7 @@ const Recorder = () => {
         barWidth: 2,
         barHeight: 1.2
       })
-      wavesurfer.load(blobURL)
+      wavesurfer.load(blob)
       wavesurfer.on('ready', function () {
         console.log('wavesurfer ready to display waveform')
       })
@@ -122,14 +120,22 @@ const Recorder = () => {
   return (
 
     <div>
-
       <img
         className='mainSpeakingButton' src={buttonImg} alt='Record Button' onClick={() => {
-          if (isRecording) stop()
+          if (isRecording){
+            stop()
+          } 
+          else {
+            start()
+          }
           setIsRecording(!isRecording)
         }}
       />
-      <div id='waveform'> </div>
+      { /*
+        (blobURL != null) ? <div id='waveform' /> : <div id='inputmeter' />
+        */
+      }
+      <div id='waveform' /> 
       <div id='inputmeter' />
     </div>
 
