@@ -123,7 +123,6 @@ const StoryPlaylist = (props) => {
           <tr>
             <th><img src={numberIcon} className='number-icon' alt='number icon' /></th>
             <th>Title</th>
-            <th>Location</th>
             <th><img src={clockIcon} className='clock-icon' alt='clock icon' /></th>
           </tr>
         </thead>
