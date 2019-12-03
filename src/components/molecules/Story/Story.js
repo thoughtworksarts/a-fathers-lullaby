@@ -9,8 +9,6 @@ const Story = props => {
     <tr className='Story' onClick={() => props.clickHandler(props.story)}>
       <td width='10%'>{props.arrayIndex}</td>
       <td width='10%'>Story {props.story.id}</td>
-      {/* TODO: Change location to reflect story latitude and longitude with a geocoding API */}
-      <td width='10%'>Boston, MA</td>
       <td width='10%'>{minutes}:{seconds < 10 ? '0' + seconds : seconds}</td>
     </tr>
   )
