@@ -5,6 +5,8 @@ import MicrophonePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.microphone.js
 import recImg from '../../../assets/record.png'
 import stopImg from '../../../assets/stop.png'
 import playImg from '../../../assets/play.png'
+import rerecordImg from '../../../assets/re-record.png'
+import uploadImg from '../../../assets/upload.png'
 import './Recorder.css'
 
 const Recorder = () => {
@@ -14,37 +16,43 @@ const Recorder = () => {
   const [Mp3Recorder] = useState(new MicRecorder({ bitRate: 128 }))
 
   useEffect(() => {
-    displayLiveAudio()
-  }, [isRecording])
+    if(!isRecording)
+      displayLiveAudio()
+  })
 
   const setCurrentButtonRow = () => {
     let currentButtonRow
     if (!isRecording && !blobURL) {
       currentButtonRow =
-        <div className='row'>
+        <div className='row d-flex justify-content-around'>
           {/* record button */}
           <img
             className='mainSpeakingButton' src={recImg} alt='Record Button' onClick={() => {
               start()
-              setIsRecording(!isRecording)
+              setIsRecording(true)
             }}
           />
         </div>
     } else if (isRecording && !blobURL) {
       currentButtonRow =
-        <div className='row'>
+        <div className='row d-flex justify-content-around'>
           {/* stop button */}
           <img
             className='mainSpeakingButton' src={stopImg} alt='Stop Button' onClick={() => {
               stop()
-              setIsRecording(!isRecording)
+              setIsRecording(false)
             }}
           />
         </div>
     } else {
       currentButtonRow =
-        <div className='row'>
+        <div className='row d-flex justify-content-around'>
           {/* rerecord button */}
+          <img
+            className='mainSpeakingButton' src={rerecordImg} alt='Rerecord Button' onClick={() => {
+              resetRecording()
+            }}
+          />
           {/* play button */}
           <img
             className='mainSpeakingButton' src={playImg} alt='Play Button' onClick={() => {
@@ -52,6 +60,11 @@ const Recorder = () => {
             }}
           />
           {/* upload button */}
+          <img
+            className='mainSpeakingButton' src={uploadImg} alt='Upload Button' onClick={() => {
+
+            }}
+          />
         </div>
     }
     return currentButtonRow
@@ -139,6 +152,24 @@ const Recorder = () => {
     }
   }
 
+  /**
+   * Remove our wave elements from the DOM so we can 
+   * rerecord.
+   */
+  const resetRecording = () => {
+    const inputMeterContainer = document.getElementById('inputmeter')
+    const inputMeterElement = inputMeterContainer.querySelectorAll('wave')
+
+    inputMeterContainer.removeChild(inputMeterElement[0]);
+
+    const waveContainer = document.getElementById('waveform')
+    const waveElement = waveContainer.querySelectorAll('wave')
+
+    waveContainer.removeChild(waveElement[0]);
+
+    setBlobURL('');
+  }
+  
   return (
     <div>
       {setCurrentButtonRow()}
