@@ -54,7 +54,8 @@ const Recorder = () => {
             }}
           />
           {/* play button */}
-          <img id="playButton"
+          <img
+            id='playButton'
             className='mainSpeakingButton' src={playImg} alt='Play Button' onClick={() => {
               waveSurferRecordedAudio.play()
             }}
@@ -137,10 +138,10 @@ const Recorder = () => {
   const displayRecordedAudio = (blob) => {
     const container = document.getElementById('waveform')
     const waveElement = container.querySelectorAll('wave')
-    
+
     const inputMeterContainer = document.getElementById('inputmeter')
-    inputMeterContainer.style.display = "none"
-    
+    inputMeterContainer.style.display = 'none'
+
     if (!waveElement.length) {
       const wavesurfer = Wavesurfer.create({
         container: '#waveform',
@@ -168,7 +169,7 @@ const Recorder = () => {
     const inputMeterElement = inputMeterContainer.querySelectorAll('wave')
 
     inputMeterContainer.removeChild(inputMeterElement[0])
-    inputMeterContainer.style.display = "block"
+    inputMeterContainer.style.display = 'block'
     const waveContainer = document.getElementById('waveform')
     const waveElement = waveContainer.querySelectorAll('wave')
 
@@ -182,7 +183,7 @@ const Recorder = () => {
       {setCurrentButtonRow()}
       <div id='inputmeter' />
       <div id='waveform' />
-     
+
     </div>
   )
 }
