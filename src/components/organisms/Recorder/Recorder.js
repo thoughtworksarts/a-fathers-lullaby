@@ -51,8 +51,7 @@ const Recorder = () => {
           <img
             className='mainSpeakingButton' src={rerecordImg} alt='Rerecord Button' onClick={() => {
               resetRecording()
-              if(waveSurferRecordedAudio.isPlaying())
-                waveSurferRecordedAudio.stop()
+              if (waveSurferRecordedAudio.isPlaying()) { waveSurferRecordedAudio.stop() }
             }}
           />
           {/* play button */}
