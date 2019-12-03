@@ -15,6 +15,7 @@ const StoryPlaylist = (props) => {
 
   const clickHandler = (story) => {
     setCurrentStory(story)
+    props.updateCurrentStory(story)
   }
 
   const addPlayingClassToStory = useCallback(() => {
@@ -37,6 +38,7 @@ const StoryPlaylist = (props) => {
       return null
     } else {
       setCurrentStory(props.stories[nextStoryIndex])
+      props.updateCurrentStory(props.stories[nextStoryIndex])
     }
   }
 

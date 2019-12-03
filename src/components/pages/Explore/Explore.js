@@ -42,10 +42,10 @@ const Explore = () => {
   return (
     <div className='ExplorePage'>
       <div>
-        <MapContainer stories={stories} parentCallback={updateCurrentStory} tags={tags} />
+        <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} />
       </div>
       <div className='ExplorePlaylistContainer'>
-        <StoryPlaylist className='ExplorePlaylist' stories={stories} currentStory={currentStory} />
+        <StoryPlaylist className='ExplorePlaylist' stories={stories} currentStory={currentStory} updateCurrentStory={updateCurrentStory} />
       </div>
     </div>
   )
