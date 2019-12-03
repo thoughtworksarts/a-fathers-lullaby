@@ -12,7 +12,8 @@ import './Recorder.css'
 const Recorder = () => {
   const [isRecording, setIsRecording] = useState(false)
   const [blobURL, setBlobURL] = useState('')
-  const [wavesurferInput, setWavesurferInput] = useState()
+  const [wavesurferInputMeter, setWavesurferInputMeter] = useState()
+  const [waveSurferRecordedAudio, setWaveSurferRecordedAudio] = useState()
   const [Mp3Recorder] = useState(new MicRecorder({ bitRate: 128 }))
 
   useEffect(() => {
@@ -53,9 +54,9 @@ const Recorder = () => {
             }}
           />
           {/* play button */}
-          <img
+          <img id="playButton"
             className='mainSpeakingButton' src={playImg} alt='Play Button' onClick={() => {
-
+              waveSurferRecordedAudio.play()
             }}
           />
           {/* upload button */}
@@ -69,7 +70,7 @@ const Recorder = () => {
     return currentButtonRow
   }
 
-  /* MP3 Recodring Functionality */
+  /* MP3 Recording Functionality */
 
   /**
    *
@@ -78,13 +79,14 @@ const Recorder = () => {
     Mp3Recorder
       .start()
       .then(() => {
-        wavesurferInput.microphone.on('deviceReady', function (stream) {
+        console.log(wavesurferInputMeter)
+        wavesurferInputMeter.microphone.on('deviceReady', function (stream) {
           console.log('Device ready!', stream)
         })
-        wavesurferInput.microphone.on('deviceError', function (code) {
+        wavesurferInputMeter.microphone.on('deviceError', function (code) {
           console.warn('Device error: ' + code)
         })
-        wavesurferInput.microphone.start()
+        wavesurferInputMeter.microphone.start()
       })
       .catch((e) => console.error(e))
   }
@@ -101,7 +103,7 @@ const Recorder = () => {
         setBlobURL(blobURL)
         displayRecordedAudio(blobURL)
       })
-      .then(() => wavesurferInput.microphone.stopDevice())
+      .then(() => wavesurferInputMeter.microphone.stopDevice())
       .catch((e) => console.log(e))
   }
 
@@ -114,7 +116,7 @@ const Recorder = () => {
     const container = document.getElementById('inputmeter')
     const inputMeterElement = container.querySelectorAll('wave')
     if (!inputMeterElement.length) {
-      setWavesurferInput(Wavesurfer.create({
+      setWavesurferInputMeter(Wavesurfer.create({
         container: '#inputmeter',
         waveColor: 'red',
         height: 128,
@@ -135,6 +137,10 @@ const Recorder = () => {
   const displayRecordedAudio = (blob) => {
     const container = document.getElementById('waveform')
     const waveElement = container.querySelectorAll('wave')
+    
+    const inputMeterContainer = document.getElementById('inputmeter')
+    inputMeterContainer.style.display = "none"
+    
     if (!waveElement.length) {
       const wavesurfer = Wavesurfer.create({
         container: '#waveform',
@@ -148,6 +154,8 @@ const Recorder = () => {
       wavesurfer.on('ready', function () {
         console.log('wavesurfer ready to display waveform')
       })
+
+      setWaveSurferRecordedAudio(wavesurfer)
     }
   }
 
@@ -160,7 +168,7 @@ const Recorder = () => {
     const inputMeterElement = inputMeterContainer.querySelectorAll('wave')
 
     inputMeterContainer.removeChild(inputMeterElement[0])
-
+    inputMeterContainer.style.display = "block"
     const waveContainer = document.getElementById('waveform')
     const waveElement = waveContainer.querySelectorAll('wave')
 
@@ -172,12 +180,9 @@ const Recorder = () => {
   return (
     <div>
       {setCurrentButtonRow()}
-      {/*
-        (blobURL != null) ? <div id='waveform' /> : <div id='inputmeter' />
-        */
-      }
       <div id='inputmeter' />
       <div id='waveform' />
+     
     </div>
   )
 }
