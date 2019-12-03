@@ -51,13 +51,17 @@ const Recorder = () => {
           <img
             className='mainSpeakingButton' src={rerecordImg} alt='Rerecord Button' onClick={() => {
               resetRecording()
+              if(waveSurferRecordedAudio.isPlaying())
+                waveSurferRecordedAudio.stop()
             }}
           />
           {/* play button */}
           <img
-            id='playButton'
-            className='mainSpeakingButton' src={playImg} alt='Play Button' onClick={() => {
-              waveSurferRecordedAudio.play()
+            id='playPauseButton'
+            className='mainSpeakingButton' src={playImg} alt='Play/Pause Button' onClick={() => {
+              waveSurferRecordedAudio.playPause()
+              const playPauseButton = document.getElementById('playPauseButton')
+              playPauseButton.src = waveSurferRecordedAudio.isPlaying() ? stopImg : playImg
             }}
           />
           {/* upload button */}
