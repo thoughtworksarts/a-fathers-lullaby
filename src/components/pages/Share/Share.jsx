@@ -4,7 +4,7 @@ import './Share.css'
 
 const Share = () => {
   return (
-    <div>
+    <div className ="container">
       <div className='SharePage'>
         <div className='recordingTitle'>
           Together we create a rich audio landscape of <span className='highlight'>memories and stories</span>. Prepare for your recording and build our shared experience.

@@ -10,31 +10,62 @@ import './Recorder.css'
 const Recorder = () => {
   const [isRecording, setIsRecording] = useState(false)
   const [blobURL, setBlobURL] = useState('')
-  const [buttonImg, setButtonImg] = useState(recImg)
+  // const [buttonImgRow, setButtonImgRow] = useState(recImg)
   const [wavesurferInput, setWavesurferInput] = useState()
   const [Mp3Recorder] = useState(new MicRecorder({ bitRate: 128 }))
 
   useEffect(() => {
-    if (!isRecording && blobURL === '') {
-      setButtonImg(recImg)
-    } 
-    else if (isRecording) {
-      setButtonImg(stopImg)
-      
-    } 
-    else {
-      setButtonImg(playImg)
-    }
-  
+    
   }, [isRecording, blobURL])
 
   useEffect(() => {
     if(!Mp3Recorder.activeStream)
-       displayLiveAudio() 
-  
+        displayLiveAudio()
   }, [Mp3Recorder])
-
-
+  
+  const setCurrentButtonRow = () => {
+    let currentButtonRow
+    if (!isRecording && !blobURL) {
+      currentButtonRow =
+        <div className='row'>
+          {/* record button */}
+          <img
+          className='mainSpeakingButton' src={recImg} alt='Record Button' onClick={() => {
+            console.log("we should be recording")
+            start()
+            setIsRecording(!isRecording)
+          }}
+          />
+        </div>
+    } 
+    else if (isRecording && !blobURL){
+      currentButtonRow =
+        <div className='row'>
+          {/* stop button */}
+          <img
+          className='mainSpeakingButton' src={stopImg} alt='Stop Button' onClick={() => {
+            stop()
+            setIsRecording(!isRecording)
+          }}
+          />
+        </div>
+    }
+    else {
+      currentButtonRow =
+        <div className='row'>
+          {/* rerecord button */}
+          {/* play button */}
+          <img
+          className='mainSpeakingButton' src={playImg} alt='Play Button' onClick={() => {
+  
+          }}
+          />
+          {/* upload button */}
+        </div>
+    }
+    return currentButtonRow
+  }
+  
   /* MP3 Recodring Functionality */
 
   /**
@@ -53,6 +84,7 @@ const Recorder = () => {
           wavesurferInput.microphone.start()
         })
         .catch((e) => console.error(e))
+        
   }
 
   /**
@@ -77,6 +109,7 @@ const Recorder = () => {
    * This function displays audio
    */
   const displayLiveAudio = () => {
+    console.log('display live audio')
     const container = document.getElementById('inputmeter')
     const inputMeterElement = container.querySelectorAll('wave')
     if (!inputMeterElement.length) {
@@ -119,24 +152,17 @@ const Recorder = () => {
 
   return (
 
-    <div>
-      <img
-        className='mainSpeakingButton' src={buttonImg} alt='Record Button' onClick={() => {
-          if (isRecording){
-            stop()
-          } 
-          else {
-            start()
-          }
-          setIsRecording(!isRecording)
-        }}
-      />
+    <div className = "row">
+    
+      {setCurrentButtonRow()}
       { /*
         (blobURL != null) ? <div id='waveform' /> : <div id='inputmeter' />
         */
       }
-      <div id='waveform' /> 
-      <div id='inputmeter' />
+      <div id='inputmeter' className = "row"/>
+      <div id='waveform' className = "row"/> 
+      {displayLiveAudio()}
+      
     </div>
 
   )
