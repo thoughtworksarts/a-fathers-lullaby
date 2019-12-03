@@ -16,8 +16,7 @@ const Recorder = () => {
   const [Mp3Recorder] = useState(new MicRecorder({ bitRate: 128 }))
 
   useEffect(() => {
-    if(!isRecording)
-      displayLiveAudio()
+    if (!isRecording) { displayLiveAudio() }
   })
 
   const setCurrentButtonRow = () => {
@@ -153,23 +152,23 @@ const Recorder = () => {
   }
 
   /**
-   * Remove our wave elements from the DOM so we can 
+   * Remove our wave elements from the DOM so we can
    * rerecord.
    */
   const resetRecording = () => {
     const inputMeterContainer = document.getElementById('inputmeter')
     const inputMeterElement = inputMeterContainer.querySelectorAll('wave')
 
-    inputMeterContainer.removeChild(inputMeterElement[0]);
+    inputMeterContainer.removeChild(inputMeterElement[0])
 
     const waveContainer = document.getElementById('waveform')
     const waveElement = waveContainer.querySelectorAll('wave')
 
-    waveContainer.removeChild(waveElement[0]);
+    waveContainer.removeChild(waveElement[0])
 
-    setBlobURL('');
+    setBlobURL('')
   }
-  
+
   return (
     <div>
       {setCurrentButtonRow()}
