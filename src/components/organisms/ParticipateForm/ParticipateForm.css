@@ -1,0 +1,20 @@
+.ParticipateForm {
+    width: 90vw;
+    top: 130vw;
+    position: absolute;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.ParticipateForm .InstructionBold {
+    font-weight: bold;
+    font-size: 1.8em;
+    padding: 10px;
+    position: relative;
+}
+
+.ParticipateForm .Instruction{
+    font-size: 1.5em;
+    padding: 5px;
+    position: relative;
+}

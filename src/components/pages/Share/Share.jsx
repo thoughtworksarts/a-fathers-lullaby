@@ -1,22 +1,24 @@
 import React from 'react'
-import { Recorder } from 'organisms'
+import { Recorder, ParticipateForm, ShareLocation } from 'organisms'
 import './Share.css'
 
 const Share = () => {
   return (
-    <div className='container'>
-      <div className='SharePage'>
-        <div className='recordingTitle'>
-          Together we create a rich audio landscape of <span className='highlight'>memories and stories</span>. Prepare for your recording and build our shared experience.
-        </div>
-
-        <div className='recordingInstruction'>
-          Please <span className='highlight'>answer the following questions</span> to help listeners discover your contribution.
-        </div>
-
-        <Recorder />
+    <div className='SharePage'>
+      <div className='recordingTitle'>
+          When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
       </div>
+      <div>
+        <ShareLocation />
 
+      </div>
+      <div>
+
+        <ParticipateForm />
+      </div>
+      <div>
+        <Recorder className='RecorderContainer' />
+      </div>
     </div>
   )
 }
