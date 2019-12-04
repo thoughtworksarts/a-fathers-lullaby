@@ -5,6 +5,8 @@ import Sidepanel from './Sidepanel'
 import MapContainer from './MapContainer'
 import Recorder from './Recorder'
 import StoryPlaylist from './StoryPlaylist'
+import ParticipateForm from './ParticipateForm'
+import ShareLocation from './ShareLocation'
 
 export {
   Header,
@@ -13,5 +15,7 @@ export {
   Sidepanel,
   MapContainer,
   Recorder,
-  StoryPlaylist
+  StoryPlaylist, 
+  ParticipateForm,
+  ShareLocation
 }
