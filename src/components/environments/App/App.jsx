@@ -17,6 +17,7 @@ export const App = (props) => {
       <Switch>
         <Route exact path={['/', '/about']} component={About} />
         <Route path='/share' component={Share} />
+        <Route path='/explore/:id' component={Explore} />
         <Route path='/explore' component={Explore} />
         <Route path='/library/:id' component={Library} />
         <Route path='/library' component={Library} />
