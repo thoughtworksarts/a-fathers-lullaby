@@ -1,9 +1,9 @@
 .ParticipateForm {
     width: 90vw;
-    top: 130vw;
+    /* top: 130vw;
     position: absolute;
-    /* display: flex;
-    flex-direction: column; */
+    z-index: 1; */
+    pointer-events: none;
 }
 
 .ParticipateForm .InstructionBold {

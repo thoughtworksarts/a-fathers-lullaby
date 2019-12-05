@@ -3,7 +3,6 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import './ShareLocation.css'
 
 const ShareLocation = (props) => {
-  // const [location, setLocation] = useState()
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
   const [locationMarker, setLocationMarker] = useState(null)
@@ -35,7 +34,7 @@ const ShareLocation = (props) => {
       <Map
         google={props.google}
         zoom={11.5}
-        className='Map'
+        className='map'
         initialCenter={{ lat: 42.3601, lng: -71.05 }}
         onClick={(t, map, event) => locationHandler(event, map)}
       >{locationMarker}

@@ -4,21 +4,25 @@ import './Share.css'
 
 const Share = () => {
   return (
+
     <div className='SharePage'>
+
       <div className='recordingTitle'>
           When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
       </div>
-      <div>
+
+      <div className='shareLocation'>
         <ShareLocation />
-
       </div>
-      <div>
 
+      <div className='participateForm'>
         <ParticipateForm />
       </div>
-      <div>
-        <Recorder className='RecorderContainer' />
+
+      <div className='container'>
+        <Recorder />
       </div>
+
     </div>
   )
 }

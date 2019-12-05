@@ -28,10 +28,6 @@ const ParticipateForm = (props) => {
           options={perspectiveOptions}
         />
       </div>
-
-      <div className='InstructionBold'>Create your Entry.</div>
-      <div className='Instruction'>You can record your voice now.</div>
-
     </div>
   )
 }

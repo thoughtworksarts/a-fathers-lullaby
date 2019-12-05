@@ -28,6 +28,7 @@ const Recorder = () => {
           {/* record button */}
           <img
             className='mainSpeakingButton' src={recImg} alt='Record Button' onClick={() => {
+              console.log('record')
               start()
               setIsRecording(true)
             }}
@@ -183,6 +184,8 @@ const Recorder = () => {
 
   return (
     <div>
+      <div className='InstructionBold'>Create your Entry.</div>
+      <div className='Instruction'>You can record your voice now.</div>
       {setCurrentButtonRow()}
       <div id='inputmeter' />
       <div id='waveform' />

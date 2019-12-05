@@ -1,16 +1,20 @@
-.ShareLocation .Map {
-    /* position: absolute;  */
-    /* justify-self: right; */
-    /* max-width: 900px;
-    max-height: 500px;
-    min-height: 500px; */
+/* NOTE: if use position absolute, cannot click on recorder. */
+.share-location {
+    /* position: relative; */
+    
 }
 
-
-.share-location {
-    position: absolute;
+.map{
     max-width: 900px;
     max-height: 500px;
     min-width: 900px;
     min-height: 500px;
+    z-index: 0;
+}
+
+.InstructionBold {
+    font-weight: bold;
+    font-size: 1.8em;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
