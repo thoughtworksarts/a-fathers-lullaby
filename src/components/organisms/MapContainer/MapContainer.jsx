@@ -21,18 +21,37 @@ const MapContainer = (props) => {
       scaledSize: new props.google.maps.Size(25, 25)
     }
 
+    const markerIconSelected = {
+      url: 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png',
+      scaledSize: new props.google.maps.Size(25, 25)
+    }
+
     return props.stories.map(story => {
-      return (
-        <Marker
-          key={story.id}
-          position={{
-            lat: story.latitude,
-            lng: story.longitude
-          }}
-          icon={markerIcon}
-          onClick={() => markerClickHandler(story)}
-          parentCallback={() => markerClickHandler(story)}
-        />)
+      if (story === currentStory) {
+        return (
+          <Marker
+            key={story.id}
+            position={{
+              lat: story.latitude,
+              lng: story.longitude
+            }}
+            icon={markerIconSelected}
+            onClick={() => markerClickHandler(story)}
+            parentCallback={() => markerClickHandler(story)}
+          />)
+      } else {
+        return (
+          <Marker
+            key={story.id}
+            position={{
+              lat: story.latitude,
+              lng: story.longitude
+            }}
+            icon={markerIcon}
+            onClick={() => markerClickHandler(story)}
+            parentCallback={() => markerClickHandler(story)}
+          />)
+      }
     })
   }
 
