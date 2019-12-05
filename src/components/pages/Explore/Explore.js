@@ -37,9 +37,7 @@ const Explore = () => {
   }, [])
 
   const updateCurrentStory = (newCurrentStory) => {
-    // remove color
     setCurrentStory(newCurrentStory)
-    // add color
   }
 
   return (

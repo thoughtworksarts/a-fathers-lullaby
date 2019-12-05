@@ -9,7 +9,7 @@ import rerecordImg from '../../../assets/re-record.png'
 import uploadImg from '../../../assets/upload.png'
 import './Recorder.css'
 
-const Recorder = () => {
+const Recorder = (props) => {
   const [isRecording, setIsRecording] = useState(false)
   const [blobURL, setBlobURL] = useState('')
   const [wavesurferInputMeter, setWavesurferInputMeter] = useState()
@@ -28,7 +28,6 @@ const Recorder = () => {
           {/* record button */}
           <img
             className='mainSpeakingButton' src={recImg} alt='Record Button' onClick={() => {
-              console.log('record')
               start()
               setIsRecording(true)
             }}
@@ -67,7 +66,10 @@ const Recorder = () => {
           {/* upload button */}
           <img
             className='mainSpeakingButton' src={uploadImg} alt='Upload Button' onClick={() => {
+              // pass up blob/wav up to parent
+              props.parentCallback(blobURL)
 
+              // pass button up to parent
             }}
           />
         </div>
@@ -84,7 +86,6 @@ const Recorder = () => {
     Mp3Recorder
       .start()
       .then(() => {
-        console.log(wavesurferInputMeter)
         wavesurferInputMeter.microphone.on('deviceReady', function (stream) {
           console.log('Device ready!', stream)
         })
@@ -157,7 +158,7 @@ const Recorder = () => {
       })
       wavesurfer.load(blob)
       wavesurfer.on('ready', function () {
-        console.log('wavesurfer ready to display waveform')
+        console.log('Wavesurfer ready to display waveform')
       })
 
       setWaveSurferRecordedAudio(wavesurfer)
