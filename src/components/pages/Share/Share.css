@@ -14,10 +14,9 @@
   padding-left: 2em;
 }
 .participateForm {
-  top: 73vw;
+  top: 65vw;
   position: absolute;
   z-index: 1;
-  pointer-events: none;
 }
 
 .highlight {

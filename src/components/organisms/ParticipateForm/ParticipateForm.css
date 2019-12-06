@@ -1,20 +1,40 @@
 .ParticipateForm {
     width: 90vw;
-    /* top: 130vw;
-    position: absolute;
-    z-index: 1; */
-    pointer-events: none;
 }
 
 .ParticipateForm .InstructionBold {
     font-weight: bold;
     font-size: 1.8em;
-    padding: 10px;
     position: relative;
+    padding-left: 5px;
 }
 
 .ParticipateForm .Instruction{
     font-size: 1.5em;
-    padding: 5px;
     position: relative;
+    padding-left: 5px;
+}
+
+.button-toolbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* height: 1000vh;
+    margin-bottom: 15px; */
+}
+
+.metadata-questions {
+    z-index: 10;
+    height: 40vh;
+}
+
+.meta-data-question {
+    margin-bottom: 15px;
+}
+
+
+.meta-data-instructions{
+    font-size: 1.25em;
+    margin-bottom: 8px;
+    padding: 5px;
 }
