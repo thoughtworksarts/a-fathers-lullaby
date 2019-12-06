@@ -4,13 +4,19 @@ import './Share.css'
 
 const Share = () => {
   const [recordedStoryURL, setRecordedStoryURL] = useState('')
-  const [latitude] = useState(1.0)
-  const [longitude] = useState(1.0)
+  const [latitude, setLatitude] = useState(1.0)
+  const [longitude, setLongitude] = useState(1.0)
   const [tags] = useState('')
 
   const updateRecordedStoryURL = (blobURL) => {
     setRecordedStoryURL(blobURL)
-    console.log('Recorded Story blob URL ' + recordedStoryURL)
+  }
+
+  const updateLatAndLong = (latitude, longitude) => {
+    setLatitude(latitude)
+    setLongitude(longitude)
+    console.log('latitude: ' + latitude)
+    console.log('longitude: ' + longitude)
   }
 
   useEffect(() => {
@@ -130,7 +136,7 @@ const Share = () => {
       </div>
 
       <div className='shareLocation'>
-        <ShareLocation />
+        <ShareLocation parentCallback={updateLatAndLong} />
       </div>
 
       <div className='participateForm'>

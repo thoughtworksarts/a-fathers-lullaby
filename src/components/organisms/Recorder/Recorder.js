@@ -66,10 +66,7 @@ const Recorder = (props) => {
           {/* upload button */}
           <img
             className='mainSpeakingButton' src={uploadImg} alt='Upload Button' onClick={() => {
-              // pass up blob/wav up to parent
               props.parentCallback(blobURL)
-
-              // pass button up to parent
             }}
           />
         </div>
