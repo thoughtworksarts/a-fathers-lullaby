@@ -1,32 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import './ShareLocation.css'
 
 const ShareLocation = (props) => {
-  const [latitude, setLatitude] = useState(0)
-  const [longitude, setLongitude] = useState(0)
   const [locationMarker, setLocationMarker] = useState(null)
 
   const locationHandler = (event, map) => {
     const lat = event.latLng.lat()
     const lng = event.latLng.lng()
 
-    console.log('Lat: ', lat)
-    console.log('Lng: ', lng)
-
     setLocationMarker(
       <Marker
         position={{ lat: lat, lng: lng }}
       />)
 
-    setLatitude(lat)
-    setLongitude(lng)
+    props.parentCallback(lat, lng)
   }
-
-  useEffect(() => {
-    console.log('UE Lat', latitude)
-    console.log('UE long', longitude)
-  })
 
   return (
     <div className='share-location'>

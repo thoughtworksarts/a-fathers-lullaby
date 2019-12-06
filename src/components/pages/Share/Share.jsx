@@ -4,13 +4,23 @@ import './Share.css'
 
 const Share = () => {
   const [recordedStoryURL, setRecordedStoryURL] = useState('')
-  const [latitude] = useState(1.0)
-  const [longitude] = useState(1.0)
+  const [latitude, setLatitude] = useState(1.0)
+  const [longitude, setLongitude] = useState(1.0)
   const [tags] = useState('')
 
   const updateRecordedStoryURL = (blobURL) => {
     setRecordedStoryURL(blobURL)
-    console.log('Recorded Story blob URL ' + recordedStoryURL)
+  }
+
+  const updateLatAndLong = (latitude, longitude) => {
+    setLatitude(latitude)
+    setLongitude(longitude)
+    console.log('latitude: ' + latitude)
+    console.log('longitude: ' + longitude)
+  }
+
+  const updateTags = (tags) => {
+    console.log(tags)
   }
 
   useEffect(() => {
@@ -123,24 +133,18 @@ const Share = () => {
   return (
 
     <div className='SharePage'>
-      {(recordedStoryURL !== '') ? <p>Recorded Story blob URL: {recordedStoryURL}</p> : <p>No recording</p>}
-
       <div className='recordingTitle'>
           When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
       </div>
-
       <div className='shareLocation'>
-        <ShareLocation />
+        <ShareLocation parentCallback={updateLatAndLong} />
       </div>
-
       <div className='participateForm'>
-        <ParticipateForm />
+        <ParticipateForm parentCallback={updateTags} />
       </div>
-
       <div className='container'>
         <Recorder parentCallback={updateRecordedStoryURL} />
       </div>
-
     </div>
   )
 }
