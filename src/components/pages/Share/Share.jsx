@@ -19,6 +19,10 @@ const Share = () => {
     console.log('longitude: ' + longitude)
   }
 
+  const updateTags = (tags) => {
+    console.log(tags)
+  }
+
   useEffect(() => {
     if (!recordedStoryURL) return
 
@@ -129,24 +133,18 @@ const Share = () => {
   return (
 
     <div className='SharePage'>
-      {(recordedStoryURL !== '') ? <p>Recorded Story blob URL: {recordedStoryURL}</p> : <p>No recording</p>}
-
       <div className='recordingTitle'>
           When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
       </div>
-
       <div className='shareLocation'>
         <ShareLocation parentCallback={updateLatAndLong} />
       </div>
-
       <div className='participateForm'>
-        <ParticipateForm />
+        <ParticipateForm parentCallback={updateTags} />
       </div>
-
       <div className='container'>
         <Recorder parentCallback={updateRecordedStoryURL} />
       </div>
-
     </div>
   )
 }

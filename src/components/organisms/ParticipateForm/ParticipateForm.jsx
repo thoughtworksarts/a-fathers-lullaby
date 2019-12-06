@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ButtonToolbar, Dropdown, DropdownButton } from 'react-bootstrap'
 import './ParticipateForm.css'
 
@@ -18,6 +18,10 @@ const ParticipateForm = (props) => {
     274: 'Parent',
     273: 'Sing a lullaby or song that reminds you of childhood.'
   }
+
+  useEffect(() => {
+    props.parentCallback([perspective, relationship, prompt])
+  }, [props, perspective, relationship, prompt])
 
   const perspectiveHandler = (key) => {
     setPerspective({ tag: key, string: tagToString[key] })
@@ -45,9 +49,7 @@ const ParticipateForm = (props) => {
               title={perspective.string}
               variant='secondary'
               id='dropdown-basic-button-perspective'
-
             >
-
               <Dropdown.Item eventKey='274' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Parent</Dropdown.Item>
               <Dropdown.Item eventKey='275' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Child</Dropdown.Item>
             </DropdownButton>
