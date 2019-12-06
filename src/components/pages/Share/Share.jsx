@@ -3,15 +3,18 @@ import { Recorder, ParticipateForm, ShareLocation } from 'organisms'
 import './Share.css'
 
 const Share = () => {
-  const [recordedStory, setRecordedStory] = useState('')
+  const [recordedStoryURL, setRecordedStoryURL] = useState('')
+  const [latitude] = useState(1.0)
+  const [longitude] = useState(1.0)
+  const [tags] = useState('')
 
-  const updateRecordedStory = (blobURL) => {
-    setRecordedStory(blobURL)
-    console.log('Recorded Story blob URL ' + recordedStory)
+  const updateRecordedStoryURL = (blobURL) => {
+    setRecordedStoryURL(blobURL)
+    console.log('Recorded Story blob URL ' + recordedStoryURL)
   }
 
   useEffect(() => {
-    if (!recordedStory) return
+    if (!recordedStoryURL) return
 
     /**
      * Step 1:
@@ -34,7 +37,10 @@ const Share = () => {
         processData: false,
         body: form
       }).then(res => res.json())
-        .then((res) => res.id)
+        .then((res) => {
+          const sessionId = res.id
+          return sessionId
+        })
     }
 
     /**
@@ -43,7 +49,7 @@ const Share = () => {
     * POST localhost:8888/api/2/envelopes/
     * Save the id returned
     */
-    const createEnvelope = (sessionId) =>
+    const createEnvelopeAndReturnId = (sessionId) =>
       fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}`, {
         method: 'POST',
         headers: {
@@ -52,21 +58,29 @@ const Share = () => {
         },
         processData: false,
         body: '{"session_id": ' + sessionId.toString() + '}'
-      })
-
-    getSessionId()
-      .then(sessionId => createEnvelope(sessionId)
-      )
-      .then((envelopeRes) => {
-        console.log(envelopeRes.json())
-      })
-      .catch(err => console.log(err))
+      }).then(res => res.json())
+        .then((res) => res.id)
 
     /**
      * Step 3:
      * Gather all the info and create a new Formdata class
      *
      */
+    const createFormData = (envelopeId) => {
+      return fetch(recordedStoryURL)
+        .then(r => r.blob())
+        .then(blob => blob.arrayBuffer())
+        .then(buffer => {
+          const formData = new FormData()
+
+          formData.append('latitude', latitude)
+          formData.append('longitude', longitude)
+          formData.append('file', buffer)
+          formData.append('tag_ids', tags)
+          formData.append('envelope_id', envelopeId)
+          return formData
+        })
+    }
 
     /**
     * Step 4:
@@ -76,12 +90,40 @@ const Share = () => {
     *
     * Validate response
     */
-  }, [recordedStory])
+    const uploadAudioRecording = (formData) => {
+      return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`
+        , {
+          method: 'POST',
+          headers: {
+            authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`
+          },
+          mimeType: 'multipart/form-data',
+          processData: false,
+          contentType: false,
+          body: formData
+
+        })
+    }
+
+    getSessionId()
+      .then(sessionId => createEnvelopeAndReturnId(sessionId))
+      .then(envelopeId => createFormData(envelopeId))
+      .then(form => {
+        console.log('file: ' + form.get('file'))
+        return uploadAudioRecording(form)
+      })
+      .then(res => {
+        console.log(res)
+        return res.json()
+      })
+      .then((res) => console.log(res))
+      .catch(err => console.log(err))
+  }, [recordedStoryURL, latitude, longitude, tags])
 
   return (
 
     <div className='SharePage'>
-      {(recordedStory !== '') ? <p>Recorded Story blob URL: {recordedStory}</p> : <p>No recording</p>}
+      {(recordedStoryURL !== '') ? <p>Recorded Story blob URL: {recordedStoryURL}</p> : <p>No recording</p>}
 
       <div className='recordingTitle'>
           When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
@@ -96,7 +138,7 @@ const Share = () => {
       </div>
 
       <div className='container'>
-        <Recorder parentCallback={updateRecordedStory} />
+        <Recorder parentCallback={updateRecordedStoryURL} />
       </div>
 
     </div>
