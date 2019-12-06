@@ -1,9 +1,3 @@
-/* NOTE: if use position absolute, cannot click on recorder. */
-.share-location {
-    /* position: relative; */
-    
-}
-
 .map{
     max-width: 900px;
     max-height: 500px;

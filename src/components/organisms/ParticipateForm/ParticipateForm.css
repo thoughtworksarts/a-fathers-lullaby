@@ -19,8 +19,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* height: 1000vh;
-    margin-bottom: 15px; */
+    width: 700px;
+}
+
+.btn {
+    width: 100%;
+    text-align: left;
+}
+
+a.dropdown-item {
+    width: 700px;
+    text-align: left;
+    z-index: 1000;
 }
 
 .metadata-questions {
@@ -31,7 +41,6 @@
 .meta-data-question {
     margin-bottom: 15px;
 }
-
 
 .meta-data-instructions{
     font-size: 1.25em;
