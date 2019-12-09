@@ -5,9 +5,13 @@ import './Library.css'
 
 const Library = () => {
   const [stories, setStories] = useState([])
-  const [currentStory] = useState('')
+  const [currentStory, setCurrentStory] = useState('')
 
   const { id } = useParams()
+
+  const updateCurrentStory = (newCurrentStory) => {
+    setCurrentStory(newCurrentStory)
+  }
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`, {
@@ -22,7 +26,7 @@ const Library = () => {
       .catch(err => console.log(err))
   }, [])
 
-  return <StoryPlaylist stories={stories} id={id} currentStory={currentStory} />
+  return <StoryPlaylist stories={stories} id={id} currentStory={currentStory} updateCurrentStory={updateCurrentStory} />
 }
 
 export default Library

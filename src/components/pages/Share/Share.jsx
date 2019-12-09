@@ -132,6 +132,11 @@ const Share = () => {
         })
     }
 
+    // To do:
+    // 1. Test Internal Server by using Postman to do a PATCH envelope and POST test asset 
+    // 2. Change BlobURL Buffer array --> make sure it's actually the audio in correct format
+    // 3. Make sure coordinates are going in project's accepted lat and longitude 
+
     getSessionId()
       .then(sessionId => createEnvelopeAndReturnId(sessionId))
       .then(envelopeId => createFormData(envelopeId))
@@ -148,7 +153,6 @@ const Share = () => {
   }, [recordedStoryURL, latitude, longitude, perspective, relationship, prompt])
 
   return (
-
     <div className='SharePage'>
       <div className='recordingTitle'>
           When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
