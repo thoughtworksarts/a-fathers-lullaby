@@ -104,7 +104,6 @@ const Share = () => {
           formData.append('tag_ids', perspective + ',' + relationship + ',' + prompt)
           formData.append('envelope_id', envelopeId)
           console.log(formData)
-          console.log(tags)
 
           return formData
         })
