@@ -51,7 +51,7 @@ const Share = () => {
      */
     const getSessionId = () => {
       const nav = window.navigator.userAgent
-      const form = '{"project_id": 1,"client_system": "' + nav.substring(0, 127) + '"}'
+      const form = '{"project_id": 25,"client_system": "' + nav.substring(0, 127) + '"}'
 
       return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_SESSIONS_URL}`, {
         method: 'POST',
@@ -84,65 +84,64 @@ const Share = () => {
         processData: false,
         body: '{"session_id": ' + sessionId.toString() + '}'
       }).then(res => res.json())
-        .then((res) => res.id)
+        .then((res) => { return { envelopeId: res.id, sessionId: sessionId } })
 
     /**
      * Step 3:
      * Gather all the info and create a new Formdata class
      *
      */
-    const createFormData = (envelopeId) => {
-      return fetch(recordedStoryURL)
-        .then(r => r.blob())
-        .then(blob => blob.arrayBuffer())
-        .then(buffer => {
-          const formData = new FormData()
+    const createFormData = (envelopeId, sessionId) => {
+      // return fetch(recordedStoryURL)
+      //   .then(r => r.blob())
+      //   .then(blob => blob.arrayBuffer())
+      //   .then(buffer => {
+      const formData = new FormData()
+      formData.append('latitude', latitude)
+      formData.append('longitude', longitude)
+      formData.append('file', new Blob(['this is a test'], { type: 'text/plain' }))
+      formData.append('tag_ids', perspective + ',' + relationship + ',' + prompt)
+      formData.append('session_id', sessionId.toString())
+      formData.append('project_id', '25')
+      formData.append('media_type', 'text')
 
-          formData.append('latitude', latitude)
-          formData.append('longitude', longitude)
-          formData.append('file', buffer)
-          formData.append('tag_ids', perspective + ',' + relationship + ',' + prompt)
-          formData.append('envelope_id', envelopeId)
-          console.log(formData)
+      // const rawform = `{"latitude": "42.34",
+      //         "longitude": "-71.04",
+      //         "file":"https://prod.roundware.com/rwmedia/20171109-121838-34734.mp3",
+      //         "project_id": "25",
+      //         "tag_ids": "280,278,275",
+      //         "media_type":"text",
+      //         "session_id": "${sessionId}"}`
 
-          return formData
-        })
+      return { form: formData, envelopeId: envelopeId }
     }
 
     /**
     * Step 4:
     * Update Envelope with Asset
     *
-    * PATCH localhost:8888/api/2/envelopes/:id/
-    *
     * Validate response
     */
-    const uploadAudioRecording = (formData) => {
-      return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ASSETS_URL}`
-        , {
-          method: 'POST',
+    const uploadAudioRecording = (formData, envelopeId) => {
+      return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}${envelopeId}`,
+        {
+          method: 'PATCH',
           headers: {
             authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`
+
           },
-          mimeType: 'multipart/form-data',
+          mimeType: 'application/json',
           processData: false,
           contentType: false,
-          body: formData
-
+          data: formData
         })
     }
 
-    // To do:
-    // 1. Test Internal Server by using Postman to do a PATCH envelope and POST test asset
-    // 2. Change BlobURL Buffer array --> make sure it's actually the audio in correct format
-    // 3. Make sure coordinates are going in project's accepted lat and longitude
-
     getSessionId()
       .then(sessionId => createEnvelopeAndReturnId(sessionId))
-      .then(envelopeId => createFormData(envelopeId))
-      .then(formData => {
-        console.log('file: ' + formData.get('file'))
-        return uploadAudioRecording(formData)
+      .then(ids => createFormData(ids.envelopeId, ids.sessionId))
+      .then(data => {
+        return uploadAudioRecording(data.form, data.envelopeId)
       })
       .then(res => {
         console.log(res)

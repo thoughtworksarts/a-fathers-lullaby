@@ -12,6 +12,7 @@ import './Recorder.css'
 const Recorder = (props) => {
   const [isRecording, setIsRecording] = useState(false)
   const [blobURL, setBlobURL] = useState('')
+  const [mp3file, setMp3file] = useState('')
   const [wavesurferInputMeter, setWavesurferInputMeter] = useState()
   const [waveSurferRecordedAudio, setWaveSurferRecordedAudio] = useState()
   const [Mp3Recorder] = useState(new MicRecorder({ bitRate: 128 }))
@@ -66,7 +67,8 @@ const Recorder = (props) => {
           {/* upload button */}
           <img
             className='mainSpeakingButton' src={uploadImg} alt='Upload Button' onClick={() => {
-              props.parentCallback(blobURL)
+              console.log('mp3 file: ' + mp3file)
+              props.parentCallback(mp3file)
             }}
           />
         </div>
@@ -102,6 +104,7 @@ const Recorder = (props) => {
       .stop()
       .getMp3()
       .then(([buffer, blob]) => {
+        setMp3file(blob)
         const blobURL = URL.createObjectURL(blob)
         setBlobURL(blobURL)
         displayRecordedAudio(blobURL)

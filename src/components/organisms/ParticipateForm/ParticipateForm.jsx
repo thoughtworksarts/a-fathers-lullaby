@@ -21,17 +21,17 @@ const ParticipateForm = (props) => {
 
   const perspectiveHandler = (key) => {
     setPerspective({ tag: key, string: tagToString[key] })
-    props.updatePerspective(tagToString[key])
+    props.updatePerspective(key.toString())
   }
 
   const relationshipHandler = (key) => {
     setRelationship({ tag: key, string: tagToString[key] })
-    props.updateRelationship(tagToString[key])
+    props.updateRelationship(key.toString())
   }
 
   const promptHandler = (key) => {
     setPrompt({ tag: key, string: tagToString[key] })
-    props.updatePrompt(tagToString[key])
+    props.updatePrompt(key.toString())
   }
 
   return (
