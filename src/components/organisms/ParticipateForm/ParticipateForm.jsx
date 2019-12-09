@@ -48,7 +48,7 @@ const ParticipateForm = (props) => {
               title={perspective.string}
               variant='secondary'
               id='dropdown-basic-button-perspective'
-              className="dropdown"
+              className='dropdown'
             >
               <Dropdown.Item eventKey='274' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Parent</Dropdown.Item>
               <Dropdown.Item eventKey='275' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Child</Dropdown.Item>
@@ -60,7 +60,7 @@ const ParticipateForm = (props) => {
               id='dropdown-basic-button-relationship'
               title={relationship.string}
               variant='secondary'
-              className="dropdown"
+              className='dropdown'
             >
               <Dropdown.Item eventKey='278' onSelect={(eventKey) => relationshipHandler(eventKey)}>I know someone incarcerated.</Dropdown.Item>
               <Dropdown.Item eventKey='279' onSelect={(eventKey) => relationshipHandler(eventKey)}>I do not know someone incarcerated.</Dropdown.Item>
@@ -72,7 +72,7 @@ const ParticipateForm = (props) => {
             <DropdownButton
               id='dropdown-basic-button-prompt' title={prompt.string}
               variant='secondary'
-              className="dropdown"
+              className='dropdown'
             >
               <Dropdown.Item eventKey='273' onSelect={(eventKey) => promptHandler(eventKey)}>Sing a lullaby or song that reminds you of childhood.</Dropdown.Item>
               <Dropdown.Item eventKey='272' onSelect={(eventKey) => promptHandler(eventKey)}>Share a memory or life story related to a lullaby. </Dropdown.Item>

@@ -6,20 +6,19 @@
     font-weight: bold;
     font-size: 1.8em;
     position: relative;
-    padding-left: 5px;
 }
 
 .ParticipateForm .Instruction{
     font-size: 1.5em;
     position: relative;
-    padding-left: 5px;
+    margin-bottom: 12px;
 }
 
 .button-toolbar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 700px;
+    width: 900px;
 }
 
 .btn {
@@ -27,8 +26,14 @@
     text-align: left;
 }
 
+.btn-secondary {
+    color: black !important;
+    background-color: #f2f3f5 !important;
+    border-color: #d3d3d3 !important;
+}
+
 a.dropdown-item {
-    width: 700px;
+    width: 900px;
     text-align: left;
     z-index: 1000;
 }
@@ -45,5 +50,6 @@ a.dropdown-item {
 .meta-data-instructions{
     font-size: 1.25em;
     margin-bottom: 8px;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

@@ -7,15 +7,18 @@
 .InstructionBold {
     font-weight: bold;
     font-size: 1.8em;
-    padding: 10px;
     position: relative;
 }
 
 .Instruction{
     font-size: 1.5em;
-    padding: 5px;
     position: sticky;
 }
 
 
+
+
+.justify-content-around {
+    width: 900px;
+}
 
