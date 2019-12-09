@@ -90,24 +90,25 @@ const Share = () => {
       //   .then(r => r.blob())
       //   .then(blob => blob.arrayBuffer())
       //   .then(buffer => {
+      console.log(recordedStoryURL)
       const formData = new FormData()
-      formData.append('latitude', latitude)
-      formData.append('longitude', longitude)
-      formData.append('file', new Blob(['this is a test'], { type: 'text/plain' }))
+      formData.append('latitude', latitude.toString())
+      formData.append('longitude', longitude.toString())
+      formData.append('file', recordedStoryURL)
       formData.append('tag_ids', perspective + ',' + relationship + ',' + prompt)
       formData.append('session_id', sessionId.toString())
       formData.append('project_id', '25')
-      formData.append('media_type', 'text')
+      formData.append('media_type', 'audio')
 
-      // const rawform = `{"latitude": "42.34",
-      //         "longitude": "-71.04",
-      //         "file":"https://prod.roundware.com/rwmedia/20171109-121838-34734.mp3",
-      //         "project_id": "25",
-      //         "tag_ids": "280,278,275",
-      //         "media_type":"text",
-      //         "session_id": "${sessionId}"}`
+      const rawform = `{"latitude": "42.34",
+              "longitude": "-71.04",
+              "file":"https://prod.roundware.com/rwmedia/20171109-121838-34734.mp3",
+              "project_id": "25",
+              "tag_ids": "280,278,275",
+              "media_type":"audio",
+              "session_id": "${sessionId}"}`
 
-      return { form: formData, envelopeId: envelopeId }
+      return { form: rawform, envelopeId: envelopeId }
     }
 
     /**
