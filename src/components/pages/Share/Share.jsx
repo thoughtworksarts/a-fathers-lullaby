@@ -7,7 +7,6 @@ const Share = () => {
   const [latitude, setLatitude] = useState(42.34)
   const [longitude, setLongitude] = useState(-71.04)
 
-  // Tags
   const [perspective, setPerspective] = useState('')
   const [relationship, setRelationship] = useState('')
   const [prompt, setPrompt] = useState('')
@@ -19,27 +18,22 @@ const Share = () => {
   const updateLatAndLong = (latitude, longitude) => {
     setLatitude(latitude)
     setLongitude(longitude)
-    console.log('Latitude: ' + latitude)
-    console.log('Longitude: ' + longitude)
   }
 
   const updatePerspective = (newPerspective) => {
     setPerspective(newPerspective)
-    console.log('Perspective: ' + perspective)
   }
 
   const updateRelationship = (newRelationship) => {
     setRelationship(newRelationship)
-    console.log('Relationship: ' + relationship)
   }
 
   const updatePrompt = (newPrompt) => {
     setPrompt(newPrompt)
-    console.log('Prompt: ' + prompt)
   }
 
   useEffect(() => {
-    if (!recordedStoryURL) return
+    if (!recordedStoryURL || !latitude || !longitude || !perspective || !relationship || !prompt) return
 
     /**
      * Step 1:
