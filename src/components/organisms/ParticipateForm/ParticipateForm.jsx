@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ButtonToolbar, Dropdown, DropdownButton } from 'react-bootstrap'
 import './ParticipateForm.css'
 
@@ -19,20 +19,19 @@ const ParticipateForm = (props) => {
     273: 'Sing a lullaby or song that reminds you of childhood.'
   }
 
-  useEffect(() => {
-    props.parentCallback([perspective, relationship, prompt])
-  }, [props, perspective, relationship, prompt])
-
   const perspectiveHandler = (key) => {
     setPerspective({ tag: key, string: tagToString[key] })
+    props.updatePerspective(tagToString[key])
   }
 
   const relationshipHandler = (key) => {
     setRelationship({ tag: key, string: tagToString[key] })
+    props.updateRelationship(tagToString[key])
   }
 
   const promptHandler = (key) => {
     setPrompt({ tag: key, string: tagToString[key] })
+    props.updatePrompt(tagToString[key])
   }
 
   return (

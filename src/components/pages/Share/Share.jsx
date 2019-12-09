@@ -4,9 +4,13 @@ import './Share.css'
 
 const Share = () => {
   const [recordedStoryURL, setRecordedStoryURL] = useState('')
-  const [latitude, setLatitude] = useState(1.0)
-  const [longitude, setLongitude] = useState(1.0)
-  const [tags] = useState('')
+  const [latitude, setLatitude] = useState(42.34)
+  const [longitude, setLongitude] = useState(-71.04)
+
+  // Tags
+  const [perspective, setPerspective] = useState('')
+  const [relationship, setRelationship] = useState('')
+  const [prompt, setPrompt] = useState('')
 
   const updateRecordedStoryURL = (blobURL) => {
     setRecordedStoryURL(blobURL)
@@ -15,12 +19,23 @@ const Share = () => {
   const updateLatAndLong = (latitude, longitude) => {
     setLatitude(latitude)
     setLongitude(longitude)
-    console.log('latitude: ' + latitude)
-    console.log('longitude: ' + longitude)
+    console.log('Latitude: ' + latitude)
+    console.log('Longitude: ' + longitude)
   }
 
-  const updateTags = (tags) => {
-    console.log(tags)
+  const updatePerspective = (newPerspective) => {
+    setPerspective(newPerspective)
+    console.log('Perspective: ' + perspective)
+  }
+
+  const updateRelationship = (newRelationship) => {
+    setRelationship(newRelationship)
+    console.log('Relationship: ' + relationship)
+  }
+
+  const updatePrompt = (newPrompt) => {
+    setPrompt(newPrompt)
+    console.log('Prompt: ' + prompt)
   }
 
   useEffect(() => {
@@ -86,8 +101,11 @@ const Share = () => {
           formData.append('latitude', latitude)
           formData.append('longitude', longitude)
           formData.append('file', buffer)
-          formData.append('tag_ids', tags)
+          formData.append('tag_ids', perspective + ',' + relationship + ',' + prompt)
           formData.append('envelope_id', envelopeId)
+          console.log(formData)
+          console.log(tags)
+
           return formData
         })
     }
@@ -118,9 +136,9 @@ const Share = () => {
     getSessionId()
       .then(sessionId => createEnvelopeAndReturnId(sessionId))
       .then(envelopeId => createFormData(envelopeId))
-      .then(form => {
-        console.log('file: ' + form.get('file'))
-        return uploadAudioRecording(form)
+      .then(formData => {
+        console.log('file: ' + formData.get('file'))
+        return uploadAudioRecording(formData)
       })
       .then(res => {
         console.log(res)
@@ -128,7 +146,7 @@ const Share = () => {
       })
       .then((res) => console.log(res))
       .catch(err => console.log(err))
-  }, [recordedStoryURL, latitude, longitude, tags])
+  }, [recordedStoryURL, latitude, longitude, perspective, relationship, prompt])
 
   return (
 
@@ -140,7 +158,7 @@ const Share = () => {
         <ShareLocation parentCallback={updateLatAndLong} />
       </div>
       <div className='participateForm'>
-        <ParticipateForm parentCallback={updateTags} />
+        <ParticipateForm updatePerspective={updatePerspective} updateRelationship={updateRelationship} updatePrompt={updatePrompt}/>
       </div>
       <div className='container'>
         <Recorder parentCallback={updateRecordedStoryURL} />
