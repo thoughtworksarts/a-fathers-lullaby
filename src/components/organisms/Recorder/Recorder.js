@@ -178,7 +178,6 @@ const Recorder = (props) => {
     const waveElement = waveContainer.querySelectorAll('wave')
 
     waveContainer.removeChild(waveElement[0])
-
     setBlobURL('')
   }
 
@@ -189,7 +188,6 @@ const Recorder = (props) => {
       {setCurrentButtonRow()}
       <div id='inputmeter' />
       <div id='waveform' />
-
     </div>
   )
 }
