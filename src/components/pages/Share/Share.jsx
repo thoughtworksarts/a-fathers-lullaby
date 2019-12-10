@@ -6,7 +6,6 @@ const Share = () => {
   const [recordedStoryURL, setRecordedStoryURL] = useState('')
   const [latitude, setLatitude] = useState(42.34)
   const [longitude, setLongitude] = useState(-71.04)
-
   const [perspective, setPerspective] = useState('')
   const [relationship, setRelationship] = useState('')
   const [prompt, setPrompt] = useState('')
@@ -69,7 +68,7 @@ const Share = () => {
     * Save the id returned
     */
     const createEnvelopeAndReturnId = (sessionId) =>
-      fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}`, {
+      fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}/`, {
         method: 'POST',
         headers: {
           authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`,
@@ -86,29 +85,16 @@ const Share = () => {
      *
      */
     const createFormData = (envelopeId, sessionId) => {
-      // return fetch(recordedStoryURL)
-      //   .then(r => r.blob())
-      //   .then(blob => blob.arrayBuffer())
-      //   .then(buffer => {
-      console.log(recordedStoryURL)
       const formData = new FormData()
       formData.append('latitude', latitude.toString())
       formData.append('longitude', longitude.toString())
-      formData.append('file', recordedStoryURL)
       formData.append('tag_ids', perspective + ',' + relationship + ',' + prompt)
+      formData.append('file', recordedStoryURL)
       formData.append('session_id', sessionId.toString())
       formData.append('project_id', '25')
       formData.append('media_type', 'audio')
 
-      const rawform = `{"latitude": "42.34",
-              "longitude": "-71.04",
-              "file":"https://prod.roundware.com/rwmedia/20171109-121838-34734.mp3",
-              "project_id": "25",
-              "tag_ids": "280,278,275",
-              "media_type":"audio",
-              "session_id": "${sessionId}"}`
-
-      return { form: rawform, envelopeId: envelopeId }
+      return { form: formData, envelopeId: envelopeId }
     }
 
     /**
@@ -118,17 +104,16 @@ const Share = () => {
     * Validate response
     */
     const uploadAudioRecording = (formData, envelopeId) => {
-      return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}${envelopeId}`,
+      return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}${envelopeId}/`,
         {
           method: 'PATCH',
           headers: {
             authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`
-
           },
-          mimeType: 'application/json',
+          mimeType: 'multipart/form-data',
           processData: false,
           contentType: false,
-          data: formData
+          body: formData
         })
     }
 
