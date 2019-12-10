@@ -3,11 +3,12 @@ import { Recorder, ParticipateForm, ShareLocation } from 'organisms'
 import './Share.css'
 
 const Share = () => {
-  const [latitude, setLatitude] = useState(42.34)
-  const [longitude, setLongitude] = useState(-71.04)
+  const [latitude, setLatitude] = useState('')
+  const [longitude, setLongitude] = useState('')
   const [perspective, setPerspective] = useState('')
   const [relationship, setRelationship] = useState('')
   const [prompt, setPrompt] = useState('')
+  const [myErrors, setErrors] = useState([])
 
   const updateLatAndLong = (latitude, longitude) => {
     setLatitude(latitude)
@@ -27,11 +28,28 @@ const Share = () => {
   }
 
   const uploadStory = (blob) => {
-    getSessionId()
-      .then(sessionId => createEnvelopeAndReturnId(sessionId))
-      .then(ids => createFormData(ids.envelopeId, ids.sessionId, blob))
-      .then(data => uploadAudioRecording(data.form, data.envelopeId))
-      .catch(err => console.log(err))
+    setErrors([])
+
+    if (!perspective || !relationship || !prompt || !latitude) {
+      if (!perspective) {
+        setErrors(myErrors => [...myErrors, 'perspective'])
+      }
+      if (!relationship) {
+        setErrors(myErrors => [...myErrors, 'relationship'])
+      }
+      if (!prompt) {
+        setErrors(myErrors => [...myErrors, 'prompt'])
+      }
+      if (!latitude) {
+        setErrors(myErrors => [...myErrors, 'location'])
+      }
+    } else {
+      getSessionId()
+        .then(sessionId => createEnvelopeAndReturnId(sessionId))
+        .then(ids => createFormData(ids.envelopeId, ids.sessionId, blob))
+        .then(data => uploadAudioRecording(data.form, data.envelopeId))
+        .catch(err => console.log(err))
+    }
   }
 
   /* Roundware interfaces */
@@ -116,14 +134,32 @@ const Share = () => {
         processData: false,
         contentType: false,
         body: formData
-      })
+      }).then(res => {
+      if (res.status === 200) { alert('Your lullaby is uploaded') }
+    })
   }
+
+  const errors = (
+    <div className='errors'>
+      <h1>Error</h1>
+      <ul>
+        {(myErrors.map(element => { return <li key={element}>Your {element} is required</li> }))}
+      </ul>
+    </div>
+  )
 
   return (
     <div className='SharePage'>
       <div className='SharePageContent'>
         <div className='recordingTitle'>
           When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
+        </div>
+        <div>
+          {
+            myErrors.length
+              ? errors
+              : <p />
+          }
         </div>
         <div className='shareLocation'>
           <ShareLocation parentCallback={updateLatAndLong} />

@@ -44,3 +44,7 @@
   top: 1150px;
   padding: 0px !important;
 }
+
+.errors{
+  color: red;
+}
