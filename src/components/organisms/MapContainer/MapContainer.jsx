@@ -23,12 +23,12 @@ const MapContainer = (props) => {
 
     const markerIconSelected = {
       url: 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png',
-      scaledSize: new props.google.maps.Size(25, 25)
+      scaledSize: new props.google.maps.Size(40, 40)
     }
 
     const markerIconCurated = {
       url: 'http://maps.google.com/mapfiles/kml/paddle/ylw-stars.png',
-      scaledSize: new props.google.maps.Size(25, 25)
+      scaledSize: new props.google.maps.Size(40, 40)
     }
 
     return props.stories.map(story => {
