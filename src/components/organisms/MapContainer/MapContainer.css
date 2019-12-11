@@ -1,13 +1,18 @@
 .MapContainer {
     margin: auto;
     width: 90vw;
+    position: relative;
 }
 
 .MapContainer .Map {
-  position: absolute; 
+  position: relative !important; 
   justify-self: left;
   max-width: 900px;
   max-height: 500px;
   min-height: 500px;
   top: 5em;
+}
+
+.map {
+  position: relative !important;
 }

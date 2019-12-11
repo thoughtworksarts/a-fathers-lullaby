@@ -1,3 +1,8 @@
+.recorder-container {
+    position: relative;
+    
+}
+
 .mainSpeakingButton{
     height: 140px;
     width: 140px !important;
@@ -14,9 +19,6 @@
     font-size: 1.5em;
     position: sticky;
 }
-
-
-
 
 .justify-content-around {
     width: 900px;

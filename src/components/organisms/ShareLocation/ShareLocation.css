@@ -11,4 +11,9 @@
     font-size: 1.8em;
     padding-top: 15px;
     padding-bottom: 15px;
+    position: relative;
+}
+
+.share-location {
+    position: relative;
 }

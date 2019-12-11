@@ -154,22 +154,14 @@ const Share = () => {
         <div className='recordingTitle'>
           When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
         </div>
-        <div>
-          {
-            myErrors.length
-              ? errors
-              : <p />
-          }
-        </div>
-        <div className='shareLocation'>
-          <ShareLocation parentCallback={updateLatAndLong} />
-        </div>
-        <div className='participateForm'>
-          <ParticipateForm updatePerspective={updatePerspective} updateRelationship={updateRelationship} updatePrompt={updatePrompt} />
-        </div>
-        <div className='container'>
-          <Recorder parentCallback={uploadStory} />
-        </div>
+        {
+          myErrors.length
+            ? errors
+            : <div />
+        }
+        <ShareLocation parentCallback={updateLatAndLong} />
+        <ParticipateForm updatePerspective={updatePerspective} updateRelationship={updateRelationship} updatePrompt={updatePrompt} />
+        <Recorder parentCallback={uploadStory} />
       </div>
     </div>
   )

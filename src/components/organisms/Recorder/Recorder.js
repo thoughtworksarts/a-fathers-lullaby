@@ -182,7 +182,7 @@ const Recorder = (props) => {
   }
 
   return (
-    <div>
+    <div className='recorder-container'>
       <div className='InstructionBold'>Create your Entry.</div>
       <div className='Instruction'>You can record your voice now.</div>
       {setCurrentButtonRow()}

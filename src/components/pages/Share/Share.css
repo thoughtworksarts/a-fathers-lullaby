@@ -22,7 +22,7 @@
 }
 .participateForm {
   top: 750px;
-  position: absolute;
+  position: relative;
 }
 
 .highlight {
@@ -32,6 +32,7 @@
 .recordingTitle {
   font-size: 2em;
   line-height: 1em;
+  margin-top: 2em;
 }
 
 .recordingInstruction {
@@ -47,4 +48,5 @@
 
 .errors{
   color: red;
+  position: relative;
 }
