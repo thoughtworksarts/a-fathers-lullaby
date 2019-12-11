@@ -44,8 +44,7 @@ const MapContainer = (props) => {
             onClick={() => markerClickHandler(story)}
             parentCallback={() => markerClickHandler(story)}
           />)
-      }
-      else if (story.description.includes('5')){
+      } else if (story.description.includes('5')) {
         return (
           <Marker
             key={story.id}
@@ -57,8 +56,7 @@ const MapContainer = (props) => {
             onClick={() => markerClickHandler(story)}
             parentCallback={() => markerClickHandler(story)}
           />)
-      }
-      else {
+      } else {
         return (
           <Marker
             key={story.id}
