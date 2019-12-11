@@ -4,13 +4,12 @@ exports[`Timeline matches snapshot 1`] = `
 <div
   className="Timeline"
 >
-  <TimelineEntry
-    altText="Woman singing lullaby"
-    description="The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with mayor’s Office of Art and Culture and Boston Centers for Youth & Families, in collaboration with Blackstone Community Center in South End and in connection with my role as Research Fellow at MIT Open Documentary Lab.
-The culmination of these experiences was shared with the public in a participatory media installation at Villa Victoria Center for the Arts, 2017, at the heart of the community where the work was produced."
-    picture="timelinepic_one.png"
+<TimelineEntry
+    altText="People at audio installation"
+    description="At 2018 HUBweek, We The Future conference, we prototyped an immersive participatory installation inside a shipping container; a self-contained model of a complex interactive media installation that could be accessible at any public site as a low budget traveling exhibit, alternative to a gallery or museum space. Collaborators: Hisham Bedri (pressure sensor panels with audio playback and light activation), Christian Gentry (live sound composition), Halsey Burgen (geolocated participatory website), Farid Manshadi & Jason Bashaw & Omid Fallahazad & Nedallah Fahandej & Kevin Long (installation), Afshin Fahandezh & Lizandro Segura (documentation)"
+    picture="timelinepic_2018_2.png"
     pictureFirst="true"
-    year="2017"
+    year="2018"
   />
   <TimelineEntry
     altText="People sitting and listening to audio"
@@ -20,11 +19,12 @@ The culmination of these experiences was shared with the public in a participato
     year="2018"
   />
   <TimelineEntry
-    altText="People at audio installation"
-    description="At 2018 HUBweek, We The Future conference, we prototyped an immersive participatory installation inside a shipping container; a self-contained model of a complex interactive media installation that could be accessible at any public site as a low budget traveling exhibit, alternative to a gallery or museum space. Collaborators: Hisham Bedri (pressure sensor panels with audio playback and light activation), Christian Gentry (live sound composition), Halsey Burgen (geolocated participatory website), Farid Manshadi & Jason Bashaw & Omid Fallahazad & Nedallah Fahandej & Kevin Long (installation), Afshin Fahandezh & Lizandro Segura (documentation)"
-    picture="timelinepic_2018_2.png"
+    altText="Woman singing lullaby"
+    description="The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with mayor’s Office of Art and Culture and Boston Centers for Youth & Families, in collaboration with Blackstone Community Center in South End and in connection with my role as Research Fellow at MIT Open Documentary Lab.
+The culmination of these experiences was shared with the public in a participatory media installation at Villa Victoria Center for the Arts, 2017, at the heart of the community where the work was produced."
+    picture="timelinepic_one.png"
     pictureFirst="true"
-    year="2018"
+    year="2017"
   />
 </div>
 `;
