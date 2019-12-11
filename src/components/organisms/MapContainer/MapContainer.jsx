@@ -26,6 +26,11 @@ const MapContainer = (props) => {
       scaledSize: new props.google.maps.Size(25, 25)
     }
 
+    const markerIconCurated = {
+      url: 'http://maps.google.com/mapfiles/kml/paddle/ylw-stars.png',
+      scaledSize: new props.google.maps.Size(25, 25)
+    }
+
     return props.stories.map(story => {
       if (story === currentStory) {
         return (
@@ -39,7 +44,21 @@ const MapContainer = (props) => {
             onClick={() => markerClickHandler(story)}
             parentCallback={() => markerClickHandler(story)}
           />)
-      } else {
+      }
+      else if (story.description.includes('5')){
+        return (
+          <Marker
+            key={story.id}
+            position={{
+              lat: story.latitude,
+              lng: story.longitude
+            }}
+            icon={markerIconCurated}
+            onClick={() => markerClickHandler(story)}
+            parentCallback={() => markerClickHandler(story)}
+          />)
+      }
+      else {
         return (
           <Marker
             key={story.id}
