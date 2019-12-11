@@ -38,7 +38,7 @@ const StoryView = props => {
             Current Story Details
         </div>
         <div className='story-info'>
-          Story #{props.story.id}
+          Story #{props.arrayIndex} of {props.length}
         </div>
         <div className='story-info'>
           Duration: {minutes}:{seconds < 10 ? '0' + seconds : seconds}

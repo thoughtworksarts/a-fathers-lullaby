@@ -64,7 +64,7 @@ const MapContainer = (props) => {
         initialCenter={{ lat: 42.3601, lng: -71.05 }}
       >{displayMarkers()}
       </Map>
-      <StoryView story={currentStory} tags={props.tags} />
+      <StoryView story={currentStory} arrayIndex={props.stories.indexOf(currentStory) + 1} tags={props.tags} length={props.stories.length} />
     </div>
   )
 }

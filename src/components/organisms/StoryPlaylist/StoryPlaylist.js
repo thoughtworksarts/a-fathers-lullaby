@@ -94,7 +94,7 @@ const StoryPlaylist = (props) => {
     if (currentStory !== '') {
       currentStoryPlayer =
         <div className='audio-player'>
-          <p className='current-title'>{'Story ' + currentStory.id}</p>
+          <p className='current-title'>{'Story ' + (props.stories.indexOf(currentStory) + 1)}</p>
           <ReactAudioPlayer
             src={process.env.REACT_APP_ROUNDWARE_PROD + currentStory.filename}
             controls
@@ -115,7 +115,6 @@ const StoryPlaylist = (props) => {
     return currentStoryPlayer
   }
 
-  let arrayIndex = 0
   const storiesTable = (
     <div>
       {props.id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
@@ -130,8 +129,7 @@ const StoryPlaylist = (props) => {
         </thead>
         <tbody>
           {props.stories.map(story => {
-            arrayIndex += 1
-            return <Story key={story.id} story={story} arrayIndex={arrayIndex} clickHandler={clickHandler} />
+            return <Story key={story.id} story={story} arrayIndex={props.stories.indexOf(story) + 1} clickHandler={clickHandler} />
           })}
         </tbody>
       </Table>
