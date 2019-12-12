@@ -4,6 +4,7 @@
     min-width: 900px;
     min-height: 500px;
     z-index: 0;
+    position: relative !important;
 }
 
 .InstructionBold {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import { StoryView } from 'molecules'
+import { Row, Col, Container } from 'react-bootstrap'
 import './MapContainer.css'
 
 const MapContainer = (props) => {
@@ -73,16 +74,22 @@ const MapContainer = (props) => {
   }
 
   return (
-    <div className='MapContainer'>
-      <Map
-        google={props.google}
-        zoom={11.5}
-        className='Map'
-        initialCenter={{ lat: 42.3601, lng: -71.05 }}
-      >{displayMarkers()}
-      </Map>
-      <StoryView story={currentStory} arrayIndex={props.stories.indexOf(currentStory) + 1} tags={props.tags} length={props.stories.length} />
-    </div>
+    <Container className='MapContainer'>
+      <Row>
+        <Col lg={6} sm={12}>
+          <Map
+            google={props.google}
+            zoom={11.5}
+            className='Map'
+            initialCenter={{ lat: 42.3601, lng: -71.05 }}
+          >{displayMarkers()}
+          </Map>
+        </Col>
+        <Col lg={6} sm={12}>
+          <StoryView story={currentStory} arrayIndex={props.stories.indexOf(currentStory) + 1} tags={props.tags} length={props.stories.length} />
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

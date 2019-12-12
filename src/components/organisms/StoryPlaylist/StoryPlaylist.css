@@ -1,7 +1,7 @@
 .StoryPlaylist {
-  width: 90%;
-  margin: 0 auto 130px auto;
-  padding-top: calc(4.5em + 10px);
+  /* width: 90%; */
+  /* margin: 0 auto 130px auto; */
+  /* padding-top: calc(4.5em + 10px); */
 }
 
 .StoryPlaylist .number-icon {
@@ -15,7 +15,8 @@
 .StoryPlaylist .audio-player {
   background-color: #f2f3f5;
   border: 3px solid #929292;
-  width: 90%;
+  width: 100%;
+  width: 75;
   position: fixed;
   bottom: 70px;
   left: 50%;
@@ -24,7 +25,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  width: 75%;
 }
+
 
 .StoryPlaylist .current-title {
   color: #595959;
@@ -33,7 +36,7 @@
 }
 
 .StoryPlaylist .react-audio-player {
-  width: 90%;
+  width: 100%;
 }
 
 .StoryPlaylist thead {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { MapContainer, StoryPlaylist } from 'organisms'
+import { Row, Col, Container } from 'react-bootstrap'
+
 import './Explore.css'
 
 const Explore = () => {
@@ -41,14 +43,18 @@ const Explore = () => {
   }
 
   return (
-    <div className='ExplorePage'>
-      <div>
-        <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} />
-      </div>
-      <div className='ExplorePlaylistContainer'>
-        <StoryPlaylist className='ExplorePlaylist' stories={stories} id={id} currentStory={currentStory} updateCurrentStory={updateCurrentStory} />
-      </div>
-    </div>
+    <Container className='explore-page'>
+      <Row>
+        <Col lg={12}>
+          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} />
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={12}>
+          <StoryPlaylist className='ExplorePlaylist' stories={stories} id={id} currentStory={currentStory} updateCurrentStory={updateCurrentStory} />
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

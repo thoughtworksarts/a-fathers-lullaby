@@ -39,12 +39,12 @@
   font-size: 1.5em;
   margin-top: 0.5em;
 }
-
+/* 
 .container{
   position: absolute;
   top: 1150px;
   padding: 0px !important;
-}
+} */
 
 .errors{
   color: red;
