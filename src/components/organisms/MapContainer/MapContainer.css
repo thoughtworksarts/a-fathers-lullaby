@@ -1,19 +1,6 @@
-/* .MapContainer {
-    margin: auto;
-    width: auto;
-    height: auto;
-    position: relative;
-} */
-
 .MapContainer .Map {
   position: relative !important; 
-  /* justify-self: left; */
   max-width: 900px;
   max-height: 500px;
   min-height: 500px;
-  /* top: 5em; */
 }
-
-/* .map {
-  position: relative !important;
-} */

@@ -1,7 +1,6 @@
 .StoryView{
     z-index: 0;
     background-color: #f2f3f5;
-    /* min-width: 500px; */
     min-height: 500px;
 }
 
@@ -10,7 +9,6 @@
     justify-content: space-around;
     flex-direction: column;
     width: 100%;
-    /* background-color: #f2f3f5; */
     padding-left: 15px;
     padding-top: 15px;
 }
@@ -29,7 +27,6 @@
     font-size: 1.5em;
     font-weight: bold;
     width: 40em;
-    /* background-color: #f2f3f5; */
     padding-top: 15px;
     padding-left: 15px;
     padding-bottom: 15px;

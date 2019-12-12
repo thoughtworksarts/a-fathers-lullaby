@@ -1,20 +1,26 @@
 .LibraryPage {
-    background-color: #444;
-    background-image: linear-gradient(rgba(47, 45, 45, 0.4), rgba(91, 27, 32, 0.4));
-    color: #F9DBBD;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11pt;
-    text-align: justify;
-    line-height: 1.5em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-  }
-  
-  .LibraryPage h1 {
-    font-size: 1.2em;
-    padding: 0 20px 5px 20px;
-  }
+  background-color: #444;
+  background-image: linear-gradient(rgba(47, 45, 45, 0.4), rgba(91, 27, 32, 0.4));
+  color: #F9DBBD;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11pt;
+  text-align: justify;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.LibraryPage h1 {
+  font-size: 1.2em;
+  padding: 0 20px 5px 20px;
+}
+
+.library-page .StoryPlaylist {
+  width: 90%;
+  margin: 0 auto 130px auto;
+  padding-top: calc(4.5em + 10px);
+}

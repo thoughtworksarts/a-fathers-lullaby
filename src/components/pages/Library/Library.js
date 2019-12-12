@@ -26,7 +26,11 @@ const Library = () => {
       .catch(err => console.log(err))
   }, [])
 
-  return <StoryPlaylist stories={stories} id={id} currentStory={currentStory} updateCurrentStory={updateCurrentStory} />
+  return (
+    <div className='library-page'>
+      <StoryPlaylist stories={stories} id={id} currentStory={currentStory} updateCurrentStory={updateCurrentStory} />
+    </div>
+  )
 }
 
 export default Library
