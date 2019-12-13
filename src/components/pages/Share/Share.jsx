@@ -10,6 +10,8 @@ const Share = () => {
   const [prompt, setPrompt] = useState('')
   const [myErrors, setErrors] = useState([])
 
+  const [uploading, setUploading] = useState(false)
+
   const updateLatAndLong = (latitude, longitude) => {
     setLatitude(latitude)
     setLongitude(longitude)
@@ -124,6 +126,7 @@ const Share = () => {
   * Validate response
   */
   const uploadAudioRecording = (formData, envelopeId) => {
+    setUploading(true)
     return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}${envelopeId}/`,
       {
         method: 'PATCH',
@@ -135,7 +138,10 @@ const Share = () => {
         contentType: false,
         body: formData
       }).then(res => {
-      if (res.status === 200) { alert('Your lullaby is uploaded') }
+      if (res.status === 200) {
+        setUploading(false)
+        alert('Your lullaby is uploaded')
+      }
     })
   }
 
@@ -161,7 +167,11 @@ const Share = () => {
         }
         <ShareLocation parentCallback={updateLatAndLong} />
         <ParticipateForm updatePerspective={updatePerspective} updateRelationship={updateRelationship} updatePrompt={updatePrompt} />
-        <Recorder parentCallback={uploadStory} />
+        {
+          (uploading === false)
+            ? <Recorder parentCallback={uploadStory} uploading={false} />
+            : <Recorder parentCallback={uploadStory} uploading />
+        }
       </div>
     </div>
   )
