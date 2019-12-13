@@ -11,13 +11,11 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  padding-top: 6em;
+  padding-top: 700px;
   padding-left: 2em;
 }
 .SharePageContent {
   height: 100vh;
-  width: 75vw;
-  max-width: 900px;
   align-self: center;
 }
 .participateForm {
@@ -43,4 +41,5 @@
 .errors{
   color: red;
   position: relative;
+  font-weight: bold;
 }

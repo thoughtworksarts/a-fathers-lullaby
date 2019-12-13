@@ -53,3 +53,7 @@
   transform: translateY(-50%);
   transform: translateX(-50%);
 }
+
+.table {
+  margin-bottom: 8rem !important;
+}

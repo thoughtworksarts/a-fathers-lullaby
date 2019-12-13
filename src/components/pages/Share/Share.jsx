@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Recorder, ParticipateForm, ShareLocation } from 'organisms'
+import { Row, Col, Container } from 'react-bootstrap'
 import './Share.css'
 
 const Share = () => {
@@ -147,7 +148,7 @@ const Share = () => {
 
   const errors = (
     <div className='errors'>
-      <h1>Error</h1>
+      Error
       <ul>
         {(myErrors.map(element => { return <li key={element}>Your {element} is required</li> }))}
       </ul>
@@ -155,25 +156,44 @@ const Share = () => {
   )
 
   return (
-    <div className='SharePage'>
-      <div className='SharePageContent'>
-        <div className='recordingTitle'>
-          When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
-        </div>
-        {
-          myErrors.length
-            ? errors
-            : <div />
-        }
-        <ShareLocation parentCallback={updateLatAndLong} />
-        <ParticipateForm updatePerspective={updatePerspective} updateRelationship={updateRelationship} updatePrompt={updatePrompt} />
-        {
-          (uploading === false)
-            ? <Recorder parentCallback={uploadStory} uploading={false} />
-            : <Recorder parentCallback={uploadStory} uploading />
-        }
-      </div>
-    </div>
+    <Container className='SharePage'>
+      <Row>
+        <Col sm={12}>
+          <div className='recordingTitle'>
+
+            When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={12}>
+          {
+            myErrors.length
+              ? errors
+              : <div />
+          }
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={12}>
+          <ShareLocation parentCallback={updateLatAndLong} />
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={12}>
+          <ParticipateForm updatePerspective={updatePerspective} updateRelationship={updateRelationship} updatePrompt={updatePrompt} />
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={12}>
+          {
+            (uploading === false)
+              ? <Recorder parentCallback={uploadStory} uploading={false} />
+              : <Recorder parentCallback={uploadStory} uploading />
+          }
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

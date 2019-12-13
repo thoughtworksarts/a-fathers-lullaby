@@ -1,6 +1,6 @@
 .MapContainer .Map {
   position: relative !important; 
-  max-width: 900px;
-  max-height: 500px;
-  min-height: 500px;
+  width: 100% !important;
+  min-height: 50vh !important;
+  height: 500px;
 }

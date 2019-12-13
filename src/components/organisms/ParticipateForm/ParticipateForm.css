@@ -1,5 +1,4 @@
 .ParticipateForm {
-    width: 90vw;
     position: relative;
 }
 
@@ -19,7 +18,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 900px;
+    width: 100%;
 }
 
 .btn {
@@ -34,7 +33,7 @@
 }
 
 a.dropdown-item {
-    width: 900px;
+    width: 100%;
     text-align: left;
     z-index: 1000;
 }
