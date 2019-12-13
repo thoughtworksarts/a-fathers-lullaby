@@ -17,29 +17,36 @@
     font-size: 1em;
 }
 
-.StoryView h3 {
+.StoryView h2 {
+    font-weight: bold;
+}
+
+.StoryView .current-story-title {
     font-size: 2em;
     font-weight: bold;
     color: black;
+    width: 40em;
+    padding-top: 2vh;
+    padding-left: 2vh;
+    padding-bottom: 2vh;
+    padding-right: 2vh;
 }
 
-.StoryView .click-story-msg {
-    font-size: 1.5em;
+.StoryView .click-msg {
+    font-size: 2em;
     font-weight: bold;
+    color: black;
     width: 40em;
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-bottom: 15px;
-
-  }
-
-.StoryView .current-story-title {
-      font-weight: bold;
-      font-size: 1.5em;
-      font-size: 1.5em;
-      margin-bottom: 10px;
+    padding-top: 20vh;
+    padding-left: 8vh;
+    padding-bottom: 2vh;
+    padding-right: 2vh;
 }
 
 .StoryView .story-info {
-    margin-bottom: 20px;
+    font-size: 1.5em;
+    padding-top: 2vh;
+    padding-left: 2vh;
+    padding-bottom: 2vh;
+    padding-right: 2vh;
 }

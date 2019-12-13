@@ -35,10 +35,12 @@ const StoryView = props => {
     return (
       <div className='story-meta-data'>
         <div className='current-story-title'>
-            Current Story Details
+            <h2>Story #{props.arrayIndex} of {props.length}</h2>
         </div>
         <div className='story-info'>
-          Story #{props.arrayIndex} of {props.length}
+          Responding to the following prompt:
+          <br />
+          {speakingAbout}
         </div>
         <div className='story-info'>
           Duration: {minutes}:{seconds < 10 ? '0' + seconds : seconds}
@@ -46,19 +48,14 @@ const StoryView = props => {
         <div className='story-info'>
           Recorded on {month}/{day}/{year}
         </div>
-        <div className='story-info'>
-          Responding to the following prompt:
-          <br />
-          {speakingAbout}
-        </div>
       </div>
     )
   }
 
   const audioPlayerUnselected = () => {
     return (
-      <div className='click-story-msg'>
-        Click a story to listen
+      <div className='click-msg'>
+        <h2>Click a story to listen</h2>
       </div>
     )
   }
