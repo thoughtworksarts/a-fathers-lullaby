@@ -151,7 +151,6 @@ const Share = () => {
 
   return (
     <Container className='SharePage'>
-      {/* <div className='SharePageContent'> */}
       <Row>
         <Col sm={12}>
           <div className='recordingTitle'>
@@ -184,7 +183,6 @@ const Share = () => {
           <Recorder parentCallback={uploadStory} />
         </Col>
       </Row>
-      {/* </div> */}
     </Container>
   )
 }
