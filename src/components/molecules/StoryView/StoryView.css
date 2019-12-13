@@ -2,6 +2,9 @@
     z-index: 0;
     background-color: #f2f3f5;
     min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .story-meta-data {
@@ -25,7 +28,6 @@
     font-size: 2em;
     font-weight: bold;
     color: black;
-    width: 40em;
     padding-top: 2vh;
     padding-left: 2vh;
     padding-bottom: 2vh;
@@ -36,11 +38,7 @@
     font-size: 2em;
     font-weight: bold;
     color: black;
-    width: 40em;
-    padding-top: 20vh;
-    padding-left: 8vh;
-    padding-bottom: 2vh;
-    padding-right: 2vh;
+    text-align: center;
 }
 
 .StoryView .story-info {

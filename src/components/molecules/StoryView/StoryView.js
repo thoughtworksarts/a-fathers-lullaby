@@ -35,7 +35,7 @@ const StoryView = props => {
     return (
       <div className='story-meta-data'>
         <div className='current-story-title'>
-            <h2>Story #{props.arrayIndex} of {props.length}</h2>
+            Story #{props.arrayIndex} of {props.length}
         </div>
         <div className='story-info'>
           Responding to the following prompt:
@@ -55,7 +55,7 @@ const StoryView = props => {
   const audioPlayerUnselected = () => {
     return (
       <div className='click-msg'>
-        <h2>Click a story to listen</h2>
+        Click a story to listen
       </div>
     )
   }
