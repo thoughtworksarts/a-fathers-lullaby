@@ -14,7 +14,6 @@ const Sidepanel = (props) => {
       <NavLink className='firstLink' link='/'>About</NavLink>
       <NavLink link='/share'>Share</NavLink>
       <NavLink link='/explore'>Explore</NavLink>
-      <NavLink link='/library'>Library</NavLink>
     </div>
   )
 }
