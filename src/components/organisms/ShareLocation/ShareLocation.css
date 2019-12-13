@@ -1,8 +1,6 @@
 .map{
-    max-width: 900px;
-    max-height: 500px;
-    min-width: 900px;
-    min-height: 500px;
+    width: 100% !important;
+    height: 50vh !important;
     z-index: 0;
     position: relative !important;
 }

@@ -11,13 +11,11 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  padding-top: 6em;
+  padding-top: 700px;
   padding-left: 2em;
 }
 .SharePageContent {
   height: 100vh;
-  width: 75vw;
-  max-width: 900px;
   align-self: center;
 }
 .participateForm {
@@ -39,14 +37,9 @@
   font-size: 1.5em;
   margin-top: 0.5em;
 }
-/* 
-.container{
-  position: absolute;
-  top: 1150px;
-  padding: 0px !important;
-} */
 
 .errors{
   color: red;
   position: relative;
+  font-weight: bold;
 }
