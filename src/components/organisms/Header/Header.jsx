@@ -33,7 +33,6 @@ const Header = () => {
       </div>
       {
         isMobile
-
           ? (
             <div className='sideMenu'>
               <img className='menu-bars' src={menuBars} alt='Menu' onClick={() => setIsOpen(true)} />
@@ -47,9 +46,7 @@ const Header = () => {
               <NavLink className='headerLinks' link='/'>About</NavLink>
               <NavLink link='/share'>Share</NavLink>
               <NavLink link='/explore'>Explore</NavLink>
-              <NavLink link='/library'>Library</NavLink>
             </div>
-
           )
       }
     </nav>

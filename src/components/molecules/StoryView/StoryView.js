@@ -35,7 +35,7 @@ const StoryView = props => {
     return (
       <div className='story-meta-data'>
         <div className='current-story-title'>
-            Story #{props.arrayIndex} of {props.length}
+          <h2>Story #{props.arrayIndex} of {props.length}</h2>
         </div>
         <div className='story-info'>
           Responding to the following prompt:
