@@ -48,6 +48,9 @@ const StoryView = props => {
         <div className='story-info'>
           Recorded on {month}/{day}/{year}
         </div>
+        <div className='story-info'>
+          Link to share: http://localhost:3000/explore/{props.story.id}
+        </div>
       </div>
     )
   }
