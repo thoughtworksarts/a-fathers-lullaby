@@ -49,7 +49,7 @@ const StoryView = props => {
           Recorded on {month}/{day}/{year}
         </div>
         <div className='story-info'>
-          Link to share: http://localhost:3000/explore/{props.story.id}
+          Link to share: https://thoughtworksarts.io/a-fathers-lullaby/explore/{props.story.id}
         </div>
       </div>
     )
