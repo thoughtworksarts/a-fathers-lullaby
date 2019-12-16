@@ -47,7 +47,7 @@ const Explore = () => {
 
   const getSessionId = () => {
     const nav = window.navigator.userAgent
-    const form = '{"project_id": 1,"client_system": "' + nav.substring(0, 127) + '"}'
+    const form = '{"project_id": 25,"client_system": "' + nav.substring(0, 127) + '"}'
 
     return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_SESSIONS_URL}`, {
       method: 'POST',
@@ -95,7 +95,7 @@ const Explore = () => {
     <Container className='explore-page'>
       <Row>
         <Col lg={12}>
-          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} />
+          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} playStream={playStream}/>
         </Col>
       </Row>
       <Row>
