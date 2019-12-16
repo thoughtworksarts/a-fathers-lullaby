@@ -1,6 +1,6 @@
 import React from 'react'
 import './TimelineText.css'
-const TimelineText = ({ year, description, alignLeft }) => {
+const TimelineText = ({ year, description, alignLeft, entryNum }) => {
   let descAlign = 'TimelineText '
   if (alignLeft === 'true') {
     descAlign += 'left'
@@ -12,6 +12,7 @@ const TimelineText = ({ year, description, alignLeft }) => {
       <h3 className='year'>{year}</h3>
       <p className='description'>
         {description}
+        <a href={entryNum}> ...more</a>
       </p>
     </div>
   )
