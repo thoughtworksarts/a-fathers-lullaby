@@ -12,6 +12,9 @@ const MapContainer = (props) => {
     props.parentCallback(story)
   }
 
+  // Import custom styles to customize the style of Google Map
+  const styles = require('./GoogleMapStyles.json')
+
   useEffect(() => {
     setCurrentStory(props.currentStory)
   }, [props.currentStory])

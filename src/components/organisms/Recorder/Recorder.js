@@ -68,7 +68,7 @@ const Recorder = (props) => {
           {
             (props.uploading === false)
               ? <img className='mainSpeakingButton' src={uploadImg} alt='Upload Button' onClick={() => { props.parentCallback(mp3file) }} />
-              : <div class='uploadwheel' />
+              : <div className='uploadwheel' />
           }
         </div>
     }

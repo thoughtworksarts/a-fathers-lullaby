@@ -141,6 +141,7 @@ const Share = () => {
       }).then(res => {
       if (res.status === 200) {
         setUploading(false)
+        console.log(res.json())
         alert('Your lullaby is uploaded')
       }
     })
