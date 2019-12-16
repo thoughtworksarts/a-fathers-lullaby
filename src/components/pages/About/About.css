@@ -25,7 +25,8 @@
 }
 
 .AboutPage h1 {
-  font-size: 3.5em;
+  font-size: calc(16px + 1vw);
+  max-width: 900px;
   padding: 80px 20px 5px 20px;
   width: 60%;
   font-weight: 400;
@@ -33,7 +34,8 @@
 }
 
 .AboutPage h2 {
-  font-size: 2em;
+  font-size: calc(10px + 1vw);
+  max-width: 900px;
   padding: 0 20px 5px 20px;
   width: 60%;
   line-height: 1em;
@@ -58,6 +60,10 @@
   .AboutPage p {
     width: 40vw;
   }
+}
+
+.Button {
+  font-size: calc(10px + 1vw);
 }
 
 @media screen and (max-width: 980px) {

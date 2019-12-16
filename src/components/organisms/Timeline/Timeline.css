@@ -1,9 +1,9 @@
 .Timeline {
+    margin-top: 50px;
     padding-top: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: white;
     width: 70vw;
-    /* min-width: 70vw; */
 }

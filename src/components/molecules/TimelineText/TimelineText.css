@@ -9,7 +9,7 @@
 }
 
 .TimelineText .description {
-    font-size: 22px;
+    font-size: calc(10px + 1vw);
     color: black;
     margin: 5px;
     max-width: 40vw;

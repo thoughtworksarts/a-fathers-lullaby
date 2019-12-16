@@ -8,9 +8,9 @@ const TimelineEntry = ({ year, description, pictureFirst, picture, altText, entr
 
   if (pictureFirst === 'true') {
     left = <TimelinePicture picture={picture} altText={altText} />
-    right = <TimelineText year={year} description={description} alignLeft={pictureFirst} entryNum={entryNum}/>
+    right = <TimelineText year={year} description={description} alignLeft={pictureFirst} entryNum={entryNum} />
   } else {
-    left = <TimelineText year={year} description={description} alignLeft={pictureFirst} entryNum={entryNum}/>
+    left = <TimelineText year={year} description={description} alignLeft={pictureFirst} entryNum={entryNum} />
     right = <TimelinePicture picture={picture} altText={altText} />
   }
 

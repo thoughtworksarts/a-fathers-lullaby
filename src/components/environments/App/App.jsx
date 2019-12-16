@@ -21,9 +21,6 @@ export const App = (props) => {
         <Route path='/explore' component={Explore} />
         <Route path='/library/:id' component={Library} />
         <Route path='/library' component={Library} />
-        <Route path='/1' />
-        <Route path='/2'/>
-        <Route path='/3'/>
       </Switch>
       <Footer />
     </div>
