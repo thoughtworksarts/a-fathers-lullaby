@@ -95,7 +95,7 @@ const Explore = () => {
     <Container className='explore-page'>
       <Row>
         <Col lg={12}>
-          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} playStream={playStream}/>
+          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} playStream={playStream} />
         </Col>
       </Row>
       <Row>

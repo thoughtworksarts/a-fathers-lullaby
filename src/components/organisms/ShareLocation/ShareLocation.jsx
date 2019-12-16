@@ -4,10 +4,10 @@ import './ShareLocation.css'
 
 const ShareLocation = (props) => {
   const [locationMarker, setLocationMarker] = useState(null)
-  
+
   // Import custom styles to customize the style of Google Map
   const styles = require('../../../assets/GoogleMapStyles.json')
-  
+
   const locationHandler = (event, map) => {
     const lat = event.latLng.lat()
     const lng = event.latLng.lng()
