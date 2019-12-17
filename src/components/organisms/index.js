@@ -1,6 +1,7 @@
 import Header from './Header'
 import Timeline from './Timeline'
 import TimelineEntry from './TimelineEntry'
+import TimelineEntryMore from './TimelineEntryMore'
 import Sidepanel from './Sidepanel'
 import MapContainer from './MapContainer'
 import Recorder from './Recorder'
@@ -17,5 +18,6 @@ export {
   Recorder,
   StoryPlaylist,
   ParticipateForm,
-  ShareLocation
+  ShareLocation,
+  TimelineEntryMore
 }

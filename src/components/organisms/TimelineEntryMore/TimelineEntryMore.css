@@ -1,0 +1,110 @@
+.TimelineEntryMorePage {
+    background-color: white;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11pt;
+    text-align: justify;
+    line-height: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.TimelineEntryMorePage .intro {
+    background-image: url("../../../assets/about-page-background.jpg");
+    background-repeat: no-repeat;
+    background-color: rgba(238, 238, 238, 0.50);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-blend-mode: lighten;
+}
+
+.TimelineEntryMorePage h1 {
+    font-size: calc(16px + 1vw);
+    max-width: 900px;
+    padding: 80px 20px 5px 20px;
+    width: 60%;
+    font-weight: 400;
+    line-height: 1em;
+}
+
+.TimelineEntryMorePage h2 {
+    font-size: calc(10px + 1vw);
+    max-width: 900px;
+    padding: 0 20px 5px 20px;
+    width: 60%;
+    line-height: 1em;
+}
+
+.TimelineEntryMorePage .highlight {
+    color: #96351F;
+}
+
+.TimelineEntryMorePage p {
+    font-size: 1.3em;
+    line-height: 1.5em;
+    margin: 0;
+}
+.EntryYear {
+    color: #96351F;
+    font-weight: bold;
+    font-size: 1.5em !important;
+}
+
+.ExpandedEntry {
+    color: black;
+    width: 90vw;
+    max-width: 900px;
+}
+
+.ExpandedEntry img {
+    width: 90vw;
+    max-width: 900px;
+    justify-self: center;
+    height: auto;
+}
+
+@media screen and (max-width: 1280px) {
+    .TimelineEntryMorePage img {
+        width: 50vw;
+    }
+
+    .TimelineEntryMorePage p {
+        width: 40vw;
+    }
+}
+
+.Button {
+    font-size: calc(10px + 1vw);
+}
+
+@media screen and (max-width: 980px) {
+    .TimelineEntryMorePage p {
+        width: 47vw;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .TimelineEntryMorePage img {
+        width: 75vw;
+    }
+
+    .TimelineEntryMorePage p {
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .TimelineEntryMorePage img {
+        width: 80vw;
+    }
+
+    .TimelineEntryMorePage p {
+        width: 80vw;
+    }
+}

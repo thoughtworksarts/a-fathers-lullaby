@@ -1,3 +1,8 @@
+import picOne from 'assets/timelinepic_one.png'
+import picTwo from 'assets/timelinepic_2018_1.png'
+import picThree from 'assets/timelinepic_2018_2.png'
+
+
 export const par2017 = 'The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with ' +
         'mayor’s Office of Art and Culture and Boston Centers for Youth & Families'
 
@@ -23,3 +28,12 @@ export const par2018Desc2Full = 'At 2018 HUBweek, We The Future conference, we p
         'budget traveling exhibit, alternative to a gallery or museum space. Collaborators: Hisham Bedri (pressure sensor panels with audio playback and ' +
         'light activation), Christian Gentry (live sound composition), Halsey Burgen (geolocated participatory website), Farid Manshadi & Jason Bashaw & Omid ' +
         'Fallahazad & Nedallah Fahandej & Kevin Long (installation), Afshin Fahandezh & Lizandro Segura (documentation)'
+
+
+export const timelineEntry1 = {
+        full_desc: par2017Full,
+        short_des: par2017,
+        year: "2017",
+        img: picOne,
+        alt_text: 'Woman singing lullaby',
+}
