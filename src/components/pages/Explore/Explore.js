@@ -29,7 +29,9 @@ const Explore = () => {
   // create a stream for the first render
   const playStream = () => {
     getSessionId()
-      .then(sessionId => createStream(sessionId))
+      .then(sessionId => createFormData(sessionId))
+      .then(formData => createStream(formData))
+    // .then(document.getElementById('streamplayer').play())
   }
 
   useEffect(() => {
@@ -64,12 +66,16 @@ const Explore = () => {
       })
   }
 
-  const createStream = (sessionId) => {
+  const createFormData = (sessionId) => {
     const formData = new FormData()
     formData.append('session_id', sessionId.toString())
     formData.append('latitude', latitude)
     formData.append('longitude', longitude)
 
+    return formData
+  }
+
+  const createStream = (formData) => {
     fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_STREAMS_URL}`,
       {
         method: 'POST',
@@ -95,7 +101,16 @@ const Explore = () => {
     <Container className='explore-page'>
       <Row>
         <Col lg={12}>
-          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} playStream={playStream} />
+          <button className='Button' onClick={playStream}>Play Stream
+            <audio id='streamplayer'>
+              <source id='audiosource' type='audio/mp3' src='https://halseyburgund.com/audio/104K_IV.mp3' />
+            </audio>
+          </button>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={12}>
+          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} />
         </Col>
       </Row>
       <Row>

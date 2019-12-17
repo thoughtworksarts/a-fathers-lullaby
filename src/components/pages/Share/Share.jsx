@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import { Recorder, ParticipateForm, ShareLocation } from 'organisms'
 import { Row, Col, Container } from 'react-bootstrap'
 import './Share.css'
@@ -12,6 +13,7 @@ const Share = () => {
   const [myErrors, setErrors] = useState([])
 
   const [uploading, setUploading] = useState(false)
+  const [newLullabyId, setNewLullabyId] = useState('')
 
   const updateLatAndLong = (latitude, longitude) => {
     setLatitude(latitude)
@@ -31,6 +33,7 @@ const Share = () => {
   }
 
   const uploadStory = (blob) => {
+    setUploading(true)
     setErrors([])
 
     if (!perspective || !relationship || !prompt || !latitude) {
@@ -51,6 +54,9 @@ const Share = () => {
         .then(sessionId => createEnvelopeAndReturnId(sessionId))
         .then(ids => createFormData(ids.envelopeId, ids.sessionId, blob))
         .then(data => uploadAudioRecording(data.form, data.envelopeId))
+        .then(resId => {
+          setNewLullabyId(resId)
+        })
         .catch(err => console.log(err))
     }
   }
@@ -127,7 +133,6 @@ const Share = () => {
   * Validate response
   */
   const uploadAudioRecording = (formData, envelopeId) => {
-    setUploading(true)
     return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}${envelopeId}/`,
       {
         method: 'PATCH',
@@ -138,13 +143,19 @@ const Share = () => {
         processData: false,
         contentType: false,
         body: formData
-      }).then(res => {
-      if (res.status === 200) {
-        setUploading(false)
-        console.log(res.json())
-        alert('Your lullaby is uploaded')
-      }
-    })
+      })
+      .then(res => {
+        if (res.status === 200) {
+          setUploading(false)
+          alert('Lullaby successfully uploaded!')
+        } else {
+          alert('There was an error with your upload.')
+        }
+        return res.json()
+      })
+      .then(res => {
+        return res.id
+      })
   }
 
   const errors = (
@@ -156,12 +167,16 @@ const Share = () => {
     </div>
   )
 
+  if (newLullabyId !== '') {
+    alert('Here is a link to your lullaby: https:/thoughtworksarts.io/a-fathers-lullaby/explore/' + newLullabyId)
+    return <Redirect to={'/explore/' + newLullabyId} />
+  }
+
   return (
     <Container className='SharePage'>
       <Row>
         <Col sm={12}>
           <div className='recordingTitle'>
-
             When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
           </div>
         </Col>
