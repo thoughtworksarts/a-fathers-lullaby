@@ -30,7 +30,7 @@ export const par2018Desc2Full = 'At 2018 HUBweek, We The Future conference, we p
 
 export const timelineEntry1 = {
   full_desc: par2017Full,
-  short_des: par2017,
+  short_desc: par2017,
   year: '2017',
   img: picOne,
   alt_text: 'Woman singing lullaby'
@@ -38,7 +38,7 @@ export const timelineEntry1 = {
 
 export const timelineEntry2 = {
   full_desc: par2018Desc1Full,
-  short_des: par2018Desc1,
+  short_desc: par2018Desc1,
   year: '2018',
   img: picTwo,
   alt_text: 'People sitting and listening to audio'
@@ -46,7 +46,7 @@ export const timelineEntry2 = {
 
 export const timelineEntry3 = {
   full_desc: par2018Desc2Full,
-  short_des: par2018Desc2,
+  short_desc: par2018Desc2,
   year: '2018',
   img: picThree,
   alt_text: 'People at audio installation'

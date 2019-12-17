@@ -2,16 +2,16 @@ import React from 'react'
 import './TimelineEntry.css'
 import { TimelinePicture, TimelineText } from 'molecules'
 
-const TimelineEntry = ({ year, description, pictureFirst, picture, altText, entryNum }) => {
+const TimelineEntry = ({ timelineInfo, pictureFirst, entryNum }) => {
   let left = null
   let right = null
 
   if (pictureFirst === 'true') {
-    left = <TimelinePicture picture={picture} altText={altText} />
-    right = <TimelineText year={year} description={description} alignLeft={pictureFirst} entryNum={entryNum} />
+    left = <TimelinePicture picture={timelineInfo.img} altText={timelineInfo.alt_text} />
+    right = <TimelineText year={timelineInfo.year} description={timelineInfo.short_desc} alignLeft={pictureFirst} entryNum={entryNum} />
   } else {
-    left = <TimelineText year={year} description={description} alignLeft={pictureFirst} entryNum={entryNum} />
-    right = <TimelinePicture picture={picture} altText={altText} />
+    left = <TimelineText year={timelineInfo.year} description={timelineInfo.short_desc} alignLeft={pictureFirst} entryNum={entryNum} />
+    right = <TimelinePicture picture={timelineInfo.img} altText={timelineInfo.alt_text} />
   }
 
   return (

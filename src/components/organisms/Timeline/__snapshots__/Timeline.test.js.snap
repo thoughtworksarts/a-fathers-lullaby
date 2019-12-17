@@ -5,28 +5,44 @@ exports[`Timeline matches snapshot 1`] = `
   className="Timeline"
 >
   <TimelineEntry
-    altText="People at audio installation"
-    description="At 2018 HUBweek, We The Future conference, we prototyped an immersive participatory installation inside a shipping container"
     entryNum="/about/3"
-    picture="timelinepic_2018_2.png"
     pictureFirst="true"
-    year="2018"
+    timelineInfo={
+      Object {
+        "alt_text": "People at audio installation",
+        "full_desc": "At 2018 HUBweek, We The Future conference, we prototyped an immersive participatory installation inside a shipping container; a self-contained model of a complex interactive media installation that could be accessible at any public site as a low budget traveling exhibit, alternative to a gallery or museum space. Collaborators: Hisham Bedri (pressure sensor panels with audio playback and light activation), Christian Gentry (live sound composition), Halsey Burgen (geolocated participatory website), Farid Manshadi & Jason Bashaw & Omid Fallahazad & Nedallah Fahandej & Kevin Long (installation), Afshin Fahandezh & Lizandro Segura (documentation)",
+        "img": "timelinepic_2018_2.png",
+        "short_desc": "At 2018 HUBweek, We The Future conference, we prototyped an immersive participatory installation inside a shipping container",
+        "year": "2018",
+      }
+    }
   />
   <TimelineEntry
-    altText="People sitting and listening to audio"
-    description="In the second chapter, 2018, the project expanded through collaboration with local artists and partnership with institutions, such as the Federal Probation Office"
     entryNum="/about/2"
-    picture="timelinepic_2018_1.png"
     pictureFirst="false"
-    year="2018"
+    timelineInfo={
+      Object {
+        "alt_text": "People sitting and listening to audio",
+        "full_desc": "In the second chapter, 2018, the project expanded through collaboration with local artists and partnership with institutions, such as the Federal Probation Office, the newly formed Office of Returning Citizens and commissioned by the Boston Center for the Arts.The result was a site - responsive, public sound installation on Tremont St., Boston Center for the Arts public plaza, July - Oct 2018.",
+        "img": "timelinepic_2018_1.png",
+        "short_desc": "In the second chapter, 2018, the project expanded through collaboration with local artists and partnership with institutions, such as the Federal Probation Office",
+        "year": "2018",
+      }
+    }
   />
   <TimelineEntry
-    altText="Woman singing lullaby"
-    description="The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with mayor’s Office of Art and Culture and Boston Centers for Youth & Families"
     entryNum="/about/1"
-    picture="timelinepic_one.png"
     pictureFirst="true"
-    year="2017"
+    timelineInfo={
+      Object {
+        "alt_text": "Woman singing lullaby",
+        "full_desc": "The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with mayor’s Office of Art and Culture and Boston Centers for Youth & Families, in collaboration with Blackstone Community Center in South End and in connection with my role as Research Fellow at MIT Open Documentary Lab.
+The culmination of these experiences was shared with the public in a participatory media installation at Villa Victoria Center for the Arts, 2017, at the heart of the community where the work was produced.",
+        "img": "timelinepic_one.png",
+        "short_desc": "The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with mayor’s Office of Art and Culture and Boston Centers for Youth & Families",
+        "year": "2017",
+      }
+    }
   />
 </div>
 `;

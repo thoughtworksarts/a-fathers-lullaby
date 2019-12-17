@@ -2,7 +2,7 @@
     background-color: white;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 11pt;
+    font-size: calc(5px + 1vw);;
     text-align: justify;
     line-height: 1.5em;
     display: flex;
