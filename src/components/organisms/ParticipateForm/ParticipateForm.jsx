@@ -16,6 +16,9 @@ const ParticipateForm = (props) => {
     279: 'I do not know someone incarcerated.',
     275: 'Child',
     274: 'Parent',
+    321: 'Personal',
+    322: 'Family Member',
+    323: 'Other',
     273: 'Sing a lullaby or song that reminds you of childhood.'
   }
 
@@ -52,6 +55,9 @@ const ParticipateForm = (props) => {
             >
               <Dropdown.Item eventKey='274' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Parent</Dropdown.Item>
               <Dropdown.Item eventKey='275' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Child</Dropdown.Item>
+              <Dropdown.Item eventKey='321' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Personal</Dropdown.Item>
+              <Dropdown.Item eventKey='322' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Family Member</Dropdown.Item>
+              <Dropdown.Item eventKey='323' onSelect={(eventKey) => perspectiveHandler(eventKey)}>Other</Dropdown.Item>
             </DropdownButton>
           </div>
           <div className='meta-data-question'>
@@ -62,8 +68,9 @@ const ParticipateForm = (props) => {
               variant='secondary'
               className='dropdown'
             >
-              <Dropdown.Item eventKey='278' onSelect={(eventKey) => relationshipHandler(eventKey)}>I know someone incarcerated.</Dropdown.Item>
               <Dropdown.Item eventKey='279' onSelect={(eventKey) => relationshipHandler(eventKey)}>I do not know someone incarcerated.</Dropdown.Item>
+              <Dropdown.Item eventKey='278' onSelect={(eventKey) => relationshipHandler(eventKey)}>I know someone incarcerated.</Dropdown.Item>
+              <Dropdown.Item eventKey='323' onSelect={(eventKey) => relationshipHandler(eventKey)}>Other</Dropdown.Item>
             </DropdownButton>
           </div>
           <div className='meta-data-question'>
