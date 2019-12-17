@@ -7,7 +7,7 @@ exports[`Timeline matches snapshot 1`] = `
   <TimelineEntry
     altText="People at audio installation"
     description="At 2018 HUBweek, We The Future conference, we prototyped an immersive participatory installation inside a shipping container"
-    entryNum="/3"
+    entryNum="/about/3"
     picture="timelinepic_2018_2.png"
     pictureFirst="true"
     year="2018"
@@ -15,7 +15,7 @@ exports[`Timeline matches snapshot 1`] = `
   <TimelineEntry
     altText="People sitting and listening to audio"
     description="In the second chapter, 2018, the project expanded through collaboration with local artists and partnership with institutions, such as the Federal Probation Office"
-    entryNum="/2"
+    entryNum="/about/2"
     picture="timelinepic_2018_1.png"
     pictureFirst="false"
     year="2018"
@@ -23,7 +23,7 @@ exports[`Timeline matches snapshot 1`] = `
   <TimelineEntry
     altText="Woman singing lullaby"
     description="The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with mayor’s Office of Art and Culture and Boston Centers for Youth & Families"
-    entryNum="/1"
+    entryNum="/about/1"
     picture="timelinepic_one.png"
     pictureFirst="true"
     year="2017"

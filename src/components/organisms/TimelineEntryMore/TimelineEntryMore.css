@@ -48,7 +48,7 @@
 .TimelineEntryMorePage p {
     font-size: 1.3em;
     line-height: 1.5em;
-    margin: 0;
+    margin: 0 !important;
 }
 .EntryYear {
     color: #96351F;
