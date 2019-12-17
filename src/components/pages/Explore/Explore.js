@@ -11,6 +11,7 @@ const Explore = () => {
   const [currentStory, setCurrentStory] = useState('')
   const [latitude] = useState('42.3601')
   const [longitude] = useState('-71.05')
+  const [mp3URL, setMp3URL] = useState('')
   const { id } = useParams()
 
   useEffect(() => {
@@ -26,12 +27,17 @@ const Explore = () => {
       .catch(err => console.log(err))
   }, [])
 
-  // create a stream for the first render
   const playStream = () => {
     getSessionId()
       .then(sessionId => createFormData(sessionId))
       .then(formData => createStream(formData))
-    // .then(document.getElementById('streamplayer').play())
+      .then(res => {
+        setMp3URL(res.stream_url)
+        console.log(res.stream_url)
+      })
+      .then(
+        document.getElementById('streamplayer').play()
+      )
   }
 
   useEffect(() => {
@@ -76,7 +82,7 @@ const Explore = () => {
   }
 
   const createStream = (formData) => {
-    fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_STREAMS_URL}`,
+    return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_STREAMS_URL}`,
       {
         method: 'POST',
         headers: {
@@ -88,7 +94,7 @@ const Explore = () => {
         body: formData
       })
       .then(res => {
-        console.log(res.json())
+        return res.json()
       })
       .catch(err => console.log(err))
   }
@@ -103,7 +109,7 @@ const Explore = () => {
         <Col lg={12}>
           <button className='Button' onClick={playStream}>Play Stream
             <audio id='streamplayer'>
-              <source id='audiosource' type='audio/mp3' src='https://halseyburgund.com/audio/104K_IV.mp3' />
+              <source id='audiosource' type='audio/mp3' src={mp3URL} />
             </audio>
           </button>
         </Col>
