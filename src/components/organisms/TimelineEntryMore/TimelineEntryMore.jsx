@@ -22,7 +22,7 @@ const TimelineEntryMore = () => {
     <div className='ExpandedEntry'>
       <img alt={currTimelineEntry.alt_text} src={currTimelineEntry.img} />
       <p className='EntryYear'>{currTimelineEntry.year}</p>
-      <p>{currTimelineEntry.full_desc}</p>
+      <div>{currTimelineEntry.full_desc}</div>
     </div>
   )
 
