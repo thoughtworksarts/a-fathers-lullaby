@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { MapContainer, StoryPlaylist } from 'organisms'
 import { Row, Col, Container } from 'react-bootstrap'
-
 import './Explore.css'
 
 const Explore = () => {
@@ -12,6 +11,7 @@ const Explore = () => {
   const [latitude] = useState('42.3601')
   const [longitude] = useState('-71.05')
   const [mp3URL, setMp3URL] = useState('')
+  const [isPlaying, setIsPlaying] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -28,16 +28,24 @@ const Explore = () => {
   }, [])
 
   const playStream = () => {
-    getSessionId()
-      .then(sessionId => createFormData(sessionId))
-      .then(formData => createStream(formData))
-      .then(res => {
-        setMp3URL(res.stream_url)
-        console.log(res.stream_url)
-      })
-      .then(
-        document.getElementById('streamplayer').play()
-      )
+    if (!isPlaying && !mp3URL){
+      getSessionId()
+        .then(sessionId => createFormData(sessionId))
+        .then(formData => createStream(formData))
+        .then(res => {
+          setMp3URL(res.stream_url)
+        })
+        .then(() => {
+          document.getElementById('streamplayer').play()
+        })
+      }
+    else if (!isPlaying) {
+      document.getElementById('streamplayer').play()
+    }
+    else {
+      document.getElementById('streamplayer').pause()
+    }
+    setIsPlaying(!isPlaying)
   }
 
   useEffect(() => {
@@ -107,8 +115,8 @@ const Explore = () => {
     <Container className='explore-page'>
       <Row>
         <Col lg={12}>
-          <button className='Button' onClick={playStream}>Play Stream
-            <audio id='streamplayer'>
+          <button className='Button' onClick={playStream}>{isPlaying ? 'Pause Stream' : 'Play Stream'}
+            <audio key={mp3URL} id='streamplayer'>
               <source id='audiosource' type='audio/mp3' src={mp3URL} />
             </audio>
           </button>
