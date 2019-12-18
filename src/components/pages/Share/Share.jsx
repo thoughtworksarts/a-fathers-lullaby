@@ -11,7 +11,6 @@ const Share = () => {
   const [relationship, setRelationship] = useState('')
   const [prompt, setPrompt] = useState('')
   const [myErrors, setErrors] = useState([])
-
   const [uploading, setUploading] = useState(false)
   const [newLullabyId, setNewLullabyId] = useState('')
 

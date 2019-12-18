@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import MicRecorder from 'mic-recorder-to-mp3'
 import Wavesurfer from 'wavesurfer.js'
 import MicrophonePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.microphone.js'
-import recImg from '../../../assets/record.png'
-import stopImg from '../../../assets/stop.png'
-import playImg from '../../../assets/play.png'
-import rerecordImg from '../../../assets/re-record.png'
-import uploadImg from '../../../assets/upload.png'
+import recImg from 'assets/record.png'
+import stopImg from 'assets/stop.png'
+import playImg from 'assets/play.png'
+import rerecordImg from 'assets/re-record.png'
+import uploadImg from 'assets/upload.png'
 import './Recorder.css'
 
 const Recorder = (props) => {
@@ -21,6 +21,9 @@ const Recorder = (props) => {
     if (!isRecording) { displayLiveAudio() }
   })
 
+  /**
+   * Switch out 3 buttons based on 3 use cases
+   */
   const setCurrentButtonRow = () => {
     let currentButtonRow
     if (!isRecording && !blobURL) {
@@ -78,7 +81,7 @@ const Recorder = (props) => {
   /* MP3 Recording Functionality */
 
   /**
-   *
+   * Start MP3 Recorder and log success and error
    */
   const start = () => {
     Mp3Recorder
@@ -96,7 +99,7 @@ const Recorder = (props) => {
   }
 
   /**
-   *
+   * Stop for Mp3 recording, update Mp3 blob state variable
    */
   const stop = () => {
     Mp3Recorder
@@ -115,7 +118,7 @@ const Recorder = (props) => {
   /* Wavesurfer audio display functionality */
 
   /**
-   * This function displays audio
+   * This function displays live audio
    */
   const displayLiveAudio = () => {
     const container = document.getElementById('inputmeter')
@@ -136,7 +139,7 @@ const Recorder = (props) => {
   }
 
   /**
-   *
+   *  This function displays recorded audio
    * @param {*} blob
    */
   const displayRecordedAudio = (blob) => {

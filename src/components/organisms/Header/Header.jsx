@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import './Header.css'
 import menuBars from 'assets/menu-bars.svg'
 import { Logo, Link, Subtitle, NavLink, Backdrop } from 'atoms'
-
 import { Sidepanel } from 'organisms'
+import './Header.css'
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 980)

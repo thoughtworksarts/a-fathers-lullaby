@@ -1,7 +1,10 @@
 import React from 'react'
 import './Timeline.css'
 import { TimelineEntry } from 'organisms'
-import * as TimelineDescriptions from '../../atoms/TimelineDescriptions/TimelineDescriptions.jsx'
+import * as myConstClass from 'atoms/TimelineDescriptions/TimelineDescriptions.jsx'
+import picOne from 'assets/timelinepic_one.png'
+import picTwo from 'assets/timelinepic_2018_1.png'
+import picThree from 'assets/timelinepic_2018_2.png'
 
 const Timeline = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import './TimelineEntry.css'
 import { TimelinePicture, TimelineText } from 'molecules'
+import './TimelineEntry.css'
 
 const TimelineEntry = ({ timelineInfo, pictureFirst, entryNum }) => {
   let left = null

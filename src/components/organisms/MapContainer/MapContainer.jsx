@@ -8,7 +8,7 @@ const MapContainer = (props) => {
   const [currentStory, setCurrentStory] = useState(props.currentStory)
 
   // Import custom styles to customize the style of Google Map
-  const styles = require('../../../assets/GoogleMapStyles.json')
+  const styles = require('assets/GoogleMapStyles.json')
 
   const markerClickHandler = (story) => {
     setCurrentStory(story)

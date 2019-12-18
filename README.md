@@ -16,7 +16,7 @@
   2. Lint your code by running `npm run lint:fix` and continue only if they pass
   3. [Run all tests](https://github.com/thoughtworksarts/a-fathers-lullaby#to-run-tests) and continue only if they pass
   4. `git add [your changed files]`
-  5. `git commit -m [your commit message]`
+  5. `git commit -m "[Card  #][Your name] Your commit message`
   6. `git pull --rebase`
   7. [Run all tests](https://github.com/thoughtworksarts/a-fathers-lullaby#to-run-tests) and continue only if they pass
   8. `git push`
@@ -39,6 +39,11 @@
   2. Run `npm start` to run the app so that Cypress can access it at localhost:3000
   3. In a different terminal tab/window, run `npm run cypress` to launch the Cypress app and click the `▶️ Run all specs` button
   4. To run the E2E tests in the terminal without running the Cypress app, skip steps #2 and #3, and run `npm run cypress:headless`
+
+### Package management
+* Packages are managed using yarn
+* To install a new package, use `yarn add package-name`
+* To make sure all pagages are installed locally, run `yarn install`
 
 ### Our CI pipeline and environments
 

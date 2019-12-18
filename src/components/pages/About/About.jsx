@@ -1,8 +1,7 @@
 import React from 'react'
-import './About.css'
-
 import { Button } from 'atoms'
 import { Timeline } from 'organisms'
+import './About.css'
 
 const About = () => {
   return (

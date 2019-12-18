@@ -6,7 +6,6 @@ import './Library.css'
 const Library = () => {
   const [stories, setStories] = useState([])
   const [currentStory, setCurrentStory] = useState('')
-
   const { id } = useParams()
 
   const updateCurrentStory = (newCurrentStory) => {
