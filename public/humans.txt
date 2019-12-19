@@ -1,0 +1,37 @@
+/* SITE TEAM */
+Marisa Hoenig - Dev, New York
+Anna Rempe - Dev, New York
+Megan Goodling - Dev, Chicago
+Kira Davies - XD, New York 
+Matthew DeGraffenreid - Dev, Atlanta
+Nate Argosh - XD, New York
+Andy McWilliams - New York
+EJ Yi - Dev, New York
+John Ferry - PM, Denver
+Austin Ratcliff - Dev, Chicago
+Jonah Price - Dev, Chicago
+Stephanie Cappello - Dev, Chicago
+Syd Botz - Dev, Chicago
+Cecilia Barudi - Dev, Barcelona
+Jamario Rankins - Dev, Denver
+Jeff Kidd - PM, New York
+Anna Krairiksh - BA, San Francisco
+Tim Brandle - Dev, Denver
+Andrew Zou - Dev, Dallas
+Brennan Pilcher - Dev, New York
+Julien Deswaef - TW Arts, Barcelona
+Lena Konstantynova - QA, Stuttgart
+Whelan Workmaster - Dev, New York
+Emily Sachs - Dev, New York
+James Smith - Dev, New York
+Bubah Conteh - Dev, New York
+Sarah Krueger - Dev, New York
+Rylan Gooch - Dev, San Francisco
+Toms Vārpiņš - BA, Barcelona
+
+/* THANKS */
+Specials thanks to ThoughtWorks, Inc. for their work on this project.
+
+/* SITE */
+Software: React
+Standards: ES6 
