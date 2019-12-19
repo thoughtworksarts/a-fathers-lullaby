@@ -22,7 +22,7 @@ export const App = (props) => {
         <Route path='/explore' component={Explore} />
         <Route path='/library/:id' component={Library} />
         <Route path='/library' component={Library} />
-        <Route exact path='/about/:id' component={TimelineEntryMore} />
+        <Route path='/a-fathers-lullaby/about/:id' component={TimelineEntryMore} />
       </Switch>
       <Footer />
     </div>
