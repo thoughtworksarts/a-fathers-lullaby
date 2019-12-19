@@ -93,7 +93,7 @@ const StoryPlaylist = (props) => {
     let currentStoryPlayer
     if (currentStory !== '') {
       currentStoryPlayer =
-        <div className='audio-player'>
+        <div className='audio-player safari-only'>
           <p className='current-title'>{'Story ' + (props.stories.indexOf(currentStory) + 1)}</p>
           <ReactAudioPlayer
             src={process.env.REACT_APP_ROUNDWARE_PROD + currentStory.filename}
@@ -104,7 +104,7 @@ const StoryPlaylist = (props) => {
         </div>
     } else {
       currentStoryPlayer =
-        <div className='audio-player'>
+        <div className='audio-player safari-only'>
           <ReactAudioPlayer
             controls
             autoPlay
