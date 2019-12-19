@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './TimelineEntryMore.css'
 import { Button } from 'atoms'
 import { useParams } from 'react-router-dom'
-import * as TimelineDescriptions from '../../atoms/TimelineDescriptions/TimelineDescriptions.jsx'
+import * as TimelineDescriptions from 'atoms/TimelineDescriptions/TimelineDescriptions.jsx'
+import './TimelineEntryMore.css'
 
 const TimelineEntryMore = () => {
   const { id } = useParams()

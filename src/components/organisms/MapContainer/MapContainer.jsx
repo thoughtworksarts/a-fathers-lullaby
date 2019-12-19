@@ -19,6 +19,22 @@ const MapContainer = (props) => {
     setCurrentStory(props.currentStory)
   }, [props.currentStory])
 
+  useEffect(() => {
+    if (props.id) {
+      for (let i = 0; i < props.stories.length; i++) {
+        if (props.stories[i].id === Number(props.id)) {
+          let arrayIndex = null
+
+          if (props.stories && props.stories.length) {
+            arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
+            setCurrentStory(props.stories[arrayIndex])
+          }
+          break
+        }
+      }
+    }
+  }, [props.stories, props.id])
+
   const displayMarkers = () => {
     const markerIcon = {
       url: 'http://maps.google.com/mapfiles/kml/paddle/wht-circle.png',

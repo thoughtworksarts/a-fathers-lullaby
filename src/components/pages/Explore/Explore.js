@@ -28,7 +28,7 @@ const Explore = () => {
   }, [])
 
   const playStream = () => {
-    if (!isPlaying && !mp3URL){
+    if (!isPlaying && !mp3URL) {
       getSessionId()
         .then(sessionId => createFormData(sessionId))
         .then(formData => createStream(formData))
@@ -38,11 +38,9 @@ const Explore = () => {
         .then(() => {
           document.getElementById('streamplayer').play()
         })
-      }
-    else if (!isPlaying) {
+    } else if (!isPlaying) {
       document.getElementById('streamplayer').play()
-    }
-    else {
+    } else {
       document.getElementById('streamplayer').pause()
     }
     setIsPlaying(!isPlaying)
@@ -124,7 +122,7 @@ const Explore = () => {
       </Row>
       <Row>
         <Col lg={12}>
-          <MapContainer stories={stories} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} />
+          <MapContainer stories={stories} id={id} currentStory={currentStory} parentCallback={updateCurrentStory} tags={tags} />
         </Col>
       </Row>
       <Row>
