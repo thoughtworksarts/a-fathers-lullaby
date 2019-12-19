@@ -5,7 +5,7 @@ exports[`Timeline matches snapshot 1`] = `
   className="Timeline"
 >
   <TimelineEntry
-    entryNum="/about/3"
+    entryNum="a-fathers-lullaby/about/3"
     pictureFirst="true"
     timelineInfo={
       Object {
@@ -18,7 +18,7 @@ exports[`Timeline matches snapshot 1`] = `
     }
   />
   <TimelineEntry
-    entryNum="/about/2"
+    entryNum="a-fathers-lullaby/about/2"
     pictureFirst="false"
     timelineInfo={
       Object {
@@ -31,7 +31,7 @@ exports[`Timeline matches snapshot 1`] = `
     }
   />
   <TimelineEntry
-    entryNum="/about/1"
+    entryNum="a-fathers-lullaby/about/1"
     pictureFirst="true"
     timelineInfo={
       Object {
