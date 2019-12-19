@@ -10,10 +10,10 @@ const TimelineText = ({ year, description, alignLeft, entryNum }) => {
   return (
     <div className={descAlign}>
       <h3 className='year'>{year}</h3>
-      <p className='description'>
+      <div className='description'>
         {description}
         <a href={entryNum}>More...</a>
-      </p>
+      </div>
     </div>
   )
 }

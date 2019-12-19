@@ -6,6 +6,16 @@
     font-size: 30px;
     color: #96351F;
     margin: 0px;
+    font-weight: bold;
+}
+
+.TimelineText a {
+    color: #96351F;
+    font-weight: bold;
+}
+
+.TimelineText a:hover {
+    color: #96351F;
 }
 
 .TimelineText a {
@@ -18,10 +28,10 @@
 }
 
 .TimelineText .description {
-    font-size: calc(10px + 1vw);
+    font-size: calc(10px + .5vw);
     color: black;
-    margin: 5px;
-    max-width: 40vw;
+    margin: 0px;
+    max-width: 50vw;
     width: 100%;
 }
 
