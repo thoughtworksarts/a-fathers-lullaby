@@ -1,10 +1,13 @@
+.container {
+  position: relative !important;
+  padding-top: 5px !important;
+}
 .SharePage {
   background-color: #ffffff;
   color: black;
   font-family: 'Montserrat', sans-serif;  
   font-size: 11pt;
   line-height: 1.5em;
-  display: flex;
   position: sticky;
   flex-direction: column;
   align-content: flex-start;
