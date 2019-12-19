@@ -8,6 +8,15 @@
     margin: 0px;
 }
 
+.TimelineText a {
+    color: #96351F;
+    font-weight: bold;
+}
+
+.TimelineText a:hover {
+    color: #96351F;
+}
+
 .TimelineText .description {
     font-size: calc(10px + 1vw);
     color: black;
