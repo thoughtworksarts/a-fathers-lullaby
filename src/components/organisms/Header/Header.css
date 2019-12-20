@@ -8,6 +8,21 @@
   width: 100vw;
   z-index: 300;
   background-color: white;
+  flex-wrap: wrap;
+
+}
+
+.desktop-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  align-items: center;
 }
 
 .Header .logoText {
