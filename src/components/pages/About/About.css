@@ -25,21 +25,32 @@
   background-blend-mode: lighten;
 }
 
-.AboutPage h1 {
-  font-size: calc(10px + 1vw);
-  max-width: 900px;
-  padding: 80px 20px 5px 20px;
-  width: 60%;
-  font-weight: bold;
-  line-height: 1em;
+.desktop-intro-par1 {
+  max-width: 90vw;
+  padding-top: 40px;
+  width: 1136px;
+  height: 113px;
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 2.1px;
+  color: #ffffff;
 }
-
-.AboutPage h2 {
-  font-size: calc(8px + 1vw);
-  max-width: 900px;
-  padding: 0 20px 5px 20px;
-  width: 60%;
-  line-height: 1em;
+.desktop-intro-par2 {
+  max-width: 90vw;
+  width: 1169px;
+  height: 113px;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 2.1px;
+  color: #ffffff;
 }
 
 .AboutPage .highlight {
@@ -65,6 +76,7 @@
 
 .Button {
   font-size: calc(10px + 1vw);
+  margin-bottom: 28px;
 }
 
 @media screen and (max-width: 980px) {

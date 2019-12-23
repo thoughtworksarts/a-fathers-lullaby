@@ -48,7 +48,7 @@ const Header = () => {
         </div>
         <div className='mobile-second-line'>
           <p>
-            A <p className='highlight-red'>poetic movement</p> for social justice.
+            A <span className='highlight-red'>poetic movement</span> for social justice.
           </p>
         </div>
         <Sidepanel show={isOpen} />
