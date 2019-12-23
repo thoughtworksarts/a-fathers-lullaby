@@ -9,7 +9,33 @@
   z-index: 300;
   background-color: white;
   flex-wrap: wrap;
+}
 
+.mobile-first-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  align-items: center;
+}
+
+.mobile-second-line  {
+  font-family: Montserrat;
+  font-size: calc(5px + 1vw);
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 2.93px;
+  color: #000000;
+}
+
+.mobile-second-line  {
+  display: inline;
+}
+
+.highlight-red {
+  display: inline;
+  color: #8c321e;
 }
 
 .desktop-header {
@@ -20,16 +46,17 @@
 
 .mobile-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 100vw;
   align-items: center;
+  height: 90px;
 }
 
 .Header .logoText {
   display: flex;
   flex-direction: column;
   margin: 10px 0px 0px 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-style: italic;
   font-size: 15px;
@@ -42,7 +69,8 @@
 .Header .menu-bars {
   color: #444;
   height: 1.5em;
-  margin-right: 30px;
+  margin-right: 20px;
+  width: 23px;
   cursor: pointer;
 }
 
@@ -61,7 +89,7 @@
 
 .Header .NavLink {
   list-style: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-decoration: none;
   color: #161616;
   margin-left: 30px;
@@ -71,4 +99,4 @@
 .Header .NavBar .NavLink.selected {
   border-bottom: 2px solid #161616;
   padding-bottom: 5px;
-} 
+}

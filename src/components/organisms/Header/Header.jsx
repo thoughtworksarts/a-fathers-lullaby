@@ -28,10 +28,10 @@ const Header = () => {
     }
   })
 
-  return (
-    <nav className='Header'>
-      {isMobile ? (
-        <div className='mobile-header'>
+  const createMobileHeader = () => {
+    return (
+      <div className='mobile-header'>
+        <div className='mobile-first-line'>
           <div className='mobile-logo'>
             <Link to='/'>
               <img src={mobileLogo} alt='mobile AFL logo' />
@@ -44,27 +44,42 @@ const Header = () => {
               alt='Menu'
               onClick={() => setIsOpen(true)}
             />
-            <Sidepanel show={isOpen} />
-            <Backdrop alt='Backdrop' show={isOpen} />
           </div>
         </div>
-      ) : (
-        <div className='desktop-header'>
-          <div className='logoText'>
-            <Link to='/'>
-              <Logo size='sm' />
-            </Link>
-            <Subtitle />
-          </div>
-          <div className='NavBar NavLinks'>
-            <NavLink className='headerLinks' link='/'>
-              About
-            </NavLink>
-            <NavLink link='/share'>Share</NavLink>
-            <NavLink link='/explore'>Explore</NavLink>
-          </div>
+        <div className='mobile-second-line'>
+          <p>
+            A <p className='highlight-red'>poetic movement</p> for social justice.
+          </p>
         </div>
-      )}
+        <Sidepanel show={isOpen} />
+        <Backdrop alt='Backdrop' show={isOpen} />
+      </div>
+    )
+  }
+
+  const createDesktopHeader = () => {
+    return (
+      <div className='desktop-header'>
+        <div className='logoText'>
+          <Link to='/'>
+            <Logo size='sm' />
+          </Link>
+          <Subtitle />
+        </div>
+        <div className='NavBar NavLinks'>
+          <NavLink className='headerLinks' link='/'>
+            About
+          </NavLink>
+          <NavLink link='/share'>Share</NavLink>
+          <NavLink link='/explore'>Explore</NavLink>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <nav className='Header'>
+      {isMobile ? createMobileHeader() : createDesktopHeader()}
     </nav>
   )
 }
