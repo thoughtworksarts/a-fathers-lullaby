@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import menuBars from 'assets/menu-bars.svg'
-import { Logo, Link, Subtitle, NavLink, Backdrop } from 'atoms'
+import { Logo, MobileLogo, Link, Subtitle, NavLink, Backdrop } from 'atoms'
 import { Sidepanel } from 'organisms'
-import mobileLogo from 'assets/mobileLogo.png'
 
 import './Header.css'
 
@@ -28,7 +27,7 @@ const Header = () => {
         <div className='mobile-first-line'>
           <div className='mobile-logo'>
             <Link to='/'>
-              <img src={mobileLogo} alt='mobile AFL logo' />
+              <MobileLogo />
             </Link>
           </div>
           <div className='sideMenu'>
