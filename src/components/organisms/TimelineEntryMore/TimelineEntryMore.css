@@ -12,9 +12,6 @@
     margin-bottom: 100px;
 }
 
-
-
-
 .TimelineEntryMorePage .highlight {
     color: #96351F;
 }
@@ -45,44 +42,4 @@
     max-width: 900px;
     justify-self: center;
     height: auto;
-}
-
-@media screen and (max-width: 1280px) {
-    .TimelineEntryMorePage img {
-        width: 50vw;
-    }
-
-    .TimelineEntryMorePage p {
-        width: 40vw;
-    }
-}
-
-.Button {
-    font-size: calc(10px + 1vw);
-}
-
-@media screen and (max-width: 980px) {
-    .TimelineEntryMorePage p {
-        width: 47vw;
-    }
-}
-
-@media screen and (max-width: 736px) {
-    .TimelineEntryMorePage img {
-        width: 75vw;
-    }
-
-    .TimelineEntryMorePage p {
-        width: 60vw;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .TimelineEntryMorePage img {
-        width: 80vw;
-    }
-
-    .TimelineEntryMorePage p {
-        width: 80vw;
-    }
 }
