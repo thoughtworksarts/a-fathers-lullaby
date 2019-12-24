@@ -1,0 +1,134 @@
+.intro {
+	background-color: white;
+	color: #ffffff;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 11pt;
+	text-align: left;
+	line-height: 1.5em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.intro-img {
+	background-image: url("../../../assets/about-page-background.jpg");
+	background-repeat: no-repeat;
+	background-color: rgba(238, 238, 238, 0.50);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	margin-top: 94px;
+	background-size: 100% 100%;
+	background-blend-mode: lighten;
+  }
+  
+  .desktop-intro-par1 {
+	max-width: 90vw;
+	padding-top: 40px;
+	width: 1136px;
+	height: 113px;
+	font-family: Montserrat;
+	font-size: 30px;
+	font-weight: 600;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: 2.1px;
+	color: #ffffff;
+  }
+  .desktop-intro-par2 {
+	max-width: 90vw;
+	width: 1169px;
+	height: 113px;
+	font-family: Montserrat;
+	font-size: 21px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: 2.1px;
+	color: #ffffff;
+  }
+  
+  .mobile-intro-par1 {
+	margin-top: 40px;
+	width: 317px;
+	height: 113px;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: 2.1px;
+	color: #ffffff;
+  }
+  
+  .mobile-intro-par2 {
+	margin-top: 20px;
+	width: 344px;
+	height: 60px;
+	font-family: Montserrat;
+	font-size: 12px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: 2.1px;
+	color: #8c321e;
+  }
+  
+ .intro-highlight {
+	color: #96351F;
+  }
+  
+.intro p {
+	line-height: 1.5em;
+	width: 30vw;
+	margin: 0;
+  }
+  
+  @media screen and (max-width: 1280px) {
+	 .intro img {
+	  width: 50vw;
+	}
+  
+	 .intro p {
+	  width: 40vw;
+	}
+  }
+  
+  .Button {
+	font-size: calc(10px + 1vw);
+	margin-bottom: 28px;
+  }
+  
+  @media screen and (max-width: 980px) {
+	.intro p {
+	  width: 47vw;
+	}
+  }
+  
+  @media screen and (max-width: 736px) {
+	.intro img {
+	  width: 75vw;
+	}
+  
+	 .intro p {
+	  width: 60vw;
+	}
+  }
+  
+  @media screen and (max-width: 480px) {
+	 .intro img {
+	  width: 80vw;
+	}
+  
+	 .intro p {
+	  width: 80vw;
+	}
+  }
+  
