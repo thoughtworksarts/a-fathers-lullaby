@@ -3,7 +3,7 @@ import './Subtitle.css'
 
 export const Subtitle = () => {
   return (
-    <p className='Subtitle'>A Poetic Movement for Social Justice</p>
+    <p className='Subtitle'>A <span className='highlight-red'>Poetic Movement</span> for Social Justice</p>
   )
 }
 

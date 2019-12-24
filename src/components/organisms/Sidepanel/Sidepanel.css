@@ -1,4 +1,4 @@
-.side-panel {
+.panel {
     height: 100%;
     background: white;
     box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
@@ -7,24 +7,24 @@
     right: 0;
     width: 70%;
     max-width: 400px;
-    z-index: 300;
+    z-index: 400;
     display: flex;
     flex-direction: column;
     transform: translateX(100%);
     transition: transform 0.3s ease-out;
 }
 
-.side-panel.open {
+.panel.open {
     transform: translateX(0);
     padding: 10em 2em;
 }
 
-.side-panel.open .NavLink {
+.panel.open .NavLink {
     color: #444;
     padding: 0.75em 0;
 }
 
- .side-panel.open .NavLink.selected {
+ .panel.open .NavLink.selected {
     color: #96351F;
     border-bottom: none;
   }

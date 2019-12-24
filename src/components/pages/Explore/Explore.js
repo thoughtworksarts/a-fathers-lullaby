@@ -139,7 +139,6 @@ const Explore = () => {
       ) : (
         <div />
       )}
-
       <Row>
         <Col lg={12}>
           <MapContainer

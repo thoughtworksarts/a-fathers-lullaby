@@ -18,15 +18,9 @@ const Header = () => {
     window.addEventListener('resize', handleResize)
   }, [])
 
-  useEffect(() => {
-    const backdropClickHandler = () => {
-      setIsOpen(!isOpen)
-    }
-    const menu = document.getElementsByClassName('sideMenu')[0]
-    if (menu) {
-      menu.addEventListener('click', backdropClickHandler)
-    }
-  })
+  const backdropClickHandler = (updateIsOpen) => {
+    setIsOpen(updateIsOpen)
+  }
 
   const createMobileHeader = () => {
     return (
@@ -42,7 +36,7 @@ const Header = () => {
               className='menu-bars'
               src={menuBars}
               alt='Menu'
-              onClick={() => setIsOpen(true)}
+              onClick={() => setIsOpen(!isOpen)}
             />
           </div>
         </div>
@@ -51,8 +45,6 @@ const Header = () => {
             A <span className='highlight-red'>poetic movement</span> for social justice.
           </p>
         </div>
-        <Sidepanel show={isOpen} />
-        <Backdrop alt='Backdrop' show={isOpen} />
       </div>
     )
   }
@@ -78,9 +70,13 @@ const Header = () => {
   }
 
   return (
-    <nav className='Header'>
-      {isMobile ? createMobileHeader() : createDesktopHeader()}
-    </nav>
+    <div>
+      <nav className='Header'>
+        {isMobile ? createMobileHeader() : createDesktopHeader()}
+      </nav>
+      <Sidepanel isOpen={isOpen} backdropClickHandler={backdropClickHandler} />
+      <Backdrop alt='Backdrop' isOpen={isOpen} backdropClickHandler={backdropClickHandler} />
+    </div>
   )
 }
 
