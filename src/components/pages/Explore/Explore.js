@@ -13,6 +13,7 @@ const Explore = () => {
   const [longitude] = useState('-71.05')
   const [mp3URL, setMp3URL] = useState('')
   const [isPlaying, setIsPlaying] = useState(false)
+
   const { id } = useParams()
 
   useEffect(() => {
