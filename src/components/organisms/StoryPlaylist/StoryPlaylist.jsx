@@ -7,94 +7,51 @@ import numberIcon from 'assets/hashtag-solid.svg'
 import clockIcon from 'assets/clock-regular.svg'
 import './StoryPlaylist.css'
 
-const StoryPlaylist = (props) => {
+const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
-  const [currentStory, setCurrentStory] = useState(props.currentStory)
   const [storyNotFound, setStoryNotFound] = useState(false)
   const [prevStoryIndex, setPrevStoryIndex] = useState(null)
 
-  const clickHandler = (story) => {
-    setCurrentStory(story)
-    props.updateCurrentStory(story)
-  }
-
-  const addPlayingClassToStory = useCallback(() => {
-    if ((currentStoryIndex && currentStoryIndex >= 0) || (currentStoryIndex === 0)) {
-      const storyArray = document.getElementsByClassName('Story')
-      storyArray[currentStoryIndex].classList.add('playing')
-    }
-  }, [currentStoryIndex])
-
-  const removePlayingClassFromStory = useCallback(() => {
-    if (prevStoryIndex && prevStoryIndex >= 0) {
-      const storyArray = document.getElementsByClassName('Story')
-      storyArray[prevStoryIndex].classList.remove('playing')
-    }
-  }, [prevStoryIndex])
-
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
-    if (nextStoryIndex === props.stories.length) {
-      return null
-    } else {
-      setCurrentStory(props.stories[nextStoryIndex])
-      props.updateCurrentStory(props.stories[nextStoryIndex])
-    }
+    setCurrentStory(stories[nextStoryIndex])
   }
-
-  useEffect(() => {
-    setCurrentStory(props.currentStory)
-  }, [props.currentStory])
 
   useEffect(() => {
     setPrevStoryIndex(currentStoryIndex) // eslint-disable-next-line
   }, [currentStory])
 
   useEffect(() => {
-    const index = props.stories.findIndex(story => { return story.id === Number(currentStory.id) })
+    const index = stories.findIndex(story => { return story.id === Number(currentStory.id) })
     setCurrentStoryIndex(index)
-  }, [props.stories, prevStoryIndex, currentStory.id])
+  }, [stories, prevStoryIndex, currentStory.id])
 
   useEffect(() => {
-    removePlayingClassFromStory()
-  }, [prevStoryIndex, removePlayingClassFromStory])
-
-  useEffect(() => {
-    addPlayingClassToStory()
-  }, [currentStoryIndex, addPlayingClassToStory])
-
-  useEffect(() => {
-    if (props.id) {
-      for (let i = 0; i < props.stories.length; i++) {
-        if (props.stories[i].id === Number(props.id)) {
+    if (id) {
+      for (let i = 0; i < stories.length; i++) {
+        if (stories[i].id === Number(id)) {
           setStoryNotFound(false)
-          let arrayIndex = null
-
-          if (props.stories && props.stories.length) {
-            arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
-            setCurrentStory(props.stories[arrayIndex])
-          }
+          let arrayIndex = stories.findIndex(story => { return story.id === Number(id) })
 
           document.getElementsByClassName('Story')[arrayIndex].scrollIntoView({
             behavior: 'auto',
             block: 'center',
             inline: 'center'
           })
-
           break
         } else {
           setStoryNotFound(true)
         }
       }
     }
-  }, [props.stories, props.id])
+  }, [stories, id])
 
   const setCurrentStoryPlayer = () => {
     let currentStoryPlayer
     if (currentStory !== '') {
       currentStoryPlayer =
         <div className='audio-player safari-only'>
-          <p className='current-title'>{'Story ' + (props.stories.indexOf(currentStory) + 1)}</p>
+          <p className='current-title'>{'Story ' + (stories.indexOf(currentStory) + 1)}</p>
           <ReactAudioPlayer
             src={process.env.REACT_APP_ROUNDWARE_PROD + currentStory.filename}
             controls
@@ -117,7 +74,7 @@ const StoryPlaylist = (props) => {
 
   const storiesTable = (
     <div>
-      {props.id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
+      {id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
       {setCurrentStoryPlayer()}
       <Table hover>
         <thead>
@@ -128,8 +85,17 @@ const StoryPlaylist = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.stories.map(story => {
-            return <Story key={story.id} story={story} arrayIndex={props.stories.indexOf(story) + 1} clickHandler={clickHandler} />
+          {stories.map(story => {
+            console.log("STORY IDS: ",story.id, currentStory.id)
+            return (
+              <Story 
+                key={story.id} 
+                story={story} 
+                isPlaying={story.id === currentStory.id}
+                arrayIndex={stories.indexOf(story) + 1} 
+                clickHandler={setCurrentStory} 
+              />
+            )
           })}
         </tbody>
       </Table>
@@ -139,7 +105,7 @@ const StoryPlaylist = (props) => {
   return (
     <div className='StoryPlaylist'>
       {
-        props.stories && props.stories.length > 0
+        stories && stories.length > 0
           ? storiesTable
           : <h1 className='loading'>Loading...</h1>
       }
