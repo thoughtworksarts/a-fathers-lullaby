@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { MapContainer, StoryPlaylist } from 'organisms'
 import { Row, Col, Container } from 'react-bootstrap'
 import './Explore.css'
@@ -15,6 +15,7 @@ const Explore = () => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   const params = useParams()
+  const history = useHistory()
 
   useEffect(() => {
     fetch(
@@ -34,10 +35,12 @@ const Explore = () => {
 
   useEffect(() => {
     if (params.id && stories.length > 0) {
-      const newStory = stories.find(({ id: storyId }) => storyId === params.id)
+      const newStory = stories.find(({ id }) => id === Number(params.id))
       setCurrentStory(newStory)
     }
   }, [stories, params.id])
+
+  const goToStory = id => history.push(`/explore/${id}`)
 
   const playStream = () => {
     if (!isPlaying && !mp3URL) {
@@ -127,10 +130,6 @@ const Explore = () => {
       .catch(err => console.log(err))
   }
 
-  const updateCurrentStory = newCurrentStory => {
-    setCurrentStory(newCurrentStory)
-  }
-
   return (
     <Container className='explore-page'>
       {displayPlayStream ? (
@@ -152,7 +151,7 @@ const Explore = () => {
           <MapContainer
             stories={stories}
             currentStory={currentStory}
-            setCurrentStory={setCurrentStory}
+            goToStory={goToStory}
             tags={tags}
           />
         </Col>
@@ -164,8 +163,7 @@ const Explore = () => {
             stories={stories}
             id={params.id}
             currentStory={currentStory}
-            setCurrentStory={setCurrentStory}
-            // updateCurrentStory={setCurrentStory}
+            goToStory={goToStory}
           />
         </Col>
       </Row>

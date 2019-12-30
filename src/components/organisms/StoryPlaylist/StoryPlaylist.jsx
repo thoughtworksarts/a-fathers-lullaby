@@ -1,20 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Story } from 'molecules'
+import React, { useState, useEffect } from 'react'
+import { Story, StoryPlayer } from 'molecules'
 import Alert from 'react-bootstrap/Alert'
 import Table from 'react-bootstrap/Table'
-import ReactAudioPlayer from 'react-audio-player'
 import numberIcon from 'assets/hashtag-solid.svg'
 import clockIcon from 'assets/clock-regular.svg'
-import './StoryPlaylist.css'
+import './StoryPlaylist.scss'
 
-const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
+const StoryPlaylist = ({ stories, id, currentStory = {}, goToStory }) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState('')
   const [storyNotFound, setStoryNotFound] = useState(false)
   const [prevStoryIndex, setPrevStoryIndex] = useState(null)
 
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
-    setCurrentStory(stories[nextStoryIndex])
+    goToStory(stories[nextStoryIndex].id)
   }
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
   }, [currentStory])
 
   useEffect(() => {
-    const index = stories.findIndex(story => { return story.id === Number(currentStory.id) })
+    const index = stories.findIndex(story => story.id === Number(currentStory.id))
     setCurrentStoryIndex(index)
   }, [stories, prevStoryIndex, currentStory.id])
 
@@ -31,7 +30,7 @@ const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
       for (let i = 0; i < stories.length; i++) {
         if (stories[i].id === Number(id)) {
           setStoryNotFound(false)
-          const arrayIndex = stories.findIndex(story => { return story.id === Number(id) })
+          const arrayIndex = stories.findIndex(story => story.id === Number(id))
 
           document.getElementsByClassName('Story')[arrayIndex].scrollIntoView({
             behavior: 'auto',
@@ -46,36 +45,14 @@ const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
     }
   }, [stories, id])
 
-  const setCurrentStoryPlayer = () => {
-    let currentStoryPlayer
-    if (currentStory !== '') {
-      currentStoryPlayer =
-        <div className='audio-player safari-only'>
-          <p className='current-title'>{'Story ' + (stories.indexOf(currentStory) + 1)}</p>
-          <ReactAudioPlayer
-            src={process.env.REACT_APP_ROUNDWARE_PROD + currentStory.filename}
-            controls
-            autoPlay
-            onEnded={endHandler}
-          />
-        </div>
-    } else {
-      currentStoryPlayer =
-        <div className='audio-player safari-only'>
-          <ReactAudioPlayer
-            controls
-            autoPlay
-            onEnded={endHandler}
-          />
-        </div>
-    }
-    return currentStoryPlayer
-  }
-
   const storiesTable = (
     <div>
-      {id !== null && storyNotFound ? <Alert variant='danger'>Not found</Alert> : null}
-      {setCurrentStoryPlayer()}
+      {id !== null && storyNotFound && <Alert variant='danger'>Not found</Alert>}
+      <StoryPlayer
+        src={currentStory ? (process.env.REACT_APP_ROUNDWARE_PROD + currentStory.filename) : null}
+        title={currentStory ? `Story ${(stories.indexOf(currentStory) + 1)}` : ''}
+        endHandler={endHandler}
+      />
       <Table hover>
         <thead>
           <tr>
@@ -86,14 +63,13 @@ const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
         </thead>
         <tbody>
           {stories.map(story => {
-            console.log('STORY IDS: ', story.id, currentStory.id)
             return (
               <Story
                 key={story.id}
                 story={story}
                 isPlaying={story.id === currentStory.id}
                 arrayIndex={stories.indexOf(story) + 1}
-                clickHandler={setCurrentStory}
+                clickHandler={() => goToStory(story.id)}
               />
             )
           })}

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import { StoryView } from 'molecules'
 import { Row, Col, Container } from 'react-bootstrap'
 import './MapContainer.css'
 
 const MapContainer = (props) => {
-  const { stories, currentStory, setCurrentStory, tags } = props
+  const { stories, currentStory, goToStory, tags } = props
   // Import custom styles to customize the style of Google Map
   const styles = require('assets/GoogleMapStyles.json')
 
@@ -40,7 +40,7 @@ const MapContainer = (props) => {
             lng: story.longitude
           }}
           icon={icon}
-          onClick={() => setCurrentStory(story)}
+          onClick={() => goToStory(story.id)}
         />
       )
     })
