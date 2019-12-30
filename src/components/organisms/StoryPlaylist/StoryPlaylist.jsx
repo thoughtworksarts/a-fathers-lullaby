@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Story, StoryPlayer } from 'molecules'
 import Alert from 'react-bootstrap/Alert'
 import Table from 'react-bootstrap/Table'
@@ -6,45 +6,25 @@ import numberIcon from 'assets/hashtag-solid.svg'
 import clockIcon from 'assets/clock-regular.svg'
 import './StoryPlaylist.scss'
 
-const StoryPlaylist = ({ stories, id, currentStory = {}, goToStory }) => {
-  const [currentStoryIndex, setCurrentStoryIndex] = useState(0)
-  const [storyNotFound, setStoryNotFound] = useState(false)
-  // const [prevStoryIndex, setPrevStoryIndex] = useState(null)
-
+const StoryPlaylist = ({ stories, currentStory = {}, goToStory, storyNotFound }) => {
   const endHandler = () => {
-    const nextStoryIndex = currentStoryIndex + 1
+    const nextStoryIndex = currentStory.index + 1
     goToStory(stories[nextStoryIndex].id)
   }
 
   useEffect(() => {
-    const index = stories.findIndex(story => story.id === Number(currentStory.id))
-    setCurrentStoryIndex(index)
-    // setPrevStoryIndex(currentStoryIndex) // eslint-disable-next-line
-  }, [stories, currentStory])
-
-  useEffect(() => {
-    if (id) {
-      for (let i = 0; i < stories.length; i++) {
-        if (stories[i].id === Number(id)) {
-          setStoryNotFound(false)
-          const arrayIndex = stories.findIndex(story => story.id === Number(id))
-
-          document.getElementsByClassName('Story')[arrayIndex].scrollIntoView({
-            behavior: 'auto',
-            block: 'center',
-            inline: 'center'
-          })
-          break
-        } else {
-          setStoryNotFound(true)
-        }
-      }
+    if (currentStory.index) {
+      document.getElementsByClassName('Story')[currentStory.index].scrollIntoView({
+        behavior: 'auto',
+        block: 'center',
+        inline: 'center'
+      })
     }
-  }, [stories, id])
+  }, [currentStory])
 
   const storiesTable = (
     <div>
-      {id !== null && storyNotFound && <Alert variant='danger'>Not found</Alert>}
+      {storyNotFound && <Alert variant='danger'>Not found</Alert>}
       <StoryPlayer
         src={currentStory ? (process.env.REACT_APP_ROUNDWARE_PROD + currentStory.filename) : null}
         title={currentStory ? `Story ${(stories.indexOf(currentStory) + 1)}` : ''}

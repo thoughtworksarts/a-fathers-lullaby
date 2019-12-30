@@ -7,8 +7,9 @@ import './Explore.css'
 const Explore = () => {
   const displayPlayStream = false
   const [stories, setStories] = useState([])
-  const [tags, setTags] = useState([])
   const [currentStory, setCurrentStory] = useState('')
+  const [storyNotFound, setStoryNotFound] = useState(false)
+  const [tags, setTags] = useState([])
   const [latitude] = useState('42.3601')
   const [longitude] = useState('-71.05')
   const [mp3URL, setMp3URL] = useState('')
@@ -36,7 +37,16 @@ const Explore = () => {
   useEffect(() => {
     if (params.id && stories.length > 0) {
       const newStory = stories.find(({ id }) => id === Number(params.id))
-      setCurrentStory(newStory)
+
+      if (!newStory) {
+        setStoryNotFound(true)
+        return
+      }
+
+      const index = stories.findIndex(story => story.id === newStory.id)
+      const storyWithIndex = Object.assign(newStory, { index })
+      setStoryNotFound(false)
+      setCurrentStory(storyWithIndex)
     }
   }, [stories, params.id])
 
@@ -161,9 +171,9 @@ const Explore = () => {
           <StoryPlaylist
             className='ExplorePlaylist'
             stories={stories}
-            id={params.id}
             currentStory={currentStory}
             goToStory={goToStory}
+            storyNotFound={storyNotFound}
           />
         </Col>
       </Row>
