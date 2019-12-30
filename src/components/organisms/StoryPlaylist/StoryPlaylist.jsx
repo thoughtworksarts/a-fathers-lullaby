@@ -7,9 +7,9 @@ import clockIcon from 'assets/clock-regular.svg'
 import './StoryPlaylist.scss'
 
 const StoryPlaylist = ({ stories, id, currentStory = {}, goToStory }) => {
-  const [currentStoryIndex, setCurrentStoryIndex] = useState('')
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0)
   const [storyNotFound, setStoryNotFound] = useState(false)
-  const [prevStoryIndex, setPrevStoryIndex] = useState(null)
+  // const [prevStoryIndex, setPrevStoryIndex] = useState(null)
 
   const endHandler = () => {
     const nextStoryIndex = currentStoryIndex + 1
@@ -17,13 +17,10 @@ const StoryPlaylist = ({ stories, id, currentStory = {}, goToStory }) => {
   }
 
   useEffect(() => {
-    setPrevStoryIndex(currentStoryIndex) // eslint-disable-next-line
-  }, [currentStory])
-
-  useEffect(() => {
     const index = stories.findIndex(story => story.id === Number(currentStory.id))
     setCurrentStoryIndex(index)
-  }, [stories, prevStoryIndex, currentStory.id])
+    // setPrevStoryIndex(currentStoryIndex) // eslint-disable-next-line
+  }, [stories, currentStory])
 
   useEffect(() => {
     if (id) {
