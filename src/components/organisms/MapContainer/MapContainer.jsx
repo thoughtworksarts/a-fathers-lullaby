@@ -5,35 +5,9 @@ import { Row, Col, Container } from 'react-bootstrap'
 import './MapContainer.css'
 
 const MapContainer = (props) => {
-  const [currentStory, setCurrentStory] = useState(props.currentStory)
-
+  const { stories, currentStory, setCurrentStory, tags } = props
   // Import custom styles to customize the style of Google Map
   const styles = require('assets/GoogleMapStyles.json')
-
-  const markerClickHandler = (story) => {
-    setCurrentStory(story)
-    props.parentCallback(story)
-  }
-
-  useEffect(() => {
-    setCurrentStory(props.currentStory)
-  }, [props.currentStory])
-
-  useEffect(() => {
-    if (props.id) {
-      for (let i = 0; i < props.stories.length; i++) {
-        if (props.stories[i].id === Number(props.id)) {
-          let arrayIndex = null
-
-          if (props.stories && props.stories.length) {
-            arrayIndex = props.stories.findIndex(story => { return story.id === Number(props.id) })
-            setCurrentStory(props.stories[arrayIndex])
-          }
-          break
-        }
-      }
-    }
-  }, [props.stories, props.id])
 
   const displayMarkers = () => {
     const markerIcon = {
@@ -51,44 +25,24 @@ const MapContainer = (props) => {
       scaledSize: new props.google.maps.Size(40, 40)
     }
 
-    return props.stories.map(story => {
+    return stories.map(story => {
+      let icon = markerIcon
       if (story === currentStory) {
-        return (
-          <Marker
-            key={story.id}
-            position={{
-              lat: story.latitude,
-              lng: story.longitude
-            }}
-            icon={markerIconSelected}
-            onClick={() => markerClickHandler(story)}
-            parentCallback={() => markerClickHandler(story)}
-          />)
+        icon = markerIconSelected
       } else if (story.description.includes('5')) {
-        return (
-          <Marker
-            key={story.id}
-            position={{
-              lat: story.latitude,
-              lng: story.longitude
-            }}
-            icon={markerIconCurated}
-            onClick={() => markerClickHandler(story)}
-            parentCallback={() => markerClickHandler(story)}
-          />)
-      } else {
-        return (
-          <Marker
-            key={story.id}
-            position={{
-              lat: story.latitude,
-              lng: story.longitude
-            }}
-            icon={markerIcon}
-            onClick={() => markerClickHandler(story)}
-            parentCallback={() => markerClickHandler(story)}
-          />)
+        icon = markerIconCurated
       }
+      return (
+        <Marker
+          key={story.id}
+          position={{
+            lat: story.latitude,
+            lng: story.longitude
+          }}
+          icon={icon}
+          onClick={() => setCurrentStory(story)}
+        />
+      )
     })
   }
 
@@ -102,11 +56,17 @@ const MapContainer = (props) => {
             styles={styles}
             className='Map'
             initialCenter={{ lat: 42.3601, lng: -71.05 }}
-          >{displayMarkers()}
+          >
+            {displayMarkers()}
           </Map>
         </Col>
         <Col lg={6} sm={12}>
-          <StoryView story={currentStory} arrayIndex={props.stories.indexOf(currentStory) + 1} tags={props.tags} length={props.stories.length} />
+          <StoryView
+            story={currentStory}
+            arrayIndex={stories.indexOf(currentStory) + 1}
+            tags={tags}
+            length={stories.length}
+          />
         </Col>
       </Row>
     </Container>

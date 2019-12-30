@@ -31,7 +31,7 @@ const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
       for (let i = 0; i < stories.length; i++) {
         if (stories[i].id === Number(id)) {
           setStoryNotFound(false)
-          let arrayIndex = stories.findIndex(story => { return story.id === Number(id) })
+          const arrayIndex = stories.findIndex(story => { return story.id === Number(id) })
 
           document.getElementsByClassName('Story')[arrayIndex].scrollIntoView({
             behavior: 'auto',
@@ -86,14 +86,14 @@ const StoryPlaylist = ({ stories, id, currentStory, setCurrentStory }) => {
         </thead>
         <tbody>
           {stories.map(story => {
-            console.log("STORY IDS: ",story.id, currentStory.id)
+            console.log('STORY IDS: ', story.id, currentStory.id)
             return (
-              <Story 
-                key={story.id} 
-                story={story} 
+              <Story
+                key={story.id}
+                story={story}
                 isPlaying={story.id === currentStory.id}
-                arrayIndex={stories.indexOf(story) + 1} 
-                clickHandler={setCurrentStory} 
+                arrayIndex={stories.indexOf(story) + 1}
+                clickHandler={setCurrentStory}
               />
             )
           })}
