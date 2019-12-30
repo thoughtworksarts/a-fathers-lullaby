@@ -14,7 +14,7 @@ const Explore = () => {
   const [mp3URL, setMp3URL] = useState('')
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const { id } = useParams()
+  const params = useParams()
 
   useEffect(() => {
     fetch(
@@ -31,6 +31,14 @@ const Explore = () => {
       })
       .catch(err => console.log(err))
   }, [])
+
+  useEffect(() => {
+    if (params.id && stories.length > 0) {
+      const newStory = stories.find(({ id: storyId }) => storyId === params.id)
+      setCurrentStory(newStory)
+    }
+  }, [stories, params.id])
+
 
   const playStream = () => {
     if (!isPlaying && !mp3URL) {
@@ -144,9 +152,8 @@ const Explore = () => {
         <Col lg={12}>
           <MapContainer
             stories={stories}
-            id={id}
             currentStory={currentStory}
-            parentCallback={updateCurrentStory}
+            setCurrentStory={setCurrentStory}
             tags={tags}
           />
         </Col>
@@ -156,9 +163,10 @@ const Explore = () => {
           <StoryPlaylist
             className='ExplorePlaylist'
             stories={stories}
-            id={id}
+            id={params.id}
             currentStory={currentStory}
-            updateCurrentStory={updateCurrentStory}
+            setCurrentStory={setCurrentStory}
+            // updateCurrentStory={setCurrentStory}
           />
         </Col>
       </Row>
