@@ -1,0 +1,35 @@
+.audio-player {
+  background-color: #f2f3f5;
+  border: 3px solid #929292;
+  width: 100%;
+  width: 75;
+  position: fixed;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  width: 75%;
+  max-width: 1110px;
+  
+  .current-title {
+    color: #595959;
+    margin: 0;
+    white-space: nowrap;
+  }
+}
+
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+
+    /*
+      Define here the CSS styles applied only to Safari browsers
+      (any version and any device)
+    */
+    .safari-only {
+      background-color: transparent !important;
+      border: none !important;
+    }
+}}

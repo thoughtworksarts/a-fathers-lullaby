@@ -1,0 +1,38 @@
+.StoryPlaylist {
+  .number-icon {
+    width: 15px;
+  }
+
+  .clock-icon {
+    width: 20px;
+  }
+
+  .react-audio-player {
+    width: 100%;
+  }
+
+  thead {
+    background-color: #929292;
+    color: #ffffff;
+  }
+
+  tbody {
+    background-color: #f2f3f5;
+    color: #595959;
+  }
+
+  .loading {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #595959;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+  }
+}
+
+.table {
+  margin-bottom: 8rem !important;
+}

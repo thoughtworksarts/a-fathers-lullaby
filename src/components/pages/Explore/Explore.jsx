@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { MapContainer, StoryPlaylist } from 'organisms'
 import { Row, Col, Container } from 'react-bootstrap'
 import './Explore.css'
@@ -7,14 +7,16 @@ import './Explore.css'
 const Explore = () => {
   const displayPlayStream = false
   const [stories, setStories] = useState([])
-  const [tags, setTags] = useState([])
   const [currentStory, setCurrentStory] = useState('')
+  const [storyNotFound, setStoryNotFound] = useState(false)
+  const [tags, setTags] = useState([])
   const [latitude] = useState('42.3601')
   const [longitude] = useState('-71.05')
   const [mp3URL, setMp3URL] = useState('')
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const { id } = useParams()
+  const params = useParams()
+  const history = useHistory()
 
   useEffect(() => {
     fetch(
@@ -31,6 +33,24 @@ const Explore = () => {
       })
       .catch(err => console.log(err))
   }, [])
+
+  useEffect(() => {
+    if (params.id && stories.length > 0) {
+      const newStory = stories.find(({ id }) => id === Number(params.id))
+
+      if (!newStory) {
+        setStoryNotFound(true)
+        return
+      }
+
+      const index = stories.findIndex(story => story.id === newStory.id)
+      const storyWithIndex = Object.assign(newStory, { index })
+      setStoryNotFound(false)
+      setCurrentStory(storyWithIndex)
+    }
+  }, [stories, params.id])
+
+  const goToStory = id => history.push(`/explore/${id}`)
 
   const playStream = () => {
     if (!isPlaying && !mp3URL) {
@@ -120,10 +140,6 @@ const Explore = () => {
       .catch(err => console.log(err))
   }
 
-  const updateCurrentStory = newCurrentStory => {
-    setCurrentStory(newCurrentStory)
-  }
-
   return (
     <Container className='explore-page'>
       {displayPlayStream ? (
@@ -144,9 +160,8 @@ const Explore = () => {
         <Col lg={12}>
           <MapContainer
             stories={stories}
-            id={id}
             currentStory={currentStory}
-            parentCallback={updateCurrentStory}
+            goToStory={goToStory}
             tags={tags}
           />
         </Col>
@@ -156,9 +171,9 @@ const Explore = () => {
           <StoryPlaylist
             className='ExplorePlaylist'
             stories={stories}
-            id={id}
             currentStory={currentStory}
-            updateCurrentStory={updateCurrentStory}
+            goToStory={goToStory}
+            storyNotFound={storyNotFound}
           />
         </Col>
       </Row>
