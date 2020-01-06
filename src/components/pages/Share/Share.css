@@ -31,8 +31,24 @@
 }
 
 .recordingTitle {
-  font-size: 2em;
+  font-size: 1.8em;
   line-height: 1em;
+  margin-top: 20px;
+}
+
+.desktop-disclaimer {
+  color: #8c321e;
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 1em;
+  margin-top: 94px;
+}
+
+.mobile-disclaimer {
+  font-weight: bold;
+  color: #8c321e;
+  font-size: 1em;
+  line-height: 1.2em;
   margin-top: 94px;
 }
 

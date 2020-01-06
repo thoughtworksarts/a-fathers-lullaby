@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Recorder, ParticipateForm, ShareLocation } from 'organisms'
 import { Row, Col, Container } from 'react-bootstrap'
@@ -13,25 +13,40 @@ const Share = () => {
   const [myErrors, setErrors] = useState([])
   const [uploading, setUploading] = useState(false)
   const [newLullabyId, setNewLullabyId] = useState('')
+  const [disclaimer, setDisclaimer] = useState('')
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 980)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 980)
+    }
+    window.addEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    isMobile
+      ? setDisclaimer('mobile-disclaimer')
+      : setDisclaimer('desktop-disclaimer')
+  }, [isMobile])
 
   const updateLatAndLong = (latitude, longitude) => {
     setLatitude(latitude)
     setLongitude(longitude)
   }
 
-  const updatePerspective = (newPerspective) => {
+  const updatePerspective = newPerspective => {
     setPerspective(newPerspective)
   }
 
-  const updateRelationship = (newRelationship) => {
+  const updateRelationship = newRelationship => {
     setRelationship(newRelationship)
   }
 
-  const updatePrompt = (newPrompt) => {
+  const updatePrompt = newPrompt => {
     setPrompt(newPrompt)
   }
 
-  const uploadStory = (blob) => {
+  const uploadStory = blob => {
     setUploading(true)
     setErrors([])
 
@@ -72,40 +87,51 @@ const Share = () => {
    */
   const getSessionId = () => {
     const nav = window.navigator.userAgent
-    const form = '{"project_id": 25,"client_system": "' + nav.substring(0, 127) + '"}'
+    const form =
+      '{"project_id": 25,"client_system": "' + nav.substring(0, 127) + '"}'
 
-    return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_SESSIONS_URL}`, {
-      method: 'POST',
-      headers: {
-        authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`,
-        'content-type': 'application/json'
-      },
-      processData: false,
-      body: form
-    }).then(res => res.json())
-      .then((res) => {
+    return fetch(
+      `${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_SESSIONS_URL}`,
+      {
+        method: 'POST',
+        headers: {
+          authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`,
+          'content-type': 'application/json'
+        },
+        processData: false,
+        body: form
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
         const sessionId = res.id
         return sessionId
       })
   }
 
   /**
-  * Step 2:
-  * Create a new envelope
-  * POST localhost:8888/api/2/envelopes/
-  * Save the id returned
-  */
-  const createEnvelopeAndReturnId = (sessionId) =>
-    fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}/`, {
-      method: 'POST',
-      headers: {
-        authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`,
-        'content-type': 'application/json'
-      },
-      processData: false,
-      body: '{"session_id": ' + sessionId.toString() + '}'
-    }).then(res => res.json())
-      .then((res) => { return { envelopeId: res.id, sessionId: sessionId } })
+   * Step 2:
+   * Create a new envelope
+   * POST localhost:8888/api/2/envelopes/
+   * Save the id returned
+   */
+  const createEnvelopeAndReturnId = sessionId =>
+    fetch(
+      `${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}/`,
+      {
+        method: 'POST',
+        headers: {
+          authorization: `token ${process.env.REACT_APP_ROUNDWARE_TOKEN}`,
+          'content-type': 'application/json'
+        },
+        processData: false,
+        body: '{"session_id": ' + sessionId.toString() + '}'
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
+        return { envelopeId: res.id, sessionId: sessionId }
+      })
 
   /**
    * Step 3:
@@ -126,13 +152,14 @@ const Share = () => {
   }
 
   /**
-  * Step 4:
-  * Update Envelope with Asset
-  *
-  * Validate response
-  */
+   * Step 4:
+   * Update Envelope with Asset
+   *
+   * Validate response
+   */
   const uploadAudioRecording = (formData, envelopeId) => {
-    return fetch(`${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}${envelopeId}/`,
+    return fetch(
+      `${process.env.REACT_APP_CORS_ANYWHERE}/${process.env.REACT_APP_ENVELOPES_URL}${envelopeId}/`,
       {
         method: 'PATCH',
         headers: {
@@ -142,7 +169,8 @@ const Share = () => {
         processData: false,
         contentType: false,
         body: formData
-      })
+      }
+    )
       .then(res => {
         if (res.status === 200) {
           setUploading(false)
@@ -161,13 +189,18 @@ const Share = () => {
     <div className='errors'>
       Error
       <ul>
-        {(myErrors.map(element => { return <li key={element}>Your {element} is required</li> }))}
+        {myErrors.map(element => {
+          return <li key={element}>Your {element} is required</li>
+        })}
       </ul>
     </div>
   )
 
   if (newLullabyId !== '') {
-    alert('Here is a link to your lullaby: https:/thoughtworksarts.io/a-fathers-lullaby/explore/' + newLullabyId)
+    alert(
+      'Here is a link to your lullaby: https:/thoughtworksarts.io/a-fathers-lullaby/explore/' +
+        newLullabyId
+    )
     return <Redirect to={'/explore/' + newLullabyId} />
   }
 
@@ -175,19 +208,25 @@ const Share = () => {
     <Container className='SharePage'>
       <Row>
         <Col sm={12}>
-          <div className='recordingTitle'>
-            When you share your story you become a part of this poetic movement. You give a voice to the call for social change.
+          <div className={disclaimer}>
+            ***Disclaimer: By uploading your recording, you agree that any
+            recordings that you make with this app will become a part of A
+            Father's Lullaby and any associated projects. Additionally, you
+            authorize your recording to be used by Rashin Fahandej and Halsey
+            Burgund for this project and any related purposes. ***
           </div>
         </Col>
       </Row>
       <Row>
         <Col sm={12}>
-          {
-            myErrors.length
-              ? errors
-              : <div />
-          }
+          <div className='recordingTitle'>
+            When you share your story you become a part of this poetic movement.
+            You give a voice to the call for social change.
+          </div>
         </Col>
+      </Row>
+      <Row>
+        <Col sm={12}>{myErrors.length ? errors : <div />}</Col>
       </Row>
       <Row>
         <Col sm={12}>
@@ -196,16 +235,20 @@ const Share = () => {
       </Row>
       <Row>
         <Col sm={12}>
-          <ParticipateForm updatePerspective={updatePerspective} updateRelationship={updateRelationship} updatePrompt={updatePrompt} />
+          <ParticipateForm
+            updatePerspective={updatePerspective}
+            updateRelationship={updateRelationship}
+            updatePrompt={updatePrompt}
+          />
         </Col>
       </Row>
       <Row>
         <Col sm={12}>
-          {
-            (uploading === false)
-              ? <Recorder parentCallback={uploadStory} uploading={false} />
-              : <Recorder parentCallback={uploadStory} uploading />
-          }
+          {uploading === false ? (
+            <Recorder parentCallback={uploadStory} uploading={false} />
+          ) : (
+            <Recorder parentCallback={uploadStory} uploading />
+          )}
         </Col>
       </Row>
     </Container>
