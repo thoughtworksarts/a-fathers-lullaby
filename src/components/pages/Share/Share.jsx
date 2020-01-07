@@ -208,17 +208,6 @@ const Share = () => {
     <Container className='SharePage'>
       <Row>
         <Col sm={12}>
-          <div className={disclaimer}>
-            ***Disclaimer: By uploading your recording, you agree that any
-            recordings that you make with this app will become a part of A
-            Father's Lullaby and any associated projects. Additionally, you
-            authorize your recording to be used by Rashin Fahandej and Halsey
-            Burgund for this project and any related purposes. ***
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12}>
           <div className='recordingTitle'>
             When you share your story you become a part of this poetic movement.
             You give a voice to the call for social change.
@@ -249,6 +238,17 @@ const Share = () => {
           ) : (
             <Recorder parentCallback={uploadStory} uploading />
           )}
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={12}>
+          <div className={disclaimer}>
+            ***Disclaimer: By uploading your recording, you agree that any
+            recordings that you make with this app will become a part of A
+            Father's Lullaby and any associated projects. Additionally, you
+            authorize your recording to be used by Rashin Fahandej and Halsey
+            Burgund for this project and any related purposes. ***
+          </div>
         </Col>
       </Row>
     </Container>

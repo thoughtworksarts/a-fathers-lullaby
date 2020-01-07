@@ -31,6 +31,7 @@
 }
 
 .recordingTitle {
+  margin-top: 94px !important;
   font-size: 1.8em;
   line-height: 1em;
   margin-top: 20px;
@@ -41,7 +42,7 @@
   font-weight: bold;
   font-size: 1em;
   line-height: 1em;
-  margin-top: 94px;
+  margin-bottom: 60px;
 }
 
 .mobile-disclaimer {
@@ -49,7 +50,7 @@
   color: #8c321e;
   font-size: 1em;
   line-height: 1.2em;
-  margin-top: 94px;
+  margin-bottom: 60px;
 }
 
 .recordingInstruction {
