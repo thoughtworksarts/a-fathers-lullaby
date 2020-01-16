@@ -1,5 +1,5 @@
 import React from 'react'
-import { TimelinePicture, TimelineText } from 'molecules'
+import { TimelineText } from 'molecules'
 import './TimelineEntry.css'
 import TimelinePictureGrid from '../../molecules/TimelinePictureGrid/TimelinePictureGrid'
 
