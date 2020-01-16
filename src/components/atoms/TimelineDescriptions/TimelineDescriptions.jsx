@@ -53,7 +53,7 @@ export const timelineEntry2 = {
 export const timelineEntry3 = {
   full_desc: par2018Desc2Full,
   short_desc: par2018Desc2,
-  year: '2018',
+  year: '2019',
   imgs: [pic_2019_1, pic_2019_2, pic_2019_3],
   alt_text: 'People at audio installation'
 }
