@@ -1,6 +1,12 @@
-import picOne from 'assets/timelinepic_one.png'
-import picTwo from 'assets/timelinepic_2018_1.png'
-import picThree from 'assets/timelinepic_2018_2.png'
+import pic_2017_1 from 'assets/2017-1.png'
+import pic_2017_2 from 'assets/2017-2.png'
+import pic_2017_3 from 'assets/2017-3.png'
+import pic_2017_4 from 'assets/2017-4.png'
+import pic_2018_1 from 'assets/2018-1.png'
+import pic_2018_2 from 'assets/2018-2.png'
+import pic_2019_1 from 'assets/2019-1.png'
+import pic_2019_2 from 'assets/2019-2.png'
+import pic_2019_3 from 'assets/2019-3.png'
 
 export const par2017 = 'The first chapter of the project was launched in 2017, when artist served as Boston Artist-in-Residence with ' +
         'mayor’s Office of Art and Culture and Boston Centers for Youth & Families. '
@@ -32,7 +38,7 @@ export const timelineEntry1 = {
   full_desc: par2017Full,
   short_desc: par2017,
   year: '2017',
-  img: picOne,
+  imgs: [pic_2017_1, pic_2017_2, pic_2017_3, pic_2017_4],
   alt_text: 'Woman singing lullaby'
 }
 
@@ -40,7 +46,7 @@ export const timelineEntry2 = {
   full_desc: par2018Desc1Full,
   short_desc: par2018Desc1,
   year: '2018',
-  img: picTwo,
+  imgs: [pic_2018_1, pic_2018_2],
   alt_text: 'People sitting and listening to audio'
 }
 
@@ -48,6 +54,6 @@ export const timelineEntry3 = {
   full_desc: par2018Desc2Full,
   short_desc: par2018Desc2,
   year: '2018',
-  img: picThree,
+  imgs: [pic_2019_1, pic_2019_2, pic_2019_3],
   alt_text: 'People at audio installation'
 }
